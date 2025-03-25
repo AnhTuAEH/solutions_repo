@@ -267,3 +267,6 @@ plt.show()
 
 ## Conclusion
 The range $R = \frac{v_0^2 \sin 2\theta}{g}$ peaks at 45°, scales with $v_0^2$, and adapts to real-world factors via modifications, demonstrated through simulations.
+
+# Colab
+[Souce Code](https://colab.research.google.com/drive/1fMO_9xAKT-KOVi1EgB00NlsG1eOGbN1T?usp=sharing)
