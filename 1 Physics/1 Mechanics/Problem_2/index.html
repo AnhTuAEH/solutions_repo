@@ -6,13 +6,13 @@
 <meta content="IE=edge" http-equiv="X-UA-Compatible"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
 <link href="../../../img/favicon.ico" rel="shortcut icon"/>
-<title>Problem 2 - Physics and Mathematics</title>
+<title>Problem 2: Forced Damped Pendulum - Physics and Mathematics</title>
 <link href="../../../css/theme.css" rel="stylesheet"/>
 <link href="../../../css/theme_extra.css" rel="stylesheet"/>
 <link href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" rel="stylesheet"/>
 <script>
         // Current page data
-        var mkdocs_page_name = "Problem 2";
+        var mkdocs_page_name = "Problem 2: Forced Damped Pendulum";
         var mkdocs_page_input_path = "1 Physics/1 Mechanics/Problem_2.md";
         var mkdocs_page_url = null;
       </script>
@@ -48,8 +48,28 @@
 <ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="../Problem_1/">Problem 1</a>
 </li>
-<li class="toctree-l2 current"><a class="reference internal current" href="#">Problem 2</a>
+<li class="toctree-l2 current"><a class="reference internal current" href="#">Problem 2: Forced Damped Pendulum</a>
 <ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="#1-theoretical-foundation">1. Theoretical Foundation</a>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#2-system-dynamics">2. System Dynamics</a>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#3-applications">3. Applications</a>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#4-implementation-of-the-forced-damped-pendulum-simulation">4. Implementation of the Forced Damped Pendulum Simulation</a>
+<ul>
+<li class="toctree-l4"><a class="reference internal" href="#41-computational-model-setup">4.1 Computational Model Setup</a>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="#42-time-series-effect-of-damping-and-driving-amplitude">4.2 Time Series: Effect of Damping and Driving Amplitude</a>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="#43-phase-diagram-theta-vs-dottheta">4.3 Phase Diagram: \(\theta\) vs. \(\dot{\theta}\)</a>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="#44-poincare-section-transition-to-chaos">4.4 Poincaré Section: Transition to Chaos</a>
+</li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#5-colab">5. Colab</a>
+</li>
 </ul>
 </li>
 </ul>
@@ -163,7 +183,7 @@
 <li><a aria-label="Docs" class="icon icon-home" href="../../.."></a></li>
 <li class="breadcrumb-item">1 Physics</li>
 <li class="breadcrumb-item">1 Mechanics</li>
-<li class="breadcrumb-item active">Problem 2</li>
+<li class="breadcrumb-item active">Problem 2: Forced Damped Pendulum</li>
 <li class="wy-breadcrumbs-aside">
 </li>
 </ul>
@@ -171,7 +191,170 @@
 </div>
 <div class="document" itemscope="itemscope" itemtype="http://schema.org/Article" role="main">
 <div class="section" itemprop="articleBody">
-<h1 id="problem-2">Problem 2</h1>
+<h1 id="problem-2-forced-damped-pendulum">Problem 2: Forced Damped Pendulum</h1>
+<h2 id="1-theoretical-foundation">1. Theoretical Foundation</h2>
+<p>The forced damped pendulum is a nonlinear system governed by:
+$$
+\frac{d^2\theta}{dt^2} + b \frac{d\theta}{dt} + \frac{g}{L} \sin\theta = A \cos(\omega t)
+$$
+For small angles, <span class="arithmatex">\(\sin\theta \approx \theta\)</span>, yielding a linear equation:
+$$
+\frac{d^2\theta}{dt^2} + b \frac{d\theta}{dt} + \omega_0^2 \theta = A \cos(\omega t)
+$$
+where <span class="arithmatex">\(\omega_0 = \sqrt{g/L}\)</span>. Solutions include transient decay and a steady-state response:
+$$
+\theta_p(t) = D \cos(\omega t - \phi), \quad D = \frac{A}{\sqrt{(\omega_0^2 - \omega^2)^2 + (b \omega)^2}}
+$$
+Resonance occurs when <span class="arithmatex">\(\omega \approx \omega_0\)</span>, maximizing amplitude.</p>
+<h2 id="2-system-dynamics">2. System Dynamics</h2>
+<ul>
+<li><strong>Damping <span class="arithmatex">\((b)\)</span></strong>: Higher <span class="arithmatex">\(b\)</span> reduces oscillation amplitude and shifts resonance.</li>
+<li><strong>Driving Amplitude <span class="arithmatex">\((A)\)</span></strong>: Larger <span class="arithmatex">\(A\)</span> increases response, introducing nonlinear effects.</li>
+<li><strong>Driving Frequency <span class="arithmatex">\((\omega)\)</span></strong>: Controls synchronization and energy transfer.</li>
+<li><strong>Chaos</strong>: Increasing <span class="arithmatex">\(A\)</span> can induce period doubling and chaotic behavior.</li>
+</ul>
+<h2 id="3-applications">3. Applications</h2>
+<ul>
+<li><strong>Energy Harvesting</strong>: Piezoelectric devices optimize energy capture by tuning <span class="arithmatex">\(\omega_0\)</span>.</li>
+<li><strong>Bridges</strong>: Wind-induced oscillations (e.g., Tacoma Narrows) align with resonance behavior.</li>
+<li><strong>Oscillating Circuits</strong>: Analogous to RLC circuits with <span class="arithmatex">\(\omega_0\)</span> and damping.</li>
+</ul>
+<h2 id="4-implementation-of-the-forced-damped-pendulum-simulation">4. Implementation of the Forced Damped Pendulum Simulation</h2>
+<p>This section outlines the computational framework to simulate the forced damped pendulum, governed by:</p>
+<div class="arithmatex">\[
+\frac{d^2\theta}{dt^2} + b \frac{d\theta}{dt} + \frac{g}{L} \sin\theta = A \cos(\omega t)
+\]</div>
+<p>We develop a model using Python, incorporating parameters—damping coefficient <span class="arithmatex">\((b)\)</span>, driving amplitude <span class="arithmatex">\((A)\)</span>, driving frequency <span class="arithmatex">\((\omega)\)</span>, and initial conditions <span class="arithmatex">\((\theta_0, \dot{\theta}_0)\)</span> to explore the system’s behavior. Separate visualizations highlight time evolution, phase portraits, and Poincaré sections, revealing periodic, quasiperiodic, and chaotic regimes.</p>
+<h3 id="41-computational-model-setup">4.1 Computational Model Setup</h3>
+<p>The nonlinear second-order ODE is converted to a system of first-order ODEs:</p>
+<div class="arithmatex">\[
+\frac{d\theta}{dt} = v
+\]</div>
+<div class="arithmatex">\[
+\frac{dv}{dt} = -b v - \frac{g}{L} \sin\theta + A \cos(\omega t)
+\]</div>
+<p>We use <code>scipy.integrate.odeint</code> for numerical integration, with <span class="arithmatex">\(g/L = 1\)</span> (normalized natural frequency <span class="arithmatex">\(\omega_0 = 1\)</span>) for simplicity.</p>
+<hr/>
+<h3 id="42-time-series-effect-of-damping-and-driving-amplitude">4.2 Time Series: Effect of Damping and Driving Amplitude</h3>
+<p>This script simulates <span class="arithmatex">\(\theta(t)\)</span> under varying <span class="arithmatex">\(b\)</span> and <span class="arithmatex">\(A\)</span>, illustrating damping’s stabilizing effect and amplitude’s role in driving oscillations.</p>
+<pre><code class="language-python">import numpy as np
+import matplotlib.pyplot as plt
+from scipy.integrate import odeint
+
+# Define the system
+def pendulum(state, t, b, A, omega):
+    theta, v = state
+    dtheta_dt = v
+    dv_dt = -b * v - np.sin(theta) + A * np.cos(omega * t)
+    return [dtheta_dt, dv_dt]
+
+# Parameters
+t = np.linspace(0, 50, 1000)  # Time array
+omega = 2/3  # Driving frequency
+initial_conditions = [0.1, 0]  # [theta0, v0]
+
+# Cases to compare
+params = [(0.1, 0.5, "b=0.1, A=0.5"), (0.5, 0.5, "b=0.5, A=0.5"), (0.1, 1.2, "b=0.1, A=1.2")]
+
+# Simulate and plot
+plt.figure(figsize=(10, 6))
+for b, A, label in params:
+    sol = odeint(pendulum, initial_conditions, t, args=(b, A, omega))
+    theta = sol[:, 0]
+    plt.plot(t, theta, label=label)
+
+plt.xlabel("Time (s)")
+plt.ylabel(r"$\theta$ (rad)")
+plt.title("Time Series: Effect of Damping and Driving Amplitude")
+plt.legend()
+plt.grid(True)
+plt.show()
+</code></pre>
+<p><strong>Output</strong>: A plot comparing <span class="arithmatex">\(\theta(t)\)</span> for low damping/low amplitude (periodic), high damping (damped periodic), and low damping/high amplitude (approaching chaos).</p>
+<p><img alt="code_1" src="../../../_pics/Physics/Mechanics/Problem_2/code_1.png"/></p>
+<hr/>
+<h3 id="43-phase-diagram-theta-vs-dottheta">4.3 Phase Diagram: <span class="arithmatex">\(\theta\)</span> vs. <span class="arithmatex">\(\dot{\theta}\)</span></h3>
+<p>This script generates a phase portrait, showing the relationship between <span class="arithmatex">\(\theta\)</span> and <span class="arithmatex">\(v = \dot{\theta}\)</span>, revealing attractors and dynamic regimes.</p>
+<pre><code class="language-python">import numpy as np
+import matplotlib.pyplot as plt
+from scipy.integrate import odeint
+
+# System definition (same as above)
+def pendulum(state, t, b, A, omega):
+    theta, v = state
+    dtheta_dt = v
+    dv_dt = -b * v - np.sin(theta) + A * np.cos(omega * t)
+    return [dtheta_dt, dv_dt]
+
+# Parameters
+t = np.linspace(0, 100, 2000)  # Longer time for steady state
+b = 0.1  # Damping
+A = 1.15  # Driving amplitude (near chaotic threshold)
+omega = 2/3  # Driving frequency
+initial_conditions = [0.1, 0]
+
+# Solve
+sol = odeint(pendulum, initial_conditions, t, args=(b, A, omega))
+theta = sol[:, 0]
+v = sol[:, 1]
+
+# Plot phase diagram
+plt.figure(figsize=(8, 6))
+plt.plot(theta, v, lw=0.5)
+plt.xlabel(r"$\theta$ (rad)")
+plt.ylabel(r"$\dot{\theta}$ (rad/s)")
+plt.title("Phase Diagram: $\theta$ vs. $\dot{\theta}$ (b=0.1, A=1.15, $\omega$=2/3)")
+plt.grid(True)
+plt.show()
+</code></pre>
+<p><strong>Output</strong>: A phase portrait showing a complex trajectory, potentially a strange attractor, indicating chaotic behavior for <span class="arithmatex">\(A = 1.15\)</span>.</p>
+<p><img alt="code_2" src="../../../_pics/Physics/Mechanics/Problem_2/code_2.png"/></p>
+<hr/>
+<h3 id="44-poincare-section-transition-to-chaos">4.4 Poincaré Section: Transition to Chaos</h3>
+<p>This script constructs a Poincaré section by sampling <span class="arithmatex">\(\theta\)</span> and <span class="arithmatex">\(\dot{\theta}\)</span> at intervals of the driving period <span class="arithmatex">\((T = 2\pi/\omega)\)</span>, highlighting the transition from regular to chaotic motion.</p>
+<pre><code class="language-python">import numpy as np
+import matplotlib.pyplot as plt
+from scipy.integrate import odeint
+
+# System definition (same as above)
+def pendulum(state, t, b, A, omega):
+    theta, v = state
+    dtheta_dt = v
+    dv_dt = -b * v - np.sin(theta) + A * np.cos(omega * t)
+    return [dtheta_dt, dv_dt]
+
+# Parameters
+omega = 2/3
+T = 2 * np.pi / omega  # Driving period
+t = np.linspace(0, 500, 10000)  # Long time for convergence
+b = 0.1
+A = 1.15  # Chaotic regime
+initial_conditions = [0.1, 0]
+
+# Solve
+sol = odeint(pendulum, initial_conditions, t, args=(b, A, omega))
+theta = sol[:, 0]
+v = sol[:, 1]
+
+# Poincaré section: sample at t = n * T
+section_times = np.arange(0, 500, T)
+section_indices = [np.argmin(np.abs(t - st)) for st in section_times]
+theta_section = theta[section_indices]
+v_section = v[section_indices]
+
+# Plot
+plt.figure(figsize=(8, 6))
+plt.scatter(theta_section, v_section, s=5, c='black')
+plt.xlabel(r"$\theta$ (rad)")
+plt.ylabel(r"$\dot{\theta}$ (rad/s)")
+plt.title("Poincaré Section (b=0.1, A=1.15, $\omega$=2/3)")
+plt.grid(True)
+plt.show()
+</code></pre>
+<p><strong>Output</strong>: A scatter plot showing a fractal-like structure, characteristic of chaos, with points filling a region rather than forming a closed curve (periodic) or finite set (quasiperiodic).</p>
+<p><img alt="code_3" src="../../../_pics/Physics/Mechanics/Problem_2/code_3.png"/></p>
+<h2 id="5-colab">5. Colab</h2>
+<p><a href="https://colab.research.google.com/drive/15aGFlb5NE9oBT899TNwH6I6dkH2gGlYj?usp=sharing">Souce Code</a></p>
 </div>
 </div><footer>
 <div aria-label="Footer Navigation" class="rst-footer-buttons" role="navigation">
