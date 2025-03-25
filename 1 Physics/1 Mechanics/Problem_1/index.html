@@ -341,40 +341,40 @@ plt.show()
 </code></pre>
 <p><img alt="Code 3" src="../../../_pics/Physics/Mechanics/Problem_1/code_3.png"/></p>
 <h4 id="code-4-trajectory-with-non-zero-initial-height">Code 4: Trajectory with Non-Zero Initial Height</h4>
-<pre><code class="language-python">import numpy as np
-import matplotlib.pyplot as plt
+<pre><code class="language-python">import matplotlib.pyplot as plt
+import numpy as np
 
-# Parameters
-v0 = 15.0  # Initial velocity (m/s)
-theta_deg = 30  # Angle in degrees
-g = 9.81  # Gravitational acceleration (m/s^2)
-h_values = [0, 5, 10]  # Initial heights (m)
-theta = np.radians(theta_deg)
+# Constants
+g = 9.81  # gravity (m/s^2)
+v0 = 25   # initial speed (m/s)
+angle_deg = 45  # launch angle (degrees)
+angle_rad = np.radians(angle_deg)
 
-# Plot
-plt.figure(figsize=(8, 6))
-for h in h_values:
-    # Time of flight (solve quadratic: y = 0)
-    a = -0.5 * g
-    b = v0 * np.sin(theta)
-    c = h
-    t_flight = (-b + np.sqrt(b**2 - 4 * a * c)) / (2 * a)  # Positive root
-    t = np.linspace(0, t_flight, 100)
+# Initial heights to test
+initial_heights = [0, 10, 20]  # in meters
+labels = [f"h0 = {h} m" for h in initial_heights]
 
-    x = v0 * np.cos(theta) * t
-    y = h + v0 * np.sin(theta) * t - 0.5 * g * t**2
+# Time array
+t = np.linspace(0, 5, num=500)  # simulate for 5 seconds
 
-    plt.plot(x, y, label=f'h = {h} m')
+# Plotting
+plt.figure(figsize=(10, 6))
+for h0, label in zip(initial_heights, labels):
+    # Equations of motion
+    x = v0 * np.cos(angle_rad) * t
+    y = h0 + v0 * np.sin(angle_rad) * t - 0.5 * g * t**2
+    # Only keep points where y &gt;= 0 (above ground)
+    mask = y &gt;= 0
+    plt.plot(x[mask], y[mask], label=label)
 
-plt.title('Trajectory with Varying Initial Height')
-plt.xlabel('Horizontal Distance (m)')
-plt.ylabel('Vertical Height (m)')
-plt.grid(True)
+plt.title("Projectile Motion for Different Initial Heights")
+plt.xlabel("Horizontal Distance (m)")
+plt.ylabel("Vertical Distance (m)")
 plt.legend()
-plt.axhline(0, color='black', linewidth=0.5)
+plt.grid(True)
 plt.show()
 </code></pre>
-<p><img alt="Code 4" src="../../../_pics/Physics/Mechanics/Problem_1/code_4.png"/></p>
+<p><img alt="Code 4" src="../../../_pics/Physics/Mechanics/Problem_1/code_4_fixed.png"/></p>
 <h3 id="deliverables">Deliverables</h3>
 <ul>
 <li><strong>Equations</strong>: Derived <span class="arithmatex">\(x(t)\)</span>, <span class="arithmatex">\(y(t)\)</span>, and <span class="arithmatex">\(R\)</span>.</li>
