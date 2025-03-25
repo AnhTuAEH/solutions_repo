@@ -222,41 +222,41 @@ plt.show()
 #### Code 4: Trajectory with Non-Zero Initial Height
 
 ```python
-import numpy as np
 import matplotlib.pyplot as plt
-
-# Parameters
-v0 = 15.0  # Initial velocity (m/s)
-theta_deg = 30  # Angle in degrees
-g = 9.81  # Gravitational acceleration (m/s^2)
-h_values = [0, 5, 10]  # Initial heights (m)
-theta = np.radians(theta_deg)
-
-# Plot
-plt.figure(figsize=(8, 6))
-for h in h_values:
-    # Time of flight (solve quadratic: y = 0)
-    a = -0.5 * g
-    b = v0 * np.sin(theta)
-    c = h
-    t_flight = (-b + np.sqrt(b**2 - 4 * a * c)) / (2 * a)  # Positive root
-    t = np.linspace(0, t_flight, 100)
-    
-    x = v0 * np.cos(theta) * t
-    y = h + v0 * np.sin(theta) * t - 0.5 * g * t**2
-    
-    plt.plot(x, y, label=f'h = {h} m')
-
-plt.title('Trajectory with Varying Initial Height')
-plt.xlabel('Horizontal Distance (m)')
-plt.ylabel('Vertical Height (m)')
-plt.grid(True)
+import numpy as np
+ 
+# Constants
+g = 9.81  # gravity (m/s^2)
+v0 = 25   # initial speed (m/s)
+angle_deg = 45  # launch angle (degrees)
+angle_rad = np.radians(angle_deg)
+ 
+# Initial heights to test
+initial_heights = [0, 10, 20]  # in meters
+labels = [f"h0 = {h} m" for h in initial_heights]
+ 
+# Time array
+t = np.linspace(0, 5, num=500)  # simulate for 5 seconds
+ 
+# Plotting
+plt.figure(figsize=(10, 6))
+for h0, label in zip(initial_heights, labels):
+    # Equations of motion
+    x = v0 * np.cos(angle_rad) * t
+    y = h0 + v0 * np.sin(angle_rad) * t - 0.5 * g * t**2
+    # Only keep points where y >= 0 (above ground)
+    mask = y >= 0
+    plt.plot(x[mask], y[mask], label=label)
+ 
+plt.title("Projectile Motion for Different Initial Heights")
+plt.xlabel("Horizontal Distance (m)")
+plt.ylabel("Vertical Distance (m)")
 plt.legend()
-plt.axhline(0, color='black', linewidth=0.5)
+plt.grid(True)
 plt.show()
 ```
 
-![Code 4](../../_pics/Physics/Mechanics/Problem_1/code_4.png)
+![Code 4](../../_pics/Physics/Mechanics/Problem_1/code_4_fixed.png)
 
 ### Deliverables
 - **Equations**: Derived $x(t)$, $y(t)$, and $R$.
