@@ -192,3 +192,124 @@ plt.show()
 
 ## 5. Colab
 [Souce Code](https://colab.research.google.com/drive/14i_omnGOp-ujAiWQA9HpNzs27sd6lCpt?usp=sharing)
+
+## 6. Forced Damped Pendulum: Chaos & Resonance
+
+### 6.1 Chaotic Motion in the Forced Damped Pendulum
+For certain values of the damping coefficient $ b $, driving amplitude $ A $, and driving frequency $ \omega $, the forced damped pendulum exhibits chaotic behavior. A common set of parameters leading to chaos is:
+- $ b = 0.5 $ (moderate damping)
+- $ A = 1.2 $ (strong forcing)
+- $ \omega = \frac{2}{3} $ (driving frequency)
+
+Let's simulate the chaotic motion:
+
+```python
+import numpy as np
+import matplotlib.pyplot as plt
+from scipy.integrate import odeint
+
+# Define the system
+def chaotic_pendulum(state, t, b, A, omega):
+    theta, v = state
+    dtheta_dt = v
+    dv_dt = -b * v - np.sin(theta) + A * np.cos(omega * t)
+    return [dtheta_dt, dv_dt]
+
+# Parameters
+t = np.linspace(0, 100, 5000)  # Extended time for chaotic behavior
+b = 0.5
+A = 1.2
+omega = 2/3
+initial_conditions = [0.1, 0]
+
+# Solve
+sol = odeint(chaotic_pendulum, initial_conditions, t, args=(b, A, omega))
+theta = sol[:, 0]
+v = sol[:, 1]
+
+# Create subplots
+fig, (ax1, ax2) = plt.subplots(1, 2, figsize=(15, 5))
+
+# Time series plot
+ax1.plot(t, theta, 'b-', label='θ(t)')
+ax1.set_xlabel('Time (s)')
+ax1.set_ylabel('θ (rad)')
+ax1.set_title('Chaotic Pendulum: θ vs Time')
+ax1.grid(True)
+ax1.legend()
+
+# Phase space plot
+ax2.plot(theta, v, 'r-', lw=0.5)
+ax2.set_xlabel('θ (rad)')
+ax2.set_ylabel('θ̇ (rad/s)')
+ax2.set_title('Chaotic Pendulum: Phase Space')
+ax2.grid(True)
+
+plt.tight_layout()
+plt.show()
+```
+
+![6_1](../../_pics/Physics/Mechanics/Problem_2/6_1.png)
+
+#### Expected Output:
+1. **Time Series Plot**: Irregular oscillations with no periodic pattern.
+2. **Phase Space Plot**: A strange attractor instead of a closed orbit, characteristic of chaotic dynamics.
+
+---
+
+### 6.2 Resonance in the Forced Damped Pendulum
+Resonance occurs when the driving frequency $ \omega $ is close to the system’s natural frequency $ \omega_0 = \sqrt{g/L} $. This results in large oscillations.
+
+Let’s simulate resonance by setting:
+- $ b = 0.1 $ (low damping)
+- $ A = 0.5 $ (moderate forcing)
+- $ \omega = \omega_0 \approx 1 $ (resonance condition)
+
+```python
+# Define the system
+def resonance_pendulum(state, t, b, A, omega):
+    theta, v = state
+    dtheta_dt = v
+    dv_dt = -b * v - np.sin(theta) + A * np.cos(omega * t)
+    return [dtheta_dt, dv_dt]
+
+# Parameters
+t = np.linspace(0, 100, 5000)  # Long simulation to see resonance effects
+b = 0.1
+A = 0.5
+omega = 1  # Resonance condition
+initial_conditions = [0.1, 0]
+
+# Solve
+sol = odeint(resonance_pendulum, initial_conditions, t, args=(b, A, omega))
+theta = sol[:, 0]
+v = sol[:, 1]
+
+# Create subplots
+fig, (ax1, ax2) = plt.subplots(1, 2, figsize=(15, 5))
+
+# Time series plot
+ax1.plot(t, theta, 'b-', label='θ(t)')
+ax1.set_xlabel('Time (s)')
+ax1.set_ylabel('θ (rad)')
+ax1.set_title('Resonance: θ vs Time')
+ax1.grid(True)
+ax1.legend()
+
+# Phase space plot
+ax2.plot(theta, v, 'r-', lw=0.5)
+ax2.set_xlabel('θ (rad)')
+ax2.set_ylabel('θ̇ (rad/s)')
+ax2.set_title('Resonance: Phase Space')
+ax2.grid(True)
+
+plt.tight_layout()
+plt.show()
+```
+
+![6_2](../../_pics/Physics/Mechanics/Problem_2/6_2.png)
+
+#### Expected Output:
+1. **Time Series Plot**: Oscillations with increasing amplitude over time.
+2. **Phase Space Plot**: Large periodic orbits, showing energy accumulation due to resonance.
+
