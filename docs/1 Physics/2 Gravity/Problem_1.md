@@ -498,3 +498,6 @@ Kepler’s Third Law, which relates the square of the orbital period to the cube
 
 This multifaceted approach not only reinforces the law’s correctness but also showcases its essential role in both scientific understanding and modern technological applications. Kepler’s Third Law exemplifies the profound connection between simple mathematical relationships and the grand structure of the cosmos.
 
+## 6. Colab
+[Souce Code](https://colab.research.google.com/drive/1LoI1FBp6ped_O-dvlvklgZo22g41DjiV?usp=sharing)
+
