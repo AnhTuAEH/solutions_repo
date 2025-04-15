@@ -1,5 +1,4 @@
-# Problem 1: 
-# Projectile Motion
+# Problem 1
 
 # Investigating the Range as a Function of the Angle of Projection
 
@@ -162,7 +161,7 @@ plt.axhline(0, color='black', linewidth=0.5)
 plt.show()
 ```
 
-![Code 1](../../_pics/Physics/Mechanics/Problem_1/code_1.png)
+![Code 1](../../_pics/Physics/1%20Mechanics/Problem_1/code_1.png)
 
 #### Code 2: Range vs. Angle for Different Initial Velocities
 
@@ -190,7 +189,7 @@ plt.legend()
 plt.show()
 ```
 
-![Code 2](../../_pics/Physics/Mechanics/Problem_1/code_2.png)
+![Code 2](../../_pics/Physics/1%20Mechanics/Problem_1/code_2.png)
 
 #### Code 3: Range vs. Angle for Different Gravitational Accelerations
 
@@ -218,7 +217,7 @@ plt.legend()
 plt.show()
 ```
 
-![Code 3](../../_pics/Physics/Mechanics/Problem_1/code_3.png)
+![Code 3](../../_pics/Physics/1%20Mechanics/Problem_1/code_3.png)
 
 #### Code 4: Trajectory with Non-Zero Initial Height
 
@@ -257,7 +256,7 @@ plt.grid(True)
 plt.show()
 ```
 
-![Code 4](../../_pics/Physics/Mechanics/Problem_1/code_4_fixed.png)
+![Code 4](../../_pics/Physics/1%20Mechanics/1%20Mechanics/Problem_1/code_4_fixed.png)
 
 ### Deliverables
 - **Equations**: Derived $x(t)$, $y(t)$, and $R$.

@@ -1,5 +1,4 @@
-# Problem 2: 
-# Forced Damped Pendulum
+# Problem 2 
 
 ## 1. Theoretical Foundation
 The forced damped pendulum is a nonlinear system governed by:
@@ -83,7 +82,7 @@ plt.show()
 1. Left: Time series of angular displacement θ(t)
 2. Right: Phase space trajectory showing the conservation of energy (closed orbit)
 
-![pure_pendulum](../../_pics/Physics/Mechanics/Problem_2/pure_pendulum.png)
+![pure_pendulum](../../_pics/Physics/1%20Mechanics/Problem_2/pure_pendulum.png)
 
 ### 4.2 Damped Pendulum
 
@@ -135,7 +134,7 @@ plt.show()
 1. Left: Time series showing the decaying oscillations
 2. Right: Phase space trajectory showing the energy dissipation (spiral trajectory)
 
-![damped_pendulum](../../_pics/Physics/Mechanics/Problem_2/damped_pendulum.png)
+![damped_pendulum](../../_pics/Physics/1%20Mechanics/Problem_2/damped_pendulum.png)
 
 ### 4.3 Forced Pendulum without Damping
 
@@ -188,7 +187,7 @@ plt.show()
 1. Left: Time series showing the driven oscillations
 2. Right: Phase space trajectory showing the complex dynamics due to the external force
 
-![forced_pendulum](../../_pics/Physics/Mechanics/Problem_2/forced_pendulum.png)
+![forced_pendulum](../../_pics/Physics/1%20Mechanics/Problem_2/forced_pendulum.png)
 
 ## 5. Colab
 [Souce Code](https://colab.research.google.com/drive/14i_omnGOp-ujAiWQA9HpNzs27sd6lCpt?usp=sharing)
@@ -249,7 +248,7 @@ plt.tight_layout()
 plt.show()
 ```
 
-![6_1](../../_pics/Physics/Mechanics/Problem_2/6_1.png)
+![6_1](../../_pics/Physics/1%20Mechanics/Problem_2/6_1.png)
 
 #### Expected Output:
 1. **Time Series Plot**: Irregular oscillations with no periodic pattern.
@@ -307,7 +306,7 @@ plt.tight_layout()
 plt.show()
 ```
 
-![6_2](../../_pics/Physics/Mechanics/Problem_2/6_2.png)
+![6_2](../../_pics/Physics/1%20Mechanics/Problem_2/6_2.png)
 
 #### Expected Output:
 1. **Time Series Plot**: Oscillations with increasing amplitude over time.
