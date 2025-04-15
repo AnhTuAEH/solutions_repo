@@ -58,6 +58,72 @@
 </li>
 <li class="toctree-l2 current"><a class="reference internal current" href="#">Problem 2</a>
 <ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="#definitions-concepts">Definitions &amp; Concepts</a>
+<ul>
+<li class="toctree-l4"><a class="reference internal" href="#11-escape-velocity">1.1 Escape Velocity</a>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="#12-first-cosmic-velocity-orbital-velocity">1.2 First Cosmic Velocity (Orbital Velocity)</a>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="#13-second-cosmic-velocity">1.3 Second Cosmic Velocity</a>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="#14-third-cosmic-velocity">1.4 Third Cosmic Velocity</a>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="#15-physical-meaning-in-space-exploration">1.5 Physical Meaning in Space Exploration</a>
+</li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#mathematical-derivations">Mathematical Derivations</a>
+<ul>
+<li class="toctree-l4"><a class="reference internal" href="#21-escape-velocity">2.1 Escape Velocity</a>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="#22-first-cosmic-velocity-orbital-velocity">2.2 First Cosmic Velocity (Orbital Velocity)</a>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="#23-third-cosmic-velocity">2.3 Third Cosmic Velocity</a>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="#24-influence-of-mass-and-radius">2.4 Influence of Mass and Radius</a>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="#25-assumptions-in-derivations">2.5 Assumptions in Derivations</a>
+</li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#calculations">Calculations</a>
+<ul>
+<li class="toctree-l4"><a class="reference internal" href="#31-constants-and-celestial-parameters">3.1 Constants and Celestial Parameters</a>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="#32-formulas">3.2 Formulas</a>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="#33-numerical-calculations">3.3 Numerical Calculations</a>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="#34-summary-table">3.4 Summary Table</a>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="#remarks">Remarks</a>
+</li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#visualization-and-verification">Visualization and Verification</a>
+<ul>
+<li class="toctree-l4"><a class="reference internal" href="#41-keplers-third-law-verification-t2-propto-r3">4.1 Kepler's Third Law Verification: \(T^2 \propto r^3\)</a>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="#42-log-log-plot-to-check-the-slope-expected-1">4.2 Log-Log Plot to Check the Slope (Expected ≈ 1)</a>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="#43-comparison-of-cosmic-velocities-across-planets">4.3 Comparison of Cosmic Velocities Across Planets</a>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="#44-massradius-vs-escape-velocity-relationship">4.4 Mass/Radius vs Escape Velocity Relationship</a>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="#45-simulated-escape-trajectory-ballistic-approx-optional">4.5 Simulated Escape Trajectory (Ballistic Approx.) (Optional)</a>
+</li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#applications-discussion">Applications &amp; Discussion</a>
+<ul>
+<li class="toctree-l4"><a class="reference internal" href="#51-relevance-of-cosmic-velocities-in-space-missions">5.1 Relevance of Cosmic Velocities in Space Missions</a>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="#52-engineering-and-fuel-implications">5.2 Engineering and Fuel Implications</a>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="#summary">Summary</a>
+</li>
+</ul>
+</li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../Problem_3/">Problem 3</a>
@@ -172,6 +238,464 @@
 <div class="document" itemscope="itemscope" itemtype="http://schema.org/Article" role="main">
 <div class="section" itemprop="articleBody">
 <h1 id="problem-2">Problem 2</h1>
+<h2 id="definitions-concepts">Definitions &amp; Concepts</h2>
+<h3 id="11-escape-velocity">1.1 Escape Velocity</h3>
+<p>Escape velocity is the minimum speed an object must reach to break free from the gravitational pull of a celestial body, without any further propulsion.</p>
+<p>The general formula for escape velocity is derived from the conservation of energy:</p>
+<div class="arithmatex">\[
+\frac{1}{2}mv^2 = \frac{GMm}{r}
+\]</div>
+<p>Solving for velocity:</p>
+<div class="arithmatex">\[
+v_{esc} = \sqrt{\frac{2GM}{r}}
+\]</div>
+<p>Where:
+- <span class="arithmatex">\(v_{esc}\)</span> is the escape velocity,
+- <span class="arithmatex">\(G\)</span> is the gravitational constant <span class="arithmatex">\((6.674 \times 10^{-11}\,\text{m}^3\,\text{kg}^{-1}\,\text{s}^{-2})\)</span>,
+- <span class="arithmatex">\(M\)</span> is the mass of the celestial body,
+- <span class="arithmatex">\(r\)</span> is the distance from the center of the body to the point of escape (typically the planet’s radius).</p>
+<h3 id="12-first-cosmic-velocity-orbital-velocity">1.2 First Cosmic Velocity (Orbital Velocity)</h3>
+<p>The first cosmic velocity refers to the minimum horizontal speed an object must have to remain in a stable, circular orbit just above the surface of a celestial body, without falling back to the surface.</p>
+<p>It is derived by equating gravitational force to centripetal force:</p>
+<div class="arithmatex">\[
+\frac{GMm}{r^2} = \frac{mv^2}{r}
+\]</div>
+<p>Solving for <span class="arithmatex">\(v\)</span>:</p>
+<div class="arithmatex">\[
+v_{orb} = \sqrt{\frac{GM}{r}}
+\]</div>
+<p>This is also called the <strong>orbital velocity</strong>, and it is lower than escape velocity:</p>
+<div class="arithmatex">\[
+v_{orb} = \frac{v_{esc}}{\sqrt{2}}
+\]</div>
+<h3 id="13-second-cosmic-velocity">1.3 Second Cosmic Velocity</h3>
+<p>The second cosmic velocity is simply another term for <strong>escape velocity</strong> from a planetary body. It is the minimum speed required to completely escape the gravitational influence of the planet and enter into space, assuming no further propulsion.</p>
+<p>Thus:</p>
+<div class="arithmatex">\[
+v_{2nd} = v_{esc} = \sqrt{\frac{2GM}{r}}
+\]</div>
+<h3 id="14-third-cosmic-velocity">1.4 Third Cosmic Velocity</h3>
+<p>The third cosmic velocity is the speed required for a spacecraft to escape not only Earth’s gravity, but also the Sun’s gravity, starting from Earth’s orbit. This is relevant for interstellar missions.</p>
+<p>This involves both Earth’s orbital velocity around the Sun and the Sun’s gravitational influence. It can be approximated by:</p>
+<div class="arithmatex">\[
+v_{3rd} = \sqrt{v_{esc,\odot}^2 + v_{orb,\oplus}^2}
+\]</div>
+<p>Where:
+- <span class="arithmatex">\(v_{esc,\odot}\)</span> is the escape velocity from the Sun at Earth’s distance,
+- <span class="arithmatex">\(v_{orb,\oplus}\)</span> is Earth’s orbital speed around the Sun (<span class="arithmatex">\(\approx 29.78\,\text{km/s}\)</span>).</p>
+<p>A simplified expression (ignoring Earth's gravity) for escaping the Solar System from Earth’s orbit:</p>
+<div class="arithmatex">\[
+v_{3rd} \approx \sqrt{\frac{2GM_{\odot}}{r_{\oplus}}}
+\]</div>
+<p>Where:
+- <span class="arithmatex">\(M_{\odot}\)</span> is the mass of the Sun,
+- <span class="arithmatex">\(r_{\oplus}\)</span> is the average distance from Earth to the Sun (<span class="arithmatex">\(\approx 1.496 \times 10^{11}\,\text{m}\)</span>).</p>
+<h3 id="15-physical-meaning-in-space-exploration">1.5 Physical Meaning in Space Exploration</h3>
+<ul>
+<li>
+<p><strong>First Cosmic Velocity</strong> is the target speed for launching satellites into low Earth orbit. It represents the threshold for achieving continuous free-fall around Earth.</p>
+</li>
+<li>
+<p><strong>Second Cosmic Velocity</strong> is critical for missions intending to leave Earth's orbit — such as lunar missions or probes bound for other planets.</p>
+</li>
+<li>
+<p><strong>Third Cosmic Velocity</strong> pertains to missions aiming to exit the Solar System, such as the <strong>Voyager</strong> and <strong>Pioneer</strong> spacecraft. Achieving this velocity allows an object to overcome the Sun’s gravitational hold.</p>
+</li>
+</ul>
+<p>Understanding these velocities is fundamental for determining fuel requirements, launch windows, and mission design in <strong>astrodynamics</strong> and <strong>interplanetary navigation</strong>.</p>
+<h2 id="mathematical-derivations">Mathematical Derivations</h2>
+<h3 id="21-escape-velocity">2.1 Escape Velocity</h3>
+<p>To derive the escape velocity, we equate the kinetic energy of an object to the gravitational potential energy required to escape the gravitational field of a body.</p>
+<ul>
+<li>
+<p>Kinetic energy of the object:
+  $$
+  KE = \frac{1}{2}mv^2
+  $$</p>
+</li>
+<li>
+<p>Gravitational potential energy of the object (at distance <span class="arithmatex">\(r\)</span> from the center of mass <span class="arithmatex">\(M\)</span>):
+  $$
+  U = -\frac{GMm}{r}
+  $$</p>
+</li>
+</ul>
+<p>For escape, the total mechanical energy must be zero:</p>
+<div class="arithmatex">\[
+\frac{1}{2}mv^2 - \frac{GMm}{r} = 0
+\]</div>
+<p>Solving for <span class="arithmatex">\(v\)</span>:</p>
+<div class="arithmatex">\[
+v_{esc} = \sqrt{\frac{2GM}{r}}
+\]</div>
+<p>This velocity is independent of the mass of the escaping object and depends only on the mass and radius of the celestial body.</p>
+<hr/>
+<h3 id="22-first-cosmic-velocity-orbital-velocity">2.2 First Cosmic Velocity (Orbital Velocity)</h3>
+<p>This is the velocity required to keep an object in circular orbit just above the surface of a planet. It is derived by balancing the gravitational force and the required centripetal force:</p>
+<ul>
+<li>
+<p>Gravitational force:
+  $$
+  F_g = \frac{GMm}{r^2}
+  $$</p>
+</li>
+<li>
+<p>Centripetal force:
+  $$
+  F_c = \frac{mv^2}{r}
+  $$</p>
+</li>
+</ul>
+<p>Setting <span class="arithmatex">\(F_g = F_c\)</span>:</p>
+<div class="arithmatex">\[
+\frac{GMm}{r^2} = \frac{mv^2}{r}
+\]</div>
+<p>Cancelling <span class="arithmatex">\(m\)</span> and solving for <span class="arithmatex">\(v\)</span>:</p>
+<div class="arithmatex">\[
+v_{orb} = \sqrt{\frac{GM}{r}}
+\]</div>
+<p>This is the <strong>first cosmic velocity</strong> and is precisely the speed needed for stable circular orbit at altitude zero (neglecting atmosphere).</p>
+<hr/>
+<h3 id="23-third-cosmic-velocity">2.3 Third Cosmic Velocity</h3>
+<p>The third cosmic velocity is the speed required to escape the Sun’s gravitational field from Earth’s orbit.</p>
+<p>The Sun’s gravitational potential energy at Earth’s orbital distance:</p>
+<div class="arithmatex">\[
+U = -\frac{GM_{\odot}m}{r_{\oplus}}
+\]</div>
+<p>Kinetic energy needed to escape from the Sun’s gravity:</p>
+<div class="arithmatex">\[
+\frac{1}{2}mv^2 = \frac{GM_{\odot}m}{r_{\oplus}}
+\]</div>
+<p>Solving for <span class="arithmatex">\(v\)</span>:</p>
+<div class="arithmatex">\[
+v_{3rd} = \sqrt{\frac{2GM_{\odot}}{r_{\oplus}}}
+\]</div>
+<p>However, since Earth is already moving at orbital velocity <span class="arithmatex">\(v_{\oplus} \approx 29.78\)</span> km/s, the spacecraft only needs additional velocity beyond this:</p>
+<div class="arithmatex">\[
+v_{3rd,\,launch} = \sqrt{v_{esc,\odot}^2 + v_{\oplus}^2}
+\]</div>
+<p>In practice, this value is adjusted depending on the spacecraft's launch trajectory and timing (e.g., gravity assists).</p>
+<hr/>
+<h3 id="24-influence-of-mass-and-radius">2.4 Influence of Mass and Radius</h3>
+<p>From the escape velocity formula:</p>
+<div class="arithmatex">\[
+v_{esc} = \sqrt{\frac{2GM}{r}}, \quad v_{orb} = \sqrt{\frac{GM}{r}}
+\]</div>
+<p>We can draw the following conclusions:</p>
+<ul>
+<li><strong>Mass (<span class="arithmatex">\(M\)</span>)</strong>: As the mass of the celestial body increases, both escape and orbital velocities increase.</li>
+<li><strong>Radius (<span class="arithmatex">\(r\)</span>)</strong>: As the radius increases, the velocities decrease. This is because the gravitational potential becomes weaker farther from the center of mass.</li>
+</ul>
+<p>Thus, denser and more massive planets like <strong>Jupiter</strong> have significantly higher escape velocities than <strong>Mars</strong>.</p>
+<hr/>
+<h3 id="25-assumptions-in-derivations">2.5 Assumptions in Derivations</h3>
+<p>These derivations rely on several simplifying assumptions:</p>
+<ul>
+<li>The celestial body is a <strong>perfect sphere</strong> with mass concentrated at the center (i.e., it behaves as a point mass).</li>
+<li>No atmospheric <strong>drag</strong> or <strong>air resistance</strong> is considered (ideal vacuum conditions).</li>
+<li>No <strong>rotational effects</strong> (e.g., Coriolis force or frame-dragging from planet spin).</li>
+<li>The motion is assumed to be <strong>purely radial</strong> (for escape) or <strong>circular</strong> (for orbit).</li>
+<li>The object has no propulsion after initial velocity is imparted (i.e., ballistic motion).</li>
+</ul>
+<p>These assumptions allow for clean analytical expressions but differ from real-world engineering, where rocket burns, drag, and non-uniform mass distributions are considered.</p>
+<h2 id="calculations">Calculations</h2>
+<h3 id="31-constants-and-celestial-parameters">3.1 Constants and Celestial Parameters</h3>
+<p>We begin by defining the necessary physical constants and planetary data:</p>
+<h4 id="universal-constants">Universal Constants</h4>
+<ul>
+<li>Gravitational constant:
+  $$
+  G = 6.674 \times 10^{-11}\,\text{m}^3\,\text{kg}^{-1}\,\text{s}^{-2}
+  $$</li>
+</ul>
+<h4 id="planetary-data">Planetary Data</h4>
+<table>
+<thead>
+<tr>
+<th>Planet</th>
+<th>Mass <span class="arithmatex">\((M)\)</span> [kg]</th>
+<th>Radius <span class="arithmatex">\((r)\)</span> [m]</th>
+<th>Distance from Sun <span class="arithmatex">\((r_{\odot})\)</span> [m]</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Earth</td>
+<td><span class="arithmatex">\(5.972 \times 10^{24}\)</span></td>
+<td><span class="arithmatex">\(6.371 \times 10^6\)</span></td>
+<td><span class="arithmatex">\(1.496 \times 10^{11}\)</span></td>
+</tr>
+<tr>
+<td>Mars</td>
+<td><span class="arithmatex">\(6.417 \times 10^{23}\)</span></td>
+<td><span class="arithmatex">\(3.390 \times 10^6\)</span></td>
+<td><span class="arithmatex">\(2.279 \times 10^{11}\)</span></td>
+</tr>
+<tr>
+<td>Jupiter</td>
+<td><span class="arithmatex">\(1.898 \times 10^{27}\)</span></td>
+<td><span class="arithmatex">\(6.9911 \times 10^7\)</span></td>
+<td><span class="arithmatex">\(7.785 \times 10^{11}\)</span></td>
+</tr>
+</tbody>
+</table>
+<h4 id="solar-mass">Solar Mass</h4>
+<ul>
+<li>Mass of the Sun:
+  $$
+  M_{\odot} = 1.989 \times 10^{30}\,\text{kg}
+  $$</li>
+</ul>
+<hr/>
+<h3 id="32-formulas">3.2 Formulas</h3>
+<ul>
+<li>
+<p><strong>First Cosmic Velocity</strong> (Orbital):
+  $$
+  v_{orb} = \sqrt{\frac{GM}{r}}
+  $$</p>
+</li>
+<li>
+<p><strong>Second Cosmic Velocity</strong> (Escape):
+  $$
+  v_{esc} = \sqrt{\frac{2GM}{r}}
+  $$</p>
+</li>
+<li>
+<p><strong>Third Cosmic Velocity</strong> (Escape from the Sun at planetary orbit):
+  $$
+  v_{3rd} = \sqrt{\frac{2GM_{\odot}}{r_{\odot}}}
+  $$</p>
+</li>
+</ul>
+<p>Note: We assume these are launched directly from the surface or orbital path with negligible atmospheric drag and no propulsion.</p>
+<hr/>
+<h3 id="33-numerical-calculations">3.3 Numerical Calculations</h3>
+<h4 id="earth">Earth</h4>
+<ul>
+<li><span class="arithmatex">\(v_{orb,\oplus} = \sqrt{\frac{6.674 \times 10^{-11} \cdot 5.972 \times 10^{24}}{6.371 \times 10^6}} \approx 7.91\,\text{km/s}\)</span></li>
+<li><span class="arithmatex">\(v_{esc,\oplus} = \sqrt{2} \cdot v_{orb,\oplus} \approx 11.19\,\text{km/s}\)</span></li>
+<li><span class="arithmatex">\(v_{3rd,\oplus} = \sqrt{\frac{2 \cdot 6.674 \times 10^{-11} \cdot 1.989 \times 10^{30}}{1.496 \times 10^{11}}} \approx 42.1\,\text{km/s}\)</span></li>
+</ul>
+<h4 id="mars">Mars</h4>
+<ul>
+<li><span class="arithmatex">\(v_{orb,\text{Mars}} \approx \sqrt{\frac{6.674 \times 10^{-11} \cdot 6.417 \times 10^{23}}{3.390 \times 10^6}} \approx 3.56\,\text{km/s}\)</span></li>
+<li><span class="arithmatex">\(v_{esc,\text{Mars}} \approx \sqrt{2} \cdot v_{orb,\text{Mars}} \approx 5.03\,\text{km/s}\)</span></li>
+<li><span class="arithmatex">\(v_{3rd,\text{Mars}} \approx \sqrt{\frac{2 \cdot 6.674 \times 10^{-11} \cdot 1.989 \times 10^{30}}{2.279 \times 10^{11}}} \approx 38.5\,\text{km/s}\)</span></li>
+</ul>
+<h4 id="jupiter">Jupiter</h4>
+<ul>
+<li><span class="arithmatex">\(v_{orb,\text{Jup}} \approx \sqrt{\frac{6.674 \times 10^{-11} \cdot 1.898 \times 10^{27}}{6.9911 \times 10^7}} \approx 42.1\,\text{km/s}\)</span></li>
+<li><span class="arithmatex">\(v_{esc,\text{Jup}} \approx \sqrt{2} \cdot v_{orb,\text{Jup}} \approx 59.5\,\text{km/s}\)</span></li>
+<li><span class="arithmatex">\(v_{3rd,\text{Jup}} \approx \sqrt{\frac{2 \cdot 6.674 \times 10^{-11} \cdot 1.989 \times 10^{30}}{7.785 \times 10^{11}}} \approx 18.5\,\text{km/s}\)</span></li>
+</ul>
+<hr/>
+<h3 id="34-summary-table">3.4 Summary Table</h3>
+<table>
+<thead>
+<tr>
+<th>Planet</th>
+<th><span class="arithmatex">\(v_{orb}\)</span> [km/s]</th>
+<th><span class="arithmatex">\(v_{esc}\)</span> [km/s]</th>
+<th><span class="arithmatex">\(v_{3rd}\)</span> [km/s]</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Earth</td>
+<td>7.91</td>
+<td>11.19</td>
+<td>42.1</td>
+</tr>
+<tr>
+<td>Mars</td>
+<td>3.56</td>
+<td>5.03</td>
+<td>38.5</td>
+</tr>
+<tr>
+<td>Jupiter</td>
+<td>42.1</td>
+<td>59.5</td>
+<td>18.5</td>
+</tr>
+</tbody>
+</table>
+<hr/>
+<h3 id="remarks">Remarks</h3>
+<ul>
+<li><strong>Earth</strong> has a balanced gravity well and a moderately high third cosmic velocity.</li>
+<li><strong>Mars</strong>, due to its smaller mass and radius, has the lowest escape velocities — making it a practical target for missions.</li>
+<li><strong>Jupiter</strong> has extreme gravitational requirements for launching from the surface, but its position farther from the Sun reduces the third cosmic velocity needed for solar escape.</li>
+</ul>
+<p>These values are foundational for mission planning and propulsion calculations in aerospace engineering.</p>
+<h2 id="visualization-and-verification">Visualization and Verification</h2>
+<h3 id="41-keplers-third-law-verification-t2-propto-r3">4.1 Kepler's Third Law Verification: <span class="arithmatex">\(T^2 \propto r^3\)</span></h3>
+<pre><code class="language-python">import numpy as np
+import matplotlib.pyplot as plt
+
+# Semi-major axes in AU and periods in years (data from real planets)
+r = np.array([0.39, 0.72, 1.00, 1.52, 5.20, 9.58])  # Mercury to Saturn
+T = np.array([0.24, 0.62, 1.00, 1.88, 11.86, 29.46])
+
+plt.figure()
+plt.plot(r**3, T**2, 'o-', label="$T^2$ vs $r^3$")
+plt.xlabel("$r^3$ (AU$^3$)")
+plt.ylabel("$T^2$ (years$^2$)")
+plt.title("Verification of Kepler's Third Law")
+plt.grid(True)
+plt.legend()
+plt.annotate("Linear relationship confirms $T^2 \\propto r^3$",
+             xy=(1,1), xytext=(5, 500),
+             arrowprops=dict(arrowstyle="-&gt;"))
+plt.show()
+</code></pre>
+<p><img alt="Code 1" src="../../../_pics/Physics/2%20Gravity/Problem_2/4_1.png"/></p>
+<h3 id="42-log-log-plot-to-check-the-slope-expected-1">4.2 Log-Log Plot to Check the Slope (Expected ≈ 1)</h3>
+<pre><code class="language-python">plt.figure()
+plt.loglog(r, T, 'o-', label="Log-Log Plot")
+plt.xlabel("log($r$) [AU]")
+plt.ylabel("log($T$) [years]")
+plt.title("Log-Log Plot of Kepler's Third Law")
+plt.grid(True, which='both')
+
+# Fit and show slope
+slope, intercept = np.polyfit(np.log10(r), np.log10(T), 1)
+plt.text(0.1, 0.3, f"Slope ≈ {slope:.2f}", transform=plt.gca().transAxes)
+plt.legend()
+plt.show()
+</code></pre>
+<p><img alt="Code 1" src="../../../_pics/Physics/2%20Gravity/Problem_2/4_2.png"/></p>
+<h3 id="43-comparison-of-cosmic-velocities-across-planets">4.3 Comparison of Cosmic Velocities Across Planets</h3>
+<pre><code class="language-python">import matplotlib.pyplot as plt
+
+planets = ['Earth', 'Mars', 'Jupiter']
+v_orb = [7.91, 3.56, 42.1]
+v_esc = [11.19, 5.03, 59.5]
+v_3rd = [42.1, 38.5, 18.5]
+
+x = np.arange(len(planets))
+width = 0.25
+
+plt.figure()
+plt.bar(x - width, v_orb, width, label='1st Cosmic (Orbital)')
+plt.bar(x, v_esc, width, label='2nd Cosmic (Escape)')
+plt.bar(x + width, v_3rd, width, label='3rd Cosmic (Solar Escape)')
+
+plt.xticks(x, planets)
+plt.ylabel('Velocity (km/s)')
+plt.title('Cosmic Velocities for Earth, Mars, and Jupiter')
+plt.legend()
+plt.grid(axis='y')
+plt.show()
+</code></pre>
+<p><img alt="Code 1" src="../../../_pics/Physics/2%20Gravity/Problem_2/4_3.png"/></p>
+<h3 id="44-massradius-vs-escape-velocity-relationship">4.4 Mass/Radius vs Escape Velocity Relationship</h3>
+<pre><code class="language-python">mass = np.array([5.972e24, 6.417e23, 1.898e27])  # kg
+radius = np.array([6.371e6, 3.390e6, 6.9911e7])  # m
+labels = ['Earth', 'Mars', 'Jupiter']
+G = 6.674e-11
+
+v_esc = np.sqrt(2 * G * mass / radius) / 1000  # km/s
+
+plt.figure()
+plt.scatter(mass/radius, v_esc)
+for i, label in enumerate(labels):
+    plt.annotate(label, (mass[i]/radius[i], v_esc[i]))
+
+plt.xlabel('Mass/Radius (kg/m)')
+plt.ylabel('Escape Velocity (km/s)')
+plt.title('Escape Velocity vs Mass/Radius')
+plt.grid(True)
+plt.show()
+</code></pre>
+<p><img alt="Code 1" src="../../../_pics/Physics/2%20Gravity/Problem_2/4_4.png"/></p>
+<h3 id="45-simulated-escape-trajectory-ballistic-approx-optional">4.5 Simulated Escape Trajectory (Ballistic Approx.) (Optional)</h3>
+<pre><code class="language-python">from scipy.integrate import solve_ivp
+
+G = 6.674e-11
+M_earth = 5.972e24
+R_earth = 6.371e6
+
+def trajectory(t, y):
+    r, v = y
+    a = -G * M_earth / r**2
+    return [v, a]
+
+# Initial condition: just above Earth's surface with v_esc
+v0 = np.sqrt(2 * G * M_earth / R_earth)
+sol = solve_ivp(trajectory, [0, 10000], [R_earth, v0], t_eval=np.linspace(0, 10000, 1000))
+
+plt.figure()
+plt.plot(sol.t, (sol.y[0] - R_earth)/1000)
+plt.xlabel("Time (s)")
+plt.ylabel("Altitude above surface (km)")
+plt.title("Escape Trajectory from Earth")
+plt.grid(True)
+plt.show()
+</code></pre>
+<p><img alt="Code 1" src="../../../_pics/Physics/2%20Gravity/Problem_2/4_5.png"/></p>
+<h2 id="applications-discussion">Applications &amp; Discussion</h2>
+<h3 id="51-relevance-of-cosmic-velocities-in-space-missions">5.1 Relevance of Cosmic Velocities in Space Missions</h3>
+<h4 id="a-satellite-launches">a. Satellite Launches</h4>
+<p>For a satellite to maintain a stable <strong>low Earth orbit (LEO)</strong>, it must achieve the <strong>first cosmic velocity</strong>, i.e., the orbital velocity:</p>
+<div class="arithmatex">\[
+v_{orb} = \sqrt{\frac{GM}{r}}
+\]</div>
+<p>For Earth, this corresponds to approximately <span class="arithmatex">\(7.91\,\text{km/s}\)</span> just above the surface. Rockets are designed to deliver payloads into this velocity band with high precision. Failing to reach this speed causes the satellite to re-enter the atmosphere; exceeding it without further control may lead to escape trajectories.</p>
+<p>Launch profiles often include a <strong>vertical ascent phase</strong> (to clear the atmosphere), followed by a <strong>gravity turn</strong> to achieve horizontal velocity for orbit.</p>
+<hr/>
+<h4 id="b-planetary-missions">b. Planetary Missions</h4>
+<p>To send a spacecraft to <strong>Mars</strong>, <strong>Jupiter</strong>, or any other planet, it must at minimum achieve the <strong>second cosmic velocity</strong>:</p>
+<div class="arithmatex">\[
+v_{esc} = \sqrt{\frac{2GM}{r}} \approx 11.19\,\text{km/s} \quad \text{(for Earth)}
+\]</div>
+<p>However, this speed only places the spacecraft on a <strong>heliocentric (Sun-centered)</strong> trajectory. To intercept another planet, precise <strong>Hohmann transfer orbits</strong> are computed, often using gravitational slingshots for energy efficiency.</p>
+<p>The <strong>launch window</strong> is crucial, since planets move in elliptical orbits. Delta-v budgets are carefully calculated to ensure the spacecraft escapes Earth's gravity and enters the correct interplanetary trajectory.</p>
+<hr/>
+<h4 id="c-interstellar-travel">c. Interstellar Travel</h4>
+<p>To escape the <strong>Solar System</strong>, a spacecraft must reach or exceed the <strong>third cosmic velocity</strong>:</p>
+<div class="arithmatex">\[
+v_{3rd} = \sqrt{\frac{2GM_{\odot}}{r_{\oplus}}} \approx 42.1\,\text{km/s}
+\]</div>
+<p>This is far beyond the capacity of conventional chemical rockets for direct launch. Missions such as <strong>Voyager 1</strong> achieved this by combining multiple <strong>gravity assists</strong> (Jupiter, Saturn) to boost their velocity incrementally.</p>
+<p>Interstellar travel requires either:
+- High-efficiency propulsion (e.g., ion drives, solar sails),
+- Long mission durations (decades or centuries),
+- Or breakthrough physics (e.g., nuclear or fusion propulsion).</p>
+<hr/>
+<h3 id="52-engineering-and-fuel-implications">5.2 Engineering and Fuel Implications</h3>
+<p>Achieving each velocity level involves <strong>substantial energy expenditure</strong>, and the relationship is non-linear due to the <strong>rocket equation</strong>:</p>
+<div class="arithmatex">\[
+\Delta v = v_e \ln\left( \frac{m_0}{m_f} \right)
+\]</div>
+<p>Where:
+- <span class="arithmatex">\(\Delta v\)</span> is the required change in velocity,
+- <span class="arithmatex">\(v_e\)</span> is the effective exhaust velocity of the propulsion system,
+- <span class="arithmatex">\(m_0\)</span> and <span class="arithmatex">\(m_f\)</span> are the initial and final mass of the rocket.</p>
+<h4 id="implications">Implications:</h4>
+<ul>
+<li>Achieving higher <span class="arithmatex">\(\Delta v\)</span> requires either:</li>
+<li>Extremely efficient engines (high <span class="arithmatex">\(v_e\)</span>),</li>
+<li>Large fuel-to-payload ratios (increasing <span class="arithmatex">\(m_0/m_f\)</span>),</li>
+<li>
+<p>Or <strong>staging</strong>: discarding parts of the rocket after burnout.</p>
+</li>
+<li>
+<p>For <strong>LEO satellites</strong>, small rockets or reusable launchers suffice.</p>
+</li>
+<li>For <strong>planetary missions</strong>, <strong>multi-stage rockets</strong> like the Saturn V or SLS are necessary.</li>
+<li>For <strong>interstellar probes</strong>, current propulsion is inadequate without significant advances in fuel efficiency or entirely new energy sources.</li>
+</ul>
+<hr/>
+<h3 id="summary">Summary</h3>
+<p>Understanding and overcoming the thresholds set by the <strong>first, second, and third cosmic velocities</strong> is at the core of mission planning in astrodynamics. Each level defines a new frontier:</p>
+<ul>
+<li><span class="arithmatex">\(v_{orb}\)</span> enables <strong>orbiting</strong>,</li>
+<li><span class="arithmatex">\(v_{esc}\)</span> enables <strong>exploration</strong>,</li>
+<li><span class="arithmatex">\(v_{3rd}\)</span> hints at the <strong>possibility of escape</strong> from our solar neighborhood.</li>
+</ul>
+<p>Each requires innovation in both physics and engineering — combining mathematical precision, materials science, and propulsion technologies to make the cosmos accessible.</p>
 </div>
 </div><footer>
 <div aria-label="Footer Navigation" class="rst-footer-buttons" role="navigation">
