@@ -58,7 +58,7 @@
 </li>
 <li class="toctree-l2 current"><a class="reference internal current" href="#">Problem 2</a>
 <ul class="current">
-<li class="toctree-l3"><a class="reference internal" href="#definitions-concepts">Definitions &amp; Concepts</a>
+<li class="toctree-l3"><a class="reference internal" href="#1-definitions-concepts">1. Definitions &amp; Concepts</a>
 <ul>
 <li class="toctree-l4"><a class="reference internal" href="#11-escape-velocity">1.1 Escape Velocity</a>
 </li>
@@ -72,7 +72,7 @@
 </li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="#mathematical-derivations">Mathematical Derivations</a>
+<li class="toctree-l3"><a class="reference internal" href="#2-mathematical-derivations">2. Mathematical Derivations</a>
 <ul>
 <li class="toctree-l4"><a class="reference internal" href="#21-escape-velocity">2.1 Escape Velocity</a>
 </li>
@@ -86,7 +86,7 @@
 </li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="#calculations">Calculations</a>
+<li class="toctree-l3"><a class="reference internal" href="#3-calculations">3. Calculations</a>
 <ul>
 <li class="toctree-l4"><a class="reference internal" href="#31-constants-and-celestial-parameters">3.1 Constants and Celestial Parameters</a>
 </li>
@@ -100,7 +100,7 @@
 </li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="#visualization-and-verification">Visualization and Verification</a>
+<li class="toctree-l3"><a class="reference internal" href="#4-visualization-and-verification">4. Visualization and Verification</a>
 <ul>
 <li class="toctree-l4"><a class="reference internal" href="#41-keplers-third-law-verification-t2-propto-r3">4.1 Kepler's Third Law Verification: \(T^2 \propto r^3\)</a>
 </li>
@@ -114,7 +114,7 @@
 </li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="#applications-discussion">Applications &amp; Discussion</a>
+<li class="toctree-l3"><a class="reference internal" href="#5-applications-discussion">5. Applications &amp; Discussion</a>
 <ul>
 <li class="toctree-l4"><a class="reference internal" href="#51-relevance-of-cosmic-velocities-in-space-missions">5.1 Relevance of Cosmic Velocities in Space Missions</a>
 </li>
@@ -238,7 +238,7 @@
 <div class="document" itemscope="itemscope" itemtype="http://schema.org/Article" role="main">
 <div class="section" itemprop="articleBody">
 <h1 id="problem-2">Problem 2</h1>
-<h2 id="definitions-concepts">Definitions &amp; Concepts</h2>
+<h2 id="1-definitions-concepts">1. Definitions &amp; Concepts</h2>
 <h3 id="11-escape-velocity">1.1 Escape Velocity</h3>
 <p>Escape velocity is the minimum speed an object must reach to break free from the gravitational pull of a celestial body, without any further propulsion.</p>
 <p>The general formula for escape velocity is derived from the conservation of energy:</p>
@@ -303,7 +303,7 @@ v_{3rd} \approx \sqrt{\frac{2GM_{\odot}}{r_{\oplus}}}
 </li>
 </ul>
 <p>Understanding these velocities is fundamental for determining fuel requirements, launch windows, and mission design in <strong>astrodynamics</strong> and <strong>interplanetary navigation</strong>.</p>
-<h2 id="mathematical-derivations">Mathematical Derivations</h2>
+<h2 id="2-mathematical-derivations">2. Mathematical Derivations</h2>
 <h3 id="21-escape-velocity">2.1 Escape Velocity</h3>
 <p>To derive the escape velocity, we equate the kinetic energy of an object to the gravitational potential energy required to escape the gravitational field of a body.</p>
 <ul>
@@ -398,7 +398,7 @@ v_{esc} = \sqrt{\frac{2GM}{r}}, \quad v_{orb} = \sqrt{\frac{GM}{r}}
 <li>The object has no propulsion after initial velocity is imparted (i.e., ballistic motion).</li>
 </ul>
 <p>These assumptions allow for clean analytical expressions but differ from real-world engineering, where rocket burns, drag, and non-uniform mass distributions are considered.</p>
-<h2 id="calculations">Calculations</h2>
+<h2 id="3-calculations">3. Calculations</h2>
 <h3 id="31-constants-and-celestial-parameters">3.1 Constants and Celestial Parameters</h3>
 <p>We begin by defining the necessary physical constants and planetary data:</p>
 <h4 id="universal-constants">Universal Constants</h4>
@@ -529,7 +529,7 @@ v_{esc} = \sqrt{\frac{2GM}{r}}, \quad v_{orb} = \sqrt{\frac{GM}{r}}
 <li><strong>Jupiter</strong> has extreme gravitational requirements for launching from the surface, but its position farther from the Sun reduces the third cosmic velocity needed for solar escape.</li>
 </ul>
 <p>These values are foundational for mission planning and propulsion calculations in aerospace engineering.</p>
-<h2 id="visualization-and-verification">Visualization and Verification</h2>
+<h2 id="4-visualization-and-verification">4. Visualization and Verification</h2>
 <h3 id="41-keplers-third-law-verification-t2-propto-r3">4.1 Kepler's Third Law Verification: <span class="arithmatex">\(T^2 \propto r^3\)</span></h3>
 <pre><code class="language-python">import numpy as np
 import matplotlib.pyplot as plt
@@ -635,7 +635,7 @@ plt.grid(True)
 plt.show()
 </code></pre>
 <p><img alt="Code 1" src="../../../_pics/Physics/2%20Gravity/Problem_2/4_5.png"/></p>
-<h2 id="applications-discussion">Applications &amp; Discussion</h2>
+<h2 id="5-applications-discussion">5. Applications &amp; Discussion</h2>
 <h3 id="51-relevance-of-cosmic-velocities-in-space-missions">5.1 Relevance of Cosmic Velocities in Space Missions</h3>
 <h4 id="a-satellite-launches">a. Satellite Launches</h4>
 <p>For a satellite to maintain a stable <strong>low Earth orbit (LEO)</strong>, it must achieve the <strong>first cosmic velocity</strong>, i.e., the orbital velocity:</p>
