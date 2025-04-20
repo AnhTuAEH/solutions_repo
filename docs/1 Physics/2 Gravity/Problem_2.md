@@ -1,6 +1,6 @@
 # Problem 2
 
-## Definitions & Concepts
+## 1. Definitions & Concepts
 
 ### 1.1 Escape Velocity
 
@@ -90,7 +90,7 @@ Where:
 
 Understanding these velocities is fundamental for determining fuel requirements, launch windows, and mission design in **astrodynamics** and **interplanetary navigation**.
 
-## Mathematical Derivations
+## 2. Mathematical Derivations
 
 ### 2.1 Escape Velocity
 
@@ -213,7 +213,7 @@ These derivations rely on several simplifying assumptions:
 
 These assumptions allow for clean analytical expressions but differ from real-world engineering, where rocket burns, drag, and non-uniform mass distributions are considered.
 
-## Calculations
+## 3. Calculations
 
 ### 3.1 Constants and Celestial Parameters
 
@@ -304,7 +304,7 @@ Note: We assume these are launched directly from the surface or orbital path wit
 
 These values are foundational for mission planning and propulsion calculations in aerospace engineering.
 
-## Visualization and Verification
+## 4. Visualization and Verification
 
 ### 4.1 Kepler's Third Law Verification: $T^2 \propto r^3$
 
@@ -426,7 +426,7 @@ plt.show()
 ```
 ![Code 1](../../_pics/Physics/2%20Gravity/Problem_2/4_5.png)
 
-## Applications & Discussion
+## 5. Applications & Discussion
 
 ### 5.1 Relevance of Cosmic Velocities in Space Missions
 
