@@ -426,6 +426,9 @@ plt.show()
 ```
 ![Code 1](../../_pics/Physics/2%20Gravity/Problem_2/4_5.png)
 
+### Colab
+[Souce Code](https://colab.research.google.com/drive/1mFQ_5-z3fbPSPnfH_pkBzmOLl-fZT4Eq?usp=sharing)
+
 ## 5. Applications & Discussion
 
 ### 5.1 Relevance of Cosmic Velocities in Space Missions
