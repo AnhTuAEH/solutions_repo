@@ -66,6 +66,12 @@
 <ul class="current">
 <li class="toctree-l2 current"><a class="reference internal current" href="#">Problem 1</a>
 <ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="#11-regular-polygon">1.1 Regular Polygon</a>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#12-vertex-coordinates">1.2 Vertex Coordinates</a>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#13-choosing-radius-r">1.3 Choosing Radius \(R\)</a>
+</li>
 </ul>
 </li>
 </ul>
@@ -171,7 +177,382 @@
 </div>
 <div class="document" itemscope="itemscope" itemtype="http://schema.org/Article" role="main">
 <div class="section" itemprop="articleBody">
-<h1 id="problem-1">Problem 1</h1>
+<h2 id="1-geometry-setup">1. Geometry Setup</h2>
+<p>To study interference patterns, we start by placing point sources at the vertices of a regular polygon.</p>
+<h3 id="11-regular-polygon">1.1 Regular Polygon</h3>
+<p>A regular polygon has equal sides and angles. Let the number of sources be:
+$$
+N \geq 3
+$$</p>
+<h3 id="12-vertex-coordinates">1.2 Vertex Coordinates</h3>
+<p>Assume the polygon is inscribed in a circle centered at the origin with radius <span class="arithmatex">\(R\)</span>. The angle between adjacent vertices is:
+$$
+\Delta \theta = \frac{2\pi}{N}, \quad \theta_i = i \Delta \theta
+$$
+Coordinates of the <span class="arithmatex">\(i\)</span>-th vertex:
+$$
+x_{0i} = R \cos(\theta_i), \quad y_{0i} = R \sin(\theta_i)
+$$</p>
+<h3 id="13-choosing-radius-r">1.3 Choosing Radius <span class="arithmatex">\(R\)</span></h3>
+<p>Radius <span class="arithmatex">\(R\)</span> determines source spacing and pattern scale. A chord length of:
+$$
+d = 2R \sin\left(\frac{\pi}{N}\right)
+$$
+Choosing <span class="arithmatex">\(d \sim (2-5) \lambda\)</span> gives rich interference.</p>
+<h2 id="2-wave-definition">2. Wave Definition</h2>
+<p>Each source emits a circular wave described by:
+$$
+\eta_i(x, y, t) = \frac{A}{\sqrt{r_i}} \cos(k r_i - \omega t + \phi)
+$$
+Where <span class="arithmatex">\(r_i = \sqrt{(x - x_{0i})^2 + (y - y_{0i})^2}\)</span> is the distance from source <span class="arithmatex">\(i\)</span> to point <span class="arithmatex">\((x, y)\)</span>. Common assumptions:
+- All sources have same <span class="arithmatex">\(A, k, \omega, \phi\)</span>.
+- Initial phase <span class="arithmatex">\(\phi = 0\)</span>.
+- Non-dispersive medium.</p>
+<h2 id="3-superposition-principle">3. Superposition Principle</h2>
+<p>Total displacement:
+$$
+\eta_{\text{sum}}(x, y, t) = \sum_{i=1}^{N} \frac{A}{\sqrt{r_i}} \cos(k r_i - \omega t + \phi)
+$$</p>
+<h3 id="interference-conditions">Interference Conditions</h3>
+<ul>
+<li><strong>Constructive</strong>: <span class="arithmatex">\(k(r_i - r_j) = 2n\pi\)</span></li>
+<li><strong>Destructive</strong>: <span class="arithmatex">\(k(r_i - r_j) = (2n + 1)\pi\)</span></li>
+</ul>
+<p>Patterns arise from the geometry and wave interactions.</p>
+<h2 id="4-wave-parameters">4. Wave Parameters</h2>
+<ul>
+<li><strong>Amplitude (<span class="arithmatex">\(A\)</span>)</strong>: maximum surface displacement.</li>
+<li><strong>Wavelength (<span class="arithmatex">\(\lambda\)</span>)</strong>: defines wave number <span class="arithmatex">\(k = 2\pi/\lambda\)</span>.</li>
+<li><strong>Frequency (<span class="arithmatex">\(f\)</span>)</strong>: defines <span class="arithmatex">\(\omega = 2\pi f\)</span>.</li>
+<li><strong>Phase (<span class="arithmatex">\(\phi\)</span>)</strong>: typically zero for all sources.</li>
+</ul>
+<p>These define wave behavior and interference scale.</p>
+<h2 id="5-simulation-grid">5. Simulation Grid</h2>
+<h3 id="51-domain">5.1 Domain</h3>
+<p>Choose spatial domain <span class="arithmatex">\([x_{\min}, x_{\max}], [y_{\min}, y_{\max}]\)</span> large enough to capture wave effects:
+$$
+(x_{\max} - x_{\min}) \gtrsim 6\lambda, \quad (y_{\max} - y_{\min}) \gtrsim 6\lambda
+$$</p>
+<h3 id="52-resolution">5.2 Resolution</h3>
+<p>Grid spacing:
+$$
+\Delta x, \Delta y \leq \frac{\lambda}{10}
+$$
+Construct grid using meshgrid in Python.</p>
+<h3 id="53-boundary-effects">5.3 Boundary Effects</h3>
+<p>Keep sources away from edges. Use absorbing or periodic boundaries as needed.</p>
+<h2 id="6-time-component">6. Time Component</h2>
+<p>Each wave evolves in time:
+$$
+\eta_i(x, y, t) = \frac{A}{\sqrt{r_i}} \cos(k r_i - \omega t + \phi)
+$$</p>
+<h3 id="visualization-modes">Visualization Modes</h3>
+<ul>
+<li><strong>Snapshot</strong>: Fixed <span class="arithmatex">\(t = t_0\)</span>. Shows static interference.</li>
+<li><strong>Animation</strong>: Vary <span class="arithmatex">\(t\)</span> over interval with step <span class="arithmatex">\(\Delta t \leq 1/(20f)\)</span>.</li>
+</ul>
+<p>Use animations or contour plots to show dynamics.</p>
+<h2 id="7-visualization">7. Visualization</h2>
+<h3 id="71-single-source-static-wavefronts">7.1 Single Source – Static Wavefronts</h3>
+<pre><code class="language-python">import numpy as np
+import matplotlib.pyplot as plt
+import matplotlib.animation as animation
+
+# Wave parameters
+A = 1
+lambda_ = 1
+k = 2 * np.pi / lambda_
+f = 1
+omega = 2 * np.pi * f
+phi = 0
+
+# Grid
+x = np.linspace(-5, 5, 400)
+y = np.linspace(-5, 5, 400)
+X, Y = np.meshgrid(x, y)
+r = np.sqrt((X - 0)**2 + (Y - 0)**2)
+
+# Setup plot
+fig, ax = plt.subplots()
+img = ax.imshow(np.zeros_like(X), extent=[-5, 5, -5, 5], cmap='viridis', origin='lower')
+plt.colorbar(img, ax=ax)
+ax.set_title("Single Source Wavefronts")
+
+# Animation function
+def update(frame):
+    t = frame / 20
+    eta = A / np.sqrt(r + 1e-6) * np.cos(k * r - omega * t + phi)
+    img.set_data(eta)
+    return [img]
+
+ani = animation.FuncAnimation(fig, update, frames=100, interval=50, blit=True)
+ani.save("single_source.gif", writer="pillow")
+plt.close()
+</code></pre>
+<p><img alt="Single Source 2D" src="../../../_pics/Physics/3%20Waves/Problem_1/single_source.gif"/></p>
+<pre><code class="language-python">import numpy as np
+import matplotlib.pyplot as plt
+from mpl_toolkits.mplot3d import Axes3D
+from matplotlib.animation import FuncAnimation
+
+# Parameters
+A = 1
+lambda_ = 1
+k = 2 * np.pi / lambda_
+f = 1
+omega = 2 * np.pi * f
+phi = 0
+
+# Grid
+x = np.linspace(-5, 5, 150)
+y = np.linspace(-5, 5, 150)
+X, Y = np.meshgrid(x, y)
+r = np.sqrt((X - 0)**2 + (Y - 0)**2)
+
+# Setup plot
+fig = plt.figure(figsize=(8, 6))
+ax = fig.add_subplot(111, projection='3d')
+
+# Initialize the surface plot
+surf = ax.plot_surface(X, Y, np.zeros_like(X), cmap='viridis', edgecolor='none')
+ax.set_zlim(-2, 2)
+ax.set_title("Single Source – 3D Animated Surface")
+ax.set_xlabel("x")
+ax.set_ylabel("y")
+ax.set_zlabel("Displacement")
+
+def update(frame):
+    global surf  # Make surf accessible within the function
+    t = frame / 20
+    eta = A / np.sqrt(r + 1e-6) * np.cos(k * r - omega * t + phi)
+
+    # Remove the previous surface plot
+    surf.remove()
+
+    # Plot the new surface
+    surf = ax.plot_surface(X, Y, eta, cmap='viridis', edgecolor='none')
+    return [surf]  # Return the updated surface
+
+ani = FuncAnimation(fig, update, frames=60, interval=100, blit=False) # blit=False is recommended for 3D animations
+ani.save("single_source_3d.gif", writer="pillow")
+plt.close()
+</code></pre>
+<p><img alt="Single Source 3D" src="../../../_pics/Physics/3%20Waves/Problem_1/single_source_3d.gif"/></p>
+<h3 id="72-two-sources-interference-pattern">7.2 Two Sources – Interference Pattern</h3>
+<pre><code class="language-python">import numpy as np
+import matplotlib.pyplot as plt
+import matplotlib.animation as animation
+
+# Wave parameters
+A = 1
+lambda_ = 1
+k = 2 * np.pi / lambda_
+f = 1
+omega = 2 * np.pi * f
+phi = 0
+
+# Grid
+x = np.linspace(-5, 5, 400)
+y = np.linspace(-5, 5, 400)
+X, Y = np.meshgrid(x, y)
+
+# Two sources
+sources = [(-1.5, 0), (1.5, 0)]
+
+# Setup plot
+fig, ax = plt.subplots()
+img = ax.imshow(np.zeros_like(X), extent=[-5, 5, -5, 5], cmap='plasma', origin='lower')
+plt.colorbar(img, ax=ax)
+ax.set_title("Two Source Interference")
+
+def update(frame):
+    t = frame / 20
+    eta_sum = np.zeros_like(X)
+    for x0, y0 in sources:
+        r = np.sqrt((X - x0)**2 + (Y - y0)**2)
+        eta_sum += A / np.sqrt(r + 1e-6) * np.cos(k * r - omega * t + phi)
+    img.set_data(eta_sum)
+    return [img]
+
+ani = animation.FuncAnimation(fig, update, frames=100, interval=50, blit=True)
+ani.save("two_sources.gif", writer="pillow")
+plt.close()
+</code></pre>
+<p><img alt="Two Sources 2D" src="../../../_pics/Physics/3%20Waves/Problem_1/two_sources.gif"/></p>
+<pre><code class="language-python">import numpy as np
+import matplotlib.pyplot as plt
+from mpl_toolkits.mplot3d import Axes3D
+from matplotlib.animation import FuncAnimation
+
+# Parameters
+A = 1
+lambda_ = 1
+k = 2 * np.pi / lambda_
+f = 1
+omega = 2 * np.pi * f
+phi = 0
+
+# Grid
+x = np.linspace(-5, 5, 150)
+y = np.linspace(-5, 5, 150)
+X, Y = np.meshgrid(x, y)
+
+# Two source coordinates
+sources = [(-1.5, 0), (1.5, 0)]
+
+fig = plt.figure(figsize=(8, 6))
+ax = fig.add_subplot(111, projection='3d')
+ax.set_zlim(-3, 3)
+ax.set_title("Two Sources – 3D Animated Surface")
+ax.set_xlabel("x")
+ax.set_ylabel("y")
+ax.set_zlabel("Displacement")
+
+# Initialize the surface plot outside the update function
+surf = ax.plot_surface(X, Y, np.zeros_like(X), cmap='plasma', edgecolor='none')
+
+def update(frame):
+    global surf  # Make surf accessible within the function
+    t = frame / 20
+    eta_sum = np.zeros_like(X)
+    for x0, y0 in sources:
+        r = np.sqrt((X - x0)**2 + (Y - y0)**2)
+        eta_sum += A / np.sqrt(r + 1e-6) * np.cos(k * r - omega * t + phi)
+
+    # Remove the previous surface plot
+    surf.remove()
+
+    # Plot the new surface
+    surf = ax.plot_surface(X, Y, eta_sum, cmap='plasma', edgecolor='none')
+    return [surf]  # Return the updated surface
+
+ani = FuncAnimation(fig, update, frames=60, interval=100, blit=False) # blit=False is recommended for 3D animations
+ani.save("two_sources_3d.gif", writer="pillow")
+plt.close()
+</code></pre>
+<p><img alt="Two Sources 3D" src="../../../_pics/Physics/3%20Waves/Problem_1/two_sources_3d.gif"/></p>
+<h3 id="73-three-sources-interference-from-triangle-configuration">7.3 Three Sources – Interference from Triangle Configuration</h3>
+<pre><code class="language-python">import numpy as np
+import matplotlib.pyplot as plt
+import matplotlib.animation as animation
+
+# Wave parameters
+A = 1
+lambda_ = 1
+k = 2 * np.pi / lambda_
+f = 1
+omega = 2 * np.pi * f
+phi = 0
+
+# Grid
+x = np.linspace(-5, 5, 400)
+y = np.linspace(-5, 5, 400)
+X, Y = np.meshgrid(x, y)
+
+# Triangle config
+R = 2
+sources = [(R * np.cos(2*np.pi*i/3), R * np.sin(2*np.pi*i/3)) for i in range(3)]
+
+fig, ax = plt.subplots()
+img = ax.imshow(np.zeros_like(X), extent=[-5, 5, -5, 5], cmap='inferno', origin='lower')
+plt.colorbar(img, ax=ax)
+ax.set_title("Triangle Interference – Three Sources")
+
+def update(frame):
+    t = frame / 20
+    eta_sum = np.zeros_like(X)
+    for x0, y0 in sources:
+        r = np.sqrt((X - x0)**2 + (Y - y0)**2)
+        eta_sum += A / np.sqrt(r + 1e-6) * np.cos(k * r - omega * t + phi)
+    img.set_data(eta_sum)
+    return [img]
+
+ani = animation.FuncAnimation(fig, update, frames=100, interval=50, blit=True)
+ani.save("three_sources.gif", writer="pillow")
+plt.close()
+</code></pre>
+<p><img alt="Three Sources 2D" src="../../../_pics/Physics/3%20Waves/Problem_1/three_sources.gif"/></p>
+<pre><code class="language-python">import numpy as np
+import matplotlib.pyplot as plt
+from mpl_toolkits.mplot3d import Axes3D
+from matplotlib.animation import FuncAnimation
+
+# Parameters
+A = 1
+lambda_ = 1
+k = 2 * np.pi / lambda_
+f = 1
+omega = 2 * np.pi * f
+phi = 0
+
+# Grid
+x = np.linspace(-5, 5, 150)
+y = np.linspace(-5, 5, 150)
+X, Y = np.meshgrid(x, y)
+
+# Triangle configuration
+R = 2
+sources = [(R * np.cos(2 * np.pi * i / 3), R * np.sin(2 * np.pi * i / 3)) for i in range(3)]
+
+fig = plt.figure(figsize=(8, 6))
+ax = fig.add_subplot(111, projection='3d')
+ax.set_zlim(-3, 3)
+ax.set_title("Three Sources – 3D Animated Surface")
+ax.set_xlabel("x")
+ax.set_ylabel("y")
+ax.set_zlabel("Displacement")
+
+# Initialize surface plot
+surf = ax.plot_surface(X, Y, np.zeros_like(X), cmap='inferno', edgecolor='none')
+
+def update(frame):
+    global surf  # Make surf accessible within the function
+    t = frame / 20
+    eta_sum = np.zeros_like(X)
+    for x0, y0 in sources:
+        r = np.sqrt((X - x0)**2 + (Y - y0)**2)
+        eta_sum += A / np.sqrt(r + 1e-6) * np.cos(k * r - omega * t + phi)
+
+    # Remove the previous surface plot
+    surf.remove()
+
+    # Plot the new surface
+    surf = ax.plot_surface(X, Y, eta_sum, cmap='inferno', edgecolor='none')
+    return [surf]
+
+ani = FuncAnimation(fig, update, frames=60, interval=100, blit=False) # blit=False is important for 3D animations
+ani.save("three_sources_3d.gif", writer="pillow")
+plt.close()
+</code></pre>
+<p><img alt="Three Sources 3D" src="../../../_pics/Physics/3%20Waves/Problem_1/three_sources_3d.gif"/></p>
+<h3 id="colab-waves-problem-1">Colab: Waves: Problem 1</h3>
+<p><a href="https://colab.research.google.com/drive/1QYGANHK5S8mYIYQiMliTVS6BT689dSWk?usp=sharing">Souce Code</a></p>
+<h2 id="8-analysis">8. Analysis</h2>
+<p>Analyzing the resulting interference pattern reveals regions of amplification and cancellation.</p>
+<h3 id="81-constructive-interference">8.1 Constructive Interference</h3>
+<p>Occurs when waves are in phase:
+$$
+k(r_i - r_j) = 2\pi n
+$$
+Leads to high displacement regions (bright fringes or peaks).</p>
+<h3 id="82-destructive-interference">8.2 Destructive Interference</h3>
+<p>Occurs when waves are out of phase:
+$$
+k(r_i - r_j) = (2n + 1)\pi
+$$
+Leads to wave cancellation (dark zones or troughs).</p>
+<h3 id="83-pattern-symmetry">8.3 Pattern Symmetry</h3>
+<p>Pattern symmetry follows the polygon's geometry:
+- Two sources: symmetry about midpoint.
+- Three (triangle): <span class="arithmatex">\(120^\circ\)</span> rotational symmetry.
+- Four or more: increasing complexity, matching polygonal symmetry.</p>
+<h3 id="84-visual-cues">8.4 Visual Cues</h3>
+<ul>
+<li>Bright ridges = constructive zones</li>
+<li>Dark lines = destructive zones</li>
+<li>Radial or rotational motifs reflect geometric layout</li>
+</ul>
+<p>Contours or threshold filters can aid interpretation.</p>
 </div>
 </div><footer>
 <div aria-label="Footer Navigation" class="rst-footer-buttons" role="navigation">
