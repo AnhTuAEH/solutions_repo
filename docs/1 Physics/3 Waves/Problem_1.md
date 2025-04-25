@@ -380,7 +380,7 @@ plt.close()
 ```
 ![Three Sources 3D](../../_pics/Physics/3%20Waves/Problem_1/three_sources_3d.gif)
 
-### Colab: Waves: Problem 1
+### Colab: Waves Problem 1
 [Souce Code](https://colab.research.google.com/drive/1QYGANHK5S8mYIYQiMliTVS6BT689dSWk?usp=sharing)
 
 ## 8. Analysis
