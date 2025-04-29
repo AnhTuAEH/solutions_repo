@@ -1,5 +1,7 @@
 # Problem 3
 
+**Trajectories of a Freely Released Payload Near Earth**
+
 ## 1. Physics and Mathematical Foundations
 
 ### 1.1 Newton’s Law of Gravitation

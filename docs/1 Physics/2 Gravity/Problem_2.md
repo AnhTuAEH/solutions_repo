@@ -1,5 +1,7 @@
 # Problem 2
 
+**Escape Velocities and Cosmic Velocities**
+
 ## 1. Definitions & Concepts
 
 ### 1.1 Escape Velocity

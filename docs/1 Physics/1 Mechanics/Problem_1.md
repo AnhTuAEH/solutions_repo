@@ -1,6 +1,6 @@
 # Problem 1
 
-# Investigating the Range as a Function of the Angle of Projection
+**Investigating the Range as a Function of the Angle of Projection**
 
 Projectile motion provides a fundamental framework for understanding physics in two dimensions. This document derives the governing equations, analyzes the range as a function of the angle of projection, explores practical applications, and implements simulations to visualize key relationships.
 

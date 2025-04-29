@@ -1,4 +1,4 @@
-# Problem 1
+# Problem 1 (Shorted)
 
 **Simulating the Lorentz Force**
 

@@ -1,5 +1,7 @@
 # Problem 1
 
+**Simulating the Lorentz Force**
+
 ## 1. Exploration of Applications
 
 The **Lorentz force** describes the motion of a charged particle under the influence of **electric** and **magnetic fields**, and is one of the cornerstones of classical and modern electromagnetism.

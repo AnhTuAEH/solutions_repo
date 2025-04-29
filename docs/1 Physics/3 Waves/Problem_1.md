@@ -1,5 +1,7 @@
 # Problem 1
 
+**Interference Patterns on a water surface**
+
 ## 1. Geometry Setup
 
 To study interference patterns, we start by placing point sources at the vertices of a regular polygon.
