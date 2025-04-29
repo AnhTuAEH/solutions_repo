@@ -70,7 +70,7 @@
 </li>
 <li class="toctree-l1"><a class="reference internal">4 Electromagnetism</a>
 <ul>
-<li class="toctree-l2"><a class="reference internal" href="../../4%20Electromagnetism/Problem_1.1/">Problem 1</a>
+<li class="toctree-l2"><a class="reference internal" href="../../4%20Electromagnetism/Problem_1.1/">Problem 1 (Shorted)</a>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../../4%20Electromagnetism/Problem_1/">Problem 1</a>
 </li>
@@ -80,6 +80,48 @@
 <ul class="current">
 <li class="toctree-l2 current"><a class="reference internal current" href="#">Problem 1</a>
 <ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="#1-graph-based-modeling">1. Graph-Based Modeling</a>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#2-mathematical-rules-for-simplification">2. Mathematical Rules for Simplification</a>
+<ul>
+<li class="toctree-l4"><a class="reference internal" href="#21-series-connection">2.1 Series Connection</a>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="#22-parallel-connection">2.2 Parallel Connection</a>
+</li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#3-algorithm-description">3. Algorithm Description</a>
+<ul>
+<li class="toctree-l4"><a class="reference internal" href="#input">Input</a>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="#output">Output</a>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="#steps">Steps</a>
+</li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#4-pseudocode">4. Pseudocode</a>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#5-important-observations">5. Important Observations</a>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#6-example">6. Example</a>
+<ul>
+<li class="toctree-l4"><a class="reference internal" href="#series-example">Series Example</a>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="#parallel-example">Parallel Example</a>
+</li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#7-visualizations">7. Visualizations</a>
+<ul>
+<li class="toctree-l4"><a class="reference internal" href="#71-series-simplification">7.1 Series Simplification</a>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="#72-parallel-simplification">7.2 Parallel Simplification</a>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="#colab-circuits-problem-1">Colab: Circuits Problem 1</a>
+</li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
@@ -174,6 +216,254 @@
 <div class="document" itemscope="itemscope" itemtype="http://schema.org/Article" role="main">
 <div class="section" itemprop="articleBody">
 <h1 id="problem-1">Problem 1</h1>
+<p><strong>Equivalent Resistance Using Graph Theory</strong></p>
+<h2 id="1-graph-based-modeling">1. Graph-Based Modeling</h2>
+<p>An electrical circuit can be modeled as an <strong>undirected weighted graph</strong>:</p>
+<ul>
+<li><strong>Nodes</strong> (<span class="arithmatex">\(V\)</span>): represent junctions.</li>
+<li><strong>Edges</strong> (<span class="arithmatex">\(E\)</span>): represent resistors, with weights corresponding to resistance values in ohms (<span class="arithmatex">\(\Omega\)</span>).</li>
+</ul>
+<p>Thus, a graph is defined as:</p>
+<div class="arithmatex">\[
+G = (V, E)
+\]</div>
+<p>Each edge <span class="arithmatex">\(e \in E\)</span> has an associated weight function:</p>
+<div class="arithmatex">\[
+w: E \rightarrow \mathbb{R}^{+}
+\]</div>
+<p>where <span class="arithmatex">\(w(e)\)</span> is the resistance value.</p>
+<blockquote>
+<p><strong>Note</strong>: Use a <code>Graph</code> if each resistor connects different pairs of nodes. Use a <code>MultiGraph</code> if multiple resistors exist between the same two nodes.</p>
+</blockquote>
+<hr/>
+<h2 id="2-mathematical-rules-for-simplification">2. Mathematical Rules for Simplification</h2>
+<h3 id="21-series-connection">2.1 Series Connection</h3>
+<p>When two resistors are connected end-to-end (node degree <span class="arithmatex">\(=2\)</span>), their resistances add directly:</p>
+<div class="arithmatex">\[
+R_{\text{eq}} = R_1 + R_2 + \cdots + R_n
+\]</div>
+<p>Simplification steps:
+- Identify a node with exactly two neighbors.
+- Replace the two connecting resistors with one of equivalent resistance.</p>
+<hr/>
+<h3 id="22-parallel-connection">2.2 Parallel Connection</h3>
+<p>When multiple resistors connect the same pair of nodes, the equivalent resistance satisfies:</p>
+<div class="arithmatex">\[
+\frac{1}{R_{\text{eq}}} = \frac{1}{R_1} + \frac{1}{R_2} + \cdots + \frac{1}{R_n}
+\]</div>
+<p>Or equivalently:</p>
+<div class="arithmatex">\[
+R_{\text{eq}} = \left( \sum_{i=1}^n \frac{1}{R_i} \right)^{-1}
+\]</div>
+<p>Simplification steps:
+- Identify multiple edges between two nodes.
+- Collapse them into a single edge using the above formula.</p>
+<hr/>
+<h2 id="3-algorithm-description">3. Algorithm Description</h2>
+<p>Given a graph <span class="arithmatex">\(G = (V, E)\)</span> and two distinguished nodes <span class="arithmatex">\(A\)</span> and <span class="arithmatex">\(B\)</span>:</p>
+<h3 id="input">Input</h3>
+<ul>
+<li>Graph <span class="arithmatex">\(G\)</span> where each edge has weight <span class="arithmatex">\(w(e)\)</span>.</li>
+<li>Source node <span class="arithmatex">\(A\)</span>, target node <span class="arithmatex">\(B\)</span>.</li>
+</ul>
+<h3 id="output">Output</h3>
+<ul>
+<li>Equivalent resistance <span class="arithmatex">\(R_{\text{eq}}\)</span> between <span class="arithmatex">\(A\)</span> and <span class="arithmatex">\(B\)</span>.</li>
+</ul>
+<h3 id="steps">Steps</h3>
+<ol>
+<li><strong>While changes are possible</strong>:</li>
+<li><strong>Series Reduction</strong>:<ul>
+<li>Find nodes (except <span class="arithmatex">\(A\)</span> and <span class="arithmatex">\(B\)</span>) with degree 2.</li>
+<li>Combine adjacent resistors by summing resistances.</li>
+</ul>
+</li>
+<li>
+<p><strong>Parallel Reduction</strong>:</p>
+<ul>
+<li>Find multiple edges between the same two nodes.</li>
+<li>Combine using parallel formula.</li>
+</ul>
+</li>
+<li>
+<p><strong>After each operation</strong>:</p>
+</li>
+<li>Check if <span class="arithmatex">\(A\)</span> and <span class="arithmatex">\(B\)</span> remain connected.</li>
+<li>
+<p>If disconnected: <span class="arithmatex">\(R_{\text{eq}} = \infty\)</span>.</p>
+</li>
+<li>
+<p><strong>Stopping condition</strong>:</p>
+</li>
+<li>If only one edge exists between <span class="arithmatex">\(A\)</span> and <span class="arithmatex">\(B\)</span>, return its weight.</li>
+</ol>
+<hr/>
+<h2 id="4-pseudocode">4. Pseudocode</h2>
+<pre><code class="language-python">def detect_and_simplify_series(G, source, target):
+    for node in list(G.nodes()):
+        if node in (source, target):
+            continue
+        if G.degree(node) == 2:
+            neighbors = list(G.neighbors(node))
+            u, w = neighbors
+            R1 = G[node][u]['weight']
+            R2 = G[node][w]['weight']
+            G.remove_node(node)
+            G.add_edge(u, w, weight=R1 + R2)
+            return True
+    return False
+
+def detect_and_simplify_parallel(G):
+    edge_dict = {}
+    for u, v, data in G.edges(data=True):
+        key = tuple(sorted((u, v)))
+        edge_dict.setdefault(key, []).append(data['weight'])
+
+    for (u, v), resistances in edge_dict.items():
+        if len(resistances) &gt; 1:
+            R_eq = 1 / sum(1/r for r in resistances)
+            G.remove_edges_from([(u, v)] * len(resistances))
+            G.add_edge(u, v, weight=R_eq)
+            return True
+    return False
+
+def simplify_graph(G, source, target):
+    while True:
+        changed = detect_and_simplify_series(G, source, target)
+        changed |= detect_and_simplify_parallel(G)
+        if not changed:
+            break
+        if not nx.has_path(G, source, target):
+            return float('inf')
+    return G[source][target]['weight']
+</code></pre>
+<hr/>
+<h2 id="5-important-observations">5. Important Observations</h2>
+<ul>
+<li><strong>Series and parallel reductions are associative</strong>:</li>
+</ul>
+<p>For series:
+  $$
+  (R_1 + R_2) + R_3 = R_1 + (R_2 + R_3)
+  $$</p>
+<p>For parallel:
+  $$
+  \left( \frac{1}{R_1} + \frac{1}{R_2} \right)^{-1} \parallel R_3 = \left( \frac{1}{\left( \frac{1}{R_1} + \frac{1}{R_2} \right) + \frac{1}{R_3}} \right)
+  $$</p>
+<ul>
+<li>
+<p><strong>Algorithm always terminates</strong> because each operation reduces the number of nodes or edges.</p>
+</li>
+<li>
+<p><strong>Edge Cases</strong>:</p>
+</li>
+<li>Mesh networks (complex loops) require advanced methods (Kirchhoff’s laws, Star-Delta transformations).</li>
+<li>Disconnection means <span class="arithmatex">\(R_{\text{eq}} = \infty\)</span>.</li>
+</ul>
+<hr/>
+<h2 id="6-example">6. Example</h2>
+<h3 id="series-example">Series Example</h3>
+<p>Three resistors in series:</p>
+<pre><code class="language-python">G = nx.Graph()
+G.add_edge('A', 'B', weight=5)
+G.add_edge('B', 'C', weight=10)
+</code></pre>
+<p>After simplifying:</p>
+<div class="arithmatex">\[
+R_{\text{AC}} = 5 + 10 = 15\ \Omega
+\]</div>
+<h3 id="parallel-example">Parallel Example</h3>
+<p>Two resistors in parallel:</p>
+<pre><code class="language-python">G = nx.MultiGraph()
+G.add_edge('A', 'B', weight=8)
+G.add_edge('A', 'B', weight=12)
+</code></pre>
+<p>After simplifying:</p>
+<div class="arithmatex">\[
+R_{\text{eq}} = \left( \frac{1}{8} + \frac{1}{12} \right)^{-1} = 4.8\ \Omega
+\]</div>
+<hr/>
+<h2 id="7-visualizations"><strong>7. Visualizations</strong></h2>
+<p>In this section, we provide graphical visualizations of circuits before and after applying series and parallel simplifications.</p>
+<p>Each plot clearly shows how the graph structure evolves during reductions.</p>
+<hr/>
+<h3 id="71-series-simplification">7.1 Series Simplification</h3>
+<h4 id="a-original-series-circuit">(a) Original Series Circuit</h4>
+<pre><code class="language-python">import networkx as nx
+import matplotlib.pyplot as plt
+
+G = nx.Graph()
+G.add_edge('A', 'B', weight=5)
+G.add_edge('B', 'C', weight=10)
+
+pos = nx.spring_layout(G, seed=42)
+edge_labels = nx.get_edge_attributes(G, 'weight')
+
+plt.figure(figsize=(6, 4))
+nx.draw(G, pos, with_labels=True, node_color='lightblue', node_size=700)
+nx.draw_networkx_edge_labels(G, pos, edge_labels={k: f"{v}Ω" for k, v in edge_labels.items()})
+plt.title("Original Series Circuit: A → B → C")
+plt.show()
+</code></pre>
+<p><img alt="Original Series" src="../../../_pics/Physics/5%20Circuits/Problem_1/original_series.png"/></p>
+<hr/>
+<h4 id="b-after-series-simplification">(b) After Series Simplification</h4>
+<pre><code class="language-python">import networkx as nx
+import matplotlib.pyplot as plt
+G_simplified = nx.Graph()
+G_simplified.add_edge('A', 'C', weight=15)  # 5Ω + 10Ω
+
+pos = nx.spring_layout(G_simplified, seed=42)
+edge_labels = nx.get_edge_attributes(G_simplified, 'weight')
+
+plt.figure(figsize=(6, 4))
+nx.draw(G_simplified, pos, with_labels=True, node_color='lightgreen', node_size=700)
+nx.draw_networkx_edge_labels(G_simplified, pos, edge_labels={k: f"{v}Ω" for k, v in edge_labels.items()})
+plt.title("After Series Simplification: A → C (15Ω)")
+plt.show()
+</code></pre>
+<p><img alt="Simplification Series" src="../../../_pics/Physics/5%20Circuits/Problem_1/simplification_series.png"/></p>
+<hr/>
+<h3 id="72-parallel-simplification">7.2 Parallel Simplification</h3>
+<h4 id="a-original-parallel-circuit">(a) Original Parallel Circuit</h4>
+<pre><code class="language-python">import networkx as nx
+import matplotlib.pyplot as plt
+G_parallel = nx.MultiGraph()
+G_parallel.add_edge('A', 'B', weight=8)
+G_parallel.add_edge('A', 'B', weight=12)
+
+pos = nx.spring_layout(G_parallel, seed=42)
+edge_labels = {(u, v, k): d['weight'] for u, v, k, d in G_parallel.edges(keys=True, data=True)}
+
+plt.figure(figsize=(6, 4))
+nx.draw(G_parallel, pos, with_labels=True, node_color='lightcoral', node_size=700)
+nx.draw_networkx_edge_labels(
+    G_parallel, pos,
+    edge_labels={(u, v): f"{w}Ω" for (u, v, k), w in edge_labels.items()}
+)
+plt.title("Original Parallel Circuit: Two Resistors A ↔ B")
+plt.show()
+</code></pre>
+<p><img alt="Original Parallel" src="../../../_pics/Physics/5%20Circuits/Problem_1/original_parallel.png"/></p>
+<hr/>
+<h4 id="b-after-parallel-simplification">(b) After Parallel Simplification</h4>
+<pre><code class="language-python">import networkx as nx
+import matplotlib.pyplot as plt
+G_parallel_simple = nx.Graph()
+G_parallel_simple.add_edge('A', 'B', weight=4.8)  # Simplified 8Ω || 12Ω
+
+pos = nx.spring_layout(G_parallel_simple, seed=42)
+edge_labels = nx.get_edge_attributes(G_parallel_simple, 'weight')
+
+plt.figure(figsize=(6, 4))
+nx.draw(G_parallel_simple, pos, with_labels=True, node_color='lightyellow', node_size=700)
+nx.draw_networkx_edge_labels(G_parallel_simple, pos, edge_labels={k: f"{v:.1f}Ω" for k, v in edge_labels.items()})
+plt.title("After Parallel Simplification: A ↔ B (4.8Ω)")
+plt.show()
+</code></pre>
+<p><img alt="Simplification Parallel" src="../../../_pics/Physics/5%20Circuits/Problem_1/simplification_parallel.png"/></p>
+<h3 id="colab-circuits-problem-1">Colab: Circuits Problem 1</h3>
+<p><a href="https://colab.research.google.com/drive/1BwGVhREaPlcOuarPoGW_Ov7ZTVtykMyb?usp=sharing">Souce Code</a></p>
 </div>
 </div><footer>
 <div aria-label="Footer Navigation" class="rst-footer-buttons" role="navigation">
