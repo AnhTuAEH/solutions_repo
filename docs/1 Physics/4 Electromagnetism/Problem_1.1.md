@@ -301,6 +301,90 @@ HTML(html)
 
 ---
 
+### 4.3 $\mathbf{E} \times \mathbf{B}$ Drift Motion
+```python
+import numpy as np
+import matplotlib.pyplot as plt
+from mpl_toolkits.mplot3d import Axes3D
+from matplotlib.animation import FuncAnimation
+from IPython.display import HTML
+import base64
+from io import BytesIO
+
+# Crazy Parameters
+q, m = 10.0, 0.1                          # Very high charge-to-mass ratio
+B = np.array([0, 0, 5.0])                # Strong magnetic field in z-direction
+v0 = np.array([5.0, 0.0, 0.1])           # High x velocity, small z component for tight helix
+r0 = np.array([0.0, 0.0, 0.0])
+dt, T = 0.001, 5.0                       # Small dt for smooth animation
+N = int(T / dt)
+
+# Initialize arrays
+r = np.zeros((N, 3))
+v = np.zeros((N, 3))
+r[0], v[0] = r0, v0
+
+# Compute trajectory
+for i in range(N - 1):
+    F = q * np.cross(v[i], B)
+    a = F / m
+    v[i + 1] = v[i] + a * dt
+    r[i + 1] = r[i] + v[i] * dt
+
+# Create 3D animation
+fig = plt.figure()
+ax = fig.add_subplot(111, projection='3d')
+ax.set_xlim(-3, 3)
+ax.set_ylim(-3, 3)
+ax.set_zlim(0, 5)
+ax.set_title("Crazy 3D Helical Motion")
+ax.set_xlabel('x')
+ax.set_ylabel('y')
+ax.set_zlabel('z')
+
+# Line with fading color
+colors = plt.cm.plasma(np.linspace(0, 1, N))
+line, = ax.plot([], [], [], lw=2)
+point, = ax.plot([], [], [], 'ro')  # Current position
+
+# Plot fading trail manually with segments
+def update_3d(i):
+    ax.clear()
+    ax.set_xlim(-3, 3)
+    ax.set_ylim(-3, 3)
+    ax.set_zlim(0, 5)
+    ax.set_title("Crazy 3D Helical Motion")
+    ax.set_xlabel('x')
+    ax.set_ylabel('y')
+    ax.set_zlabel('z')
+
+    # Plot color-fading segments
+    step = max(1, i // 200)
+    for j in range(0, i - 1, step):
+        ax.plot(r[j:j+2, 0], r[j:j+2, 1], r[j:j+2, 2], color=colors[j], lw=1)
+
+    # Red dot for current position
+    ax.plot([r[i, 0]], [r[i, 1]], [r[i, 2]], 'ro')
+    return []
+
+# Animate
+ani = FuncAnimation(fig, update_3d, frames=N, interval=20, blit=False)
+
+# Save as GIF
+gif_path = 'crazy_helical_motion_v2.gif'
+ani.save(gif_path, writer='pillow', fps=30)
+
+# Display GIF in notebook
+with open(gif_path, 'rb') as f:
+    gif_data = f.read()
+b64_gif = base64.b64encode(gif_data).decode('utf-8')
+html = f'<img src="data:image/gif;base64,{b64_gif}">'
+HTML(html)
+```
+![Crazy Helical Motion](../../_pics/Physics/4%20Electromagnetism/Problem_1/crazy_helical_motion.gif)
+
+---
+
 ### Colab: Electromagnetism Problem 1
 [Souce Code](https://colab.research.google.com/drive/16Epk_vNwaF5WNNwd9b1NzThMiUeVFneC?usp=sharing)
 
