@@ -6,13 +6,13 @@
 <meta content="IE=edge" http-equiv="X-UA-Compatible"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
 <link href="../../../img/favicon.ico" rel="shortcut icon"/>
-<title>Problem 1 - Physics and Mathematics</title>
+<title>Problem 1 (Shorted) - Physics and Mathematics</title>
 <link href="../../../css/theme.css" rel="stylesheet"/>
 <link href="../../../css/theme_extra.css" rel="stylesheet"/>
 <link href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" rel="stylesheet"/>
 <script>
         // Current page data
-        var mkdocs_page_name = "Problem 1";
+        var mkdocs_page_name = "Problem 1 (Shorted)";
         var mkdocs_page_input_path = "1 Physics/4 Electromagnetism/Problem_1.md";
         var mkdocs_page_url = null;
       </script>
@@ -70,69 +70,43 @@
 </li>
 <li class="toctree-l1 current"><a class="reference internal current">4 Electromagnetism</a>
 <ul class="current">
-<li class="toctree-l2"><a class="reference internal" href="../Problem_1.1/">Problem 1 (Shorted)</a>
-</li>
-<li class="toctree-l2 current"><a class="reference internal current" href="#">Problem 1</a>
+<li class="toctree-l2 current"><a class="reference internal current" href="#">Problem 1 (Shorted)</a>
 <ul class="current">
-<li class="toctree-l3"><a class="reference internal" href="#1-exploration-of-applications">1. Exploration of Applications</a>
+<li class="toctree-l3"><a class="reference internal" href="#1-applications-of-the-lorentz-force">1. Applications of the Lorentz Force</a>
 <ul>
-<li class="toctree-l4"><a class="reference internal" href="#11-fundamental-equation">1.1 Fundamental Equation</a>
-</li>
-<li class="toctree-l4"><a class="reference internal" href="#12-real-world-applications">1.2 Real-World Applications</a>
-</li>
-<li class="toctree-l4"><a class="reference internal" href="#13-summary-of-field-effects">1.3 Summary of Field Effects</a>
+<li class="toctree-l4"><a class="reference internal" href="#key-applications">Key Applications:</a>
 </li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="#2-simulating-particle-motion">2. Simulating Particle Motion</a>
 <ul>
-<li class="toctree-l4"><a class="reference internal" href="#21-governing-equation">2.1 Governing Equation</a>
+<li class="toctree-l4"><a class="reference internal" href="#governing-equation">Governing Equation:</a>
 </li>
-<li class="toctree-l4"><a class="reference internal" href="#22-numerical-implementation">2.2 Numerical Implementation</a>
+<li class="toctree-l4"><a class="reference internal" href="#methods">Methods:</a>
 </li>
-<li class="toctree-l4"><a class="reference internal" href="#24-boris-algorithm-implementation-alternative-to-euler">2.4 Boris Algorithm Implementation (Alternative to Euler)</a>
-</li>
-<li class="toctree-l4"><a class="reference internal" href="#25-types-of-motion">2.5 Types of Motion</a>
+<li class="toctree-l4"><a class="reference internal" href="#motion-types">Motion Types:</a>
 </li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="#3-parameter-exploration">3. Parameter Exploration</a>
-<ul>
-<li class="toctree-l4"><a class="reference internal" href="#31-key-parameters-and-their-effects">3.1 Key Parameters and Their Effects</a>
-</li>
-<li class="toctree-l4"><a class="reference internal" href="#32-visual-exploration-goals">3.2 Visual Exploration Goals</a>
-</li>
-<li class="toctree-l4"><a class="reference internal" href="#33-real-world-system-example-cyclotron-motion">3.3 Real-World System Example: Cyclotron Motion</a>
-</li>
-<li class="toctree-l4"><a class="reference internal" href="#34-interactive-parameter-exploration-optional-for-jupytercolab">3.4 Interactive Parameter Exploration (Optional for Jupyter/Colab)</a>
-</li>
-</ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="#4-visualization">4. Visualization</a>
 <ul>
-<li class="toctree-l4"><a class="reference internal" href="#41-circular-motion-in-xy-plane">4.1 Circular Motion in \(xy\)-Plane</a>
+<li class="toctree-l4"><a class="reference internal" href="#41-circular-trajectory-uniform-magnetic-field-only">4.1 Circular Trajectory – Uniform Magnetic Field Only</a>
 </li>
-<li class="toctree-l4"><a class="reference internal" href="#42-3d-helical-motion">4.2 3D Helical Motion</a>
+<li class="toctree-l4"><a class="reference internal" href="#42-helical-trajectory-combined-mathbfvparallel-and-mathbfvperp-to-mathbfb">4.2 Helical Trajectory – Combined $ \mathbf{v}\parallel $ and $\mathbf{v}\perp $ to $ \mathbf{B} $</a>
 </li>
-<li class="toctree-l4"><a class="reference internal" href="#43-mathbfe-times-mathbfb-drift-motion">4.3 \(\mathbf{E} \times \mathbf{B}\) Drift Motion</a>
+<li class="toctree-l4"><a class="reference internal" href="#43-mathbfe-times-mathbfb-drift-crossed-electric-and-magnetic-fields">4.3 $ \mathbf{E} \times \mathbf{B} $ Drift – Crossed Electric and Magnetic Fields</a>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="#44-high-frequency-helical-trajectory-extreme-charge-to-mass-ratio">4.4 High-Frequency Helical Trajectory – Extreme Charge-to-Mass Ratio</a>
 </li>
 <li class="toctree-l4"><a class="reference internal" href="#colab-electromagnetism-problem-1">Colab: Electromagnetism Problem 1</a>
 </li>
-<li class="toctree-l4"><a class="reference internal" href="#summary-of-visual-insights">Summary of Visual Insights</a>
-</li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="#5-numerical-implementation">5. Numerical Implementation</a>
-<ul>
-<li class="toctree-l4"><a class="reference internal" href="#euler-method-first-order-approximation">Euler Method (First-Order Approximation)</a>
+<li class="toctree-l3"><a class="reference internal" href="#5-numerical-methods-summary">5. Numerical Methods Summary</a>
 </li>
-<li class="toctree-l4"><a class="reference internal" href="#runge-kutta-method-4th-order-rk4">Runge-Kutta Method (4th Order, RK4)</a>
-</li>
-<li class="toctree-l4"><a class="reference internal" href="#recommendation">Recommendation</a>
-</li>
-<li class="toctree-l4"><a class="reference internal" href="#numerical-stability">Numerical Stability</a>
-</li>
-</ul>
+<li class="toctree-l3"><a class="reference internal" href="#6-conclusion">6. Conclusion</a>
 </li>
 </ul>
 </li>
@@ -225,7 +199,7 @@
 <li><a aria-label="Docs" class="icon icon-home" href="../../.."></a></li>
 <li class="breadcrumb-item">1 Physics</li>
 <li class="breadcrumb-item">4 Electromagnetism</li>
-<li class="breadcrumb-item active">Problem 1</li>
+<li class="breadcrumb-item active">Problem 1 (Shorted)</li>
 <li class="wy-breadcrumbs-aside">
 </li>
 </ul>
@@ -233,271 +207,97 @@
 </div>
 <div class="document" itemscope="itemscope" itemtype="http://schema.org/Article" role="main">
 <div class="section" itemprop="articleBody">
-<h1 id="problem-1">Problem 1</h1>
+<h1 id="problem-1-shorted">Problem 1 (Shorted)</h1>
 <p><strong>Simulating the Lorentz Force</strong></p>
-<h2 id="1-exploration-of-applications">1. Exploration of Applications</h2>
-<p>The <strong>Lorentz force</strong> describes the motion of a charged particle under the influence of <strong>electric</strong> and <strong>magnetic fields</strong>, and is one of the cornerstones of classical and modern electromagnetism.</p>
-<h3 id="11-fundamental-equation">1.1 Fundamental Equation</h3>
-<p>The Lorentz force acting on a particle of charge <span class="arithmatex">\(q\)</span> moving with velocity <span class="arithmatex">\(\mathbf{v}\)</span> in an electric field <span class="arithmatex">\(\mathbf{E}\)</span> and magnetic field <span class="arithmatex">\(\mathbf{B}\)</span> is given by:</p>
-<div class="arithmatex">\[
-\mathbf{F} = q\mathbf{E} + q\mathbf{v} \times \mathbf{B}
-\]</div>
-<p>This vector equation has two key components:</p>
-<ul>
-<li>The <strong>electric force</strong>: <span class="arithmatex">\(q\mathbf{E}\)</span>, which acts in the direction of the electric field.</li>
-<li>The <strong>magnetic force</strong>: <span class="arithmatex">\(q\mathbf{v} \times \mathbf{B}\)</span>, which acts perpendicular to both the velocity of the particle and the magnetic field.</li>
-</ul>
 <hr/>
-<h3 id="12-real-world-applications">1.2 Real-World Applications</h3>
-<p>The Lorentz force plays a pivotal role in several technological and scientific domains:</p>
-<h4 id="particle-accelerators">• Particle Accelerators</h4>
-<p>In <strong>cyclotrons</strong>, <strong>synchrotrons</strong>, and <strong>linear accelerators</strong>, particles are steered and accelerated using electromagnetic fields.</p>
+<h2 id="1-applications-of-the-lorentz-force">1. Applications of the Lorentz Force</h2>
+<p>The Lorentz force law,<br/>
+$$
+\mathbf{F} = q\mathbf{E} + q\mathbf{v} \times \mathbf{B},
+$$<br/>
+governs the dynamics of charged particles in electric (<span class="arithmatex">\(\mathbf{E}\)</span>) and magnetic (<span class="arithmatex">\(\mathbf{B}\)</span>) fields.</p>
+<h3 id="key-applications">Key Applications:</h3>
 <ul>
-<li>
-<p>Magnetic fields enforce circular or helical motion:
-  $$
-  r = \frac{mv}{|q|B}
-  $$</p>
-</li>
-<li>
-<p>Electric fields provide kinetic energy:
-  $$
-  \Delta K = qEd
-  $$</p>
-</li>
+<li><strong>Particle Accelerators</strong>: Magnetic fields guide particles in circular paths; electric fields accelerate them.</li>
+<li><strong>Mass Spectrometers</strong>: Different mass-to-charge ratios cause unique curvatures in magnetic fields.</li>
+<li><strong>Plasma Confinement</strong>: Magnetic traps (e.g., tokamaks) confine charged plasma using helical motion.</li>
 </ul>
-<h4 id="mass-spectrometers">• Mass Spectrometers</h4>
-<p>Used in chemistry and physics to identify atoms and molecules based on their mass-to-charge ratio.</p>
-<h4 id="plasma-confinement-fusion-reactors">• Plasma Confinement (Fusion Reactors)</h4>
-<p>In <strong>tokamaks</strong> and <strong>stellarators</strong>, magnetic fields confine high-energy plasma in a donut-shaped chamber.</p>
-<hr/>
-<h3 id="13-summary-of-field-effects">1.3 Summary of Field Effects</h3>
 <table>
 <thead>
 <tr>
-<th>Field Type</th>
-<th>Direction of Force</th>
-<th>Effect on Motion</th>
+<th>Field Setup</th>
+<th>Force Direction</th>
+<th>Resulting Motion</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td><span class="arithmatex">\(\mathbf{E}\)</span> only</td>
-<td>Parallel to <span class="arithmatex">\(\mathbf{E}\)</span></td>
-<td>Linear acceleration or deceleration</td>
+<td>Along <span class="arithmatex">\(\mathbf{E}\)</span></td>
+<td>Linear acceleration</td>
 </tr>
 <tr>
 <td><span class="arithmatex">\(\mathbf{B}\)</span> only</td>
-<td>Perpendicular to <span class="arithmatex">\(\mathbf{v}\)</span> and <span class="arithmatex">\(\mathbf{B}\)</span></td>
-<td>Circular or helical motion</td>
+<td>Perpendicular to <span class="arithmatex">\(\mathbf{v}, \mathbf{B}\)</span></td>
+<td>Circular/helical motion</td>
 </tr>
 <tr>
 <td><span class="arithmatex">\(\mathbf{E} \perp \mathbf{B}\)</span></td>
-<td>Orthogonal force due to <span class="arithmatex">\(\mathbf{v} \times \mathbf{B}\)</span></td>
-<td>Drift or spiral trajectories</td>
+<td>Orthogonal force, causes drift</td>
+<td>Spiral with drift velocity</td>
 </tr>
 </tbody>
 </table>
+<hr/>
 <h2 id="2-simulating-particle-motion">2. Simulating Particle Motion</h2>
-<h3 id="21-governing-equation">2.1 Governing Equation</h3>
+<h3 id="governing-equation">Governing Equation:</h3>
 <div class="arithmatex">\[
-\mathbf{F} = m \frac{d\mathbf{v}}{dt} = q(\mathbf{E} + \mathbf{v} \times \mathbf{B})
+m\frac{d\mathbf{v}}{dt} = q(\mathbf{E} + \mathbf{v} \times \mathbf{B})
 \]</div>
-<h3 id="22-numerical-implementation">2.2 Numerical Implementation</h3>
-<p>Euler method used initially:
-$$
-\mathbf{v}<em>{n+1} = \mathbf{v}_n + \frac{q}{m}(\mathbf{E} + \mathbf{v}_n \times \mathbf{B})\Delta t
-$$
-$$
-\mathbf{r}</em>{n+1} = \mathbf{r}_n + \mathbf{v}_n \Delta t
-$$</p>
-<hr/>
-<h3 id="24-boris-algorithm-implementation-alternative-to-euler">2.4 Boris Algorithm Implementation (Alternative to Euler)</h3>
-<pre><code class="language-python"># Boris algorithm for stable motion in magnetic fields
-q, m = 1.0, 1.0
-B = np.array([0, 0, 1.0])
-E = np.array([0.0, 0.0, 0.0])
-v0 = np.array([1.0, 0.0, 0.0])
-r0 = np.array([0.0, 0.0, 0.0])
-dt, T = 0.01, 10
-N = int(T / dt)
-
-r = np.zeros((N, 3))
-v = np.zeros((N, 3))
-r[0], v[0] = r0, v0
-
-t = (q * B / m) * (dt / 2)
-t_mag2 = np.dot(t, t)
-s = 2 * t / (1 + t_mag2)
-
-for i in range(N - 1):
-    v_minus = v[i] + (q * E / m) * (dt / 2)
-    v_prime = v_minus + np.cross(v_minus, t)
-    v_plus = v_minus + np.cross(v_prime, s)
-    v[i + 1] = v_plus + (q * E / m) * (dt / 2)
-    r[i + 1] = r[i] + v[i + 1] * dt
-</code></pre>
-<hr/>
-<h3 id="25-types-of-motion">2.5 Types of Motion</h3>
-<h4 id="circular-motion">• Circular Motion</h4>
-<p>Occurs when:
-- <span class="arithmatex">\(\mathbf{E} = 0\)</span>
-- <span class="arithmatex">\(\mathbf{v} \perp \mathbf{B}\)</span></p>
-<p>Result:
-- Constant-speed circular motion in the plane perpendicular to <span class="arithmatex">\(\mathbf{B}\)</span></p>
-<h4 id="helical-motion">• Helical Motion</h4>
-<p>Occurs when:
-- <span class="arithmatex">\(\mathbf{v}\)</span> has both parallel and perpendicular components with respect to <span class="arithmatex">\(\mathbf{B}\)</span>
-- <span class="arithmatex">\(\mathbf{E} = 0\)</span> or parallel to <span class="arithmatex">\(\mathbf{B}\)</span></p>
-<p>Result:
-- Particle moves in a <strong>spiral</strong> (helix) along field lines with pitch determined by <span class="arithmatex">\(v_\parallel\)</span></p>
-<h4 id="drift-motion">• Drift Motion</h4>
-<p>Occurs under:
-- <span class="arithmatex">\(\mathbf{E} \perp \mathbf{B}\)</span></p>
-<p>Result:
-- Circular/helical motion superimposed with <strong>uniform drift</strong>:</p>
-<p>$$
+<h3 id="methods">Methods:</h3>
+<ul>
+<li><strong>Euler Method</strong>: Simple but less accurate for oscillatory systems.</li>
+<li><strong>Boris Algorithm</strong>: Preserves energy in magnetic fields.</li>
+<li><strong>Runge-Kutta (RK4)</strong>: Offers high accuracy at greater computational cost.</li>
+</ul>
+<h3 id="motion-types">Motion Types:</h3>
+<ul>
+<li><strong>Circular</strong>: <span class="arithmatex">\(\mathbf{v} \perp \mathbf{B}\)</span>, no <span class="arithmatex">\(\mathbf{E}\)</span>.</li>
+<li><strong>Helical</strong>: <span class="arithmatex">\(\mathbf{v}\)</span> has parallel and perpendicular components to <span class="arithmatex">\(\mathbf{B}\)</span>.</li>
+<li><strong>Drift</strong>: <span class="arithmatex">\(\mathbf{E} \perp \mathbf{B}\)</span> causes uniform drift:
+  $$
   \mathbf{v}_\text{drift} = \frac{\mathbf{E} \times \mathbf{B}}{B^2}
-  $$</p>
-<hr/>
-<p>These simulations are vital in visualizing how charged particles behave in various field environments, providing insights into devices such as <strong>mass spectrometers</strong>, <strong>magnetic confinement systems</strong>, and <strong>beam control in accelerators</strong>.</p>
+  $$</li>
+</ul>
 <hr/>
 <h2 id="3-parameter-exploration">3. Parameter Exploration</h2>
-<p>The dynamics of charged particles under the Lorentz force are highly sensitive to physical parameters. Exploring variations in these parameters allows us to understand how they shape the trajectory and motion characteristics such as speed, curvature, and drift.</p>
-<p>The Lorentz force remains our starting point:</p>
-<div class="arithmatex">\[
-\mathbf{F} = q(\mathbf{E} + \mathbf{v} \times \mathbf{B})
-\]</div>
-<p>This governs the acceleration and thus the trajectory of the particle according to Newton's second law:</p>
-<div class="arithmatex">\[
-\mathbf{F} = m \frac{d\mathbf{v}}{dt}
-\]</div>
-<hr/>
-<h3 id="31-key-parameters-and-their-effects">3.1 Key Parameters and Their Effects</h3>
-<h4 id="electric-field-strength-e">• Electric Field Strength (<span class="arithmatex">\(E\)</span>)</h4>
-<p>The electric field contributes directly to <strong>linear acceleration</strong>:</p>
-<div class="arithmatex">\[
-\mathbf{a}_E = \frac{q\mathbf{E}}{m}
-\]</div>
+<p>Simulation results depend on:</p>
 <ul>
-<li><strong>Stronger <span class="arithmatex">\(E\)</span></strong> leads to higher linear acceleration.</li>
-<li>Dominant in configurations where <span class="arithmatex">\(\mathbf{B} = 0\)</span> or <span class="arithmatex">\(\mathbf{v} \parallel \mathbf{E}\)</span>.</li>
-<li>In combined fields, <span class="arithmatex">\(E\)</span> affects <strong>drift velocity</strong> and can induce <strong>helical stretching</strong>.</li>
+<li><strong>Field Strengths</strong>:</li>
+<li><span class="arithmatex">\(E \rightarrow\)</span> linear acceleration</li>
+<li><span class="arithmatex">\(B \rightarrow\)</span> tighter curvature, smaller Larmor radius</li>
+<li><strong>Initial Velocity</strong>:</li>
+<li>Perpendicular component: affects orbit size</li>
+<li>Parallel component: affects pitch of helical motion</li>
+<li><strong>Charge <span class="arithmatex">\(q\)</span></strong>:</li>
+<li>Affects direction (sign) and magnitude of motion</li>
+<li><strong>Mass <span class="arithmatex">\(m\)</span></strong>:</li>
+<li>Heavier particles move slower, larger radius</li>
 </ul>
-<hr/>
-<h4 id="magnetic-field-strength-b">• Magnetic Field Strength (<span class="arithmatex">\(B\)</span>)</h4>
-<p>The magnetic component of the Lorentz force is velocity-dependent:</p>
-<div class="arithmatex">\[
-\mathbf{F}_B = q(\mathbf{v} \times \mathbf{B})
-\]</div>
-<ul>
-<li><strong>Stronger <span class="arithmatex">\(B\)</span></strong> increases the curvature of motion.</li>
-<li>In pure <span class="arithmatex">\(\mathbf{B}\)</span> fields, it reduces the <strong>Larmor radius</strong>:</li>
-</ul>
-<p>$$
-  r_L = \frac{mv_\perp}{|q|B}
-  $$</p>
-<ul>
-<li>It also increases the <strong>gyrofrequency</strong>:</li>
-</ul>
-<p>$$
-  \omega_c = \frac{|q|B}{m}
-  $$</p>
-<p>where <span class="arithmatex">\(\omega_c\)</span> is the <strong>cyclotron frequency</strong>.</p>
-<hr/>
-<h4 id="initial-velocity-mathbfv">• Initial Velocity (<span class="arithmatex">\(\mathbf{v}\)</span>)</h4>
-<ul>
-<li>The direction and magnitude of initial velocity define the <strong>geometry</strong> of motion:</li>
-<li>Perpendicular to <span class="arithmatex">\(\mathbf{B}\)</span> <span class="arithmatex">\(\rightarrow\)</span> circular motion</li>
-<li>Parallel to <span class="arithmatex">\(\mathbf{B}\)</span> <span class="arithmatex">\(\rightarrow\)</span> linear motion</li>
-<li>
-<p>Mixed components <span class="arithmatex">\(\rightarrow\)</span> helical motion</p>
-</li>
-<li>
-<p><strong>Magnitude</strong> affects:</p>
-</li>
-<li>Radius of curvature (<span class="arithmatex">\(r_L\)</span> increases with <span class="arithmatex">\(v_\perp\)</span>)</li>
-<li>
-<p>Speed of drift in crossed fields:</p>
-<div class="arithmatex">\[
-\mathbf{v}_\text{drift} = \frac{\mathbf{E} \times \mathbf{B}}{B^2}
-\]</div>
-</li>
-</ul>
-<hr/>
-<h4 id="particle-charge-q">• Particle Charge (<span class="arithmatex">\(q\)</span>)</h4>
-<p>Charge affects both magnitude and direction of the Lorentz force:</p>
-<ul>
-<li><strong>Sign of <span class="arithmatex">\(q\)</span></strong> reverses the direction of the magnetic force:</li>
-</ul>
-<p>$$
-  \text{If } q &gt; 0: \text{ right-hand rule applies} \
-  \text{If } q &lt; 0: \text{ reverse direction (left-hand motion)}
-  $$</p>
-<ul>
-<li>Affects radius and frequency as:</li>
-</ul>
-<p>$$
-  r_L \propto \frac{1}{|q|}, \quad \omega_c \propto |q|
-  $$</p>
-<hr/>
-<h4 id="particle-mass-m">• Particle Mass (<span class="arithmatex">\(m\)</span>)</h4>
-<ul>
-<li><strong>Inversely proportional</strong> to acceleration for a given force:</li>
-</ul>
-<p>$$
-  \mathbf{a} = \frac{\mathbf{F}}{m}
-  $$</p>
-<ul>
-<li>Affects Larmor radius and cyclotron frequency:</li>
-</ul>
-<p>$$
-  r_L \propto m, \quad \omega_c \propto \frac{1}{m}
-  $$</p>
-<p>Heavier particles exhibit <strong>larger orbits</strong> and <strong>slower rotation</strong> under the same field conditions.</p>
-<hr/>
-<h3 id="32-visual-exploration-goals">3.2 Visual Exploration Goals</h3>
-<p>By varying the above parameters in simulations, one should:</p>
-<ul>
-<li><strong>Track trajectory changes</strong>: curvature, helical pitch, drift.</li>
-<li><strong>Compare motion types</strong>: linear vs circular vs spiral.</li>
-<li><strong>Identify scaling laws</strong> for:</li>
-<li>Larmor radius: <span class="arithmatex">\(r_L = \frac{mv_\perp}{|q|B}\)</span></li>
-<li>Cyclotron frequency: <span class="arithmatex">\(\omega_c = \frac{|q|B}{m}\)</span></li>
-</ul>
-<p>Parameter exploration is essential for tuning real-world applications, from optimizing cyclotron paths to designing magnetic traps and beamlines.</p>
-<hr/>
-<h3 id="33-real-world-system-example-cyclotron-motion">3.3 Real-World System Example: Cyclotron Motion</h3>
-<p>Proton in a cyclotron:
-- <span class="arithmatex">\(B = 1\ \text{T}\)</span>
-- <span class="arithmatex">\(v = 1 \times 10^6\ \text{m/s}\)</span></p>
-<p>Larmor radius:
+<p>Real-world example:<br/>
 $$
-    r_L = \frac{mv}{|q|B} = \frac{1.67 \times 10^{-27} \cdot 10^6}{1.6 \times 10^{-19} \cdot 1} \approx 0.0104\ \text{m}
+r_L = \frac{mv}{|q|B}, \quad \omega_c = \frac{|q|B}{m}
 $$</p>
 <hr/>
-<h3 id="34-interactive-parameter-exploration-optional-for-jupytercolab">3.4 Interactive Parameter Exploration (Optional for Jupyter/Colab)</h3>
-<pre><code class="language-python">import ipywidgets as widgets
-from IPython.display import display
-
-def update_simulation(B_field=1.0, velocity=1.0):
-    # Call a simulation function with updated B and v
-    pass
-
-display(widgets.FloatSlider(value=1.0, min=0.1, max=5.0, step=0.1, description='B Field'))
-display(widgets.FloatSlider(value=1.0, min=0.1, max=5.0, step=0.1, description='Velocity'))
-</code></pre>
-<hr/>
 <h2 id="4-visualization">4. Visualization</h2>
-<p>Visualizing charged particle trajectories under the Lorentz force is critical for developing intuition about their motion in various electromagnetic field configurations. In this section, we use Python and standard scientific libraries to produce labeled, informative 2D and 3D plots that illustrate:</p>
+<p>Visualizing charged particle trajectories under the Lorentz force helps build intuition about their motion in different electromagnetic fields. Using Python, we generate labeled 2D and 3D plots to illustrate key features like:</p>
 <ul>
-<li><strong>Larmor radius</strong> <span class="arithmatex">\(r_L\)</span></li>
-<li><strong>Helical pitch</strong> (distance between spiral turns along the field direction)</li>
+<li><strong>Larmor radius</strong> <span class="arithmatex">\(r_L\)</span> </li>
+<li><strong>Helical pitch</strong> (spiral spacing along field lines)  </li>
 <li><strong>Drift velocity</strong> <span class="arithmatex">\(\mathbf{v}_\text{drift} = \frac{\mathbf{E} \times \mathbf{B}}{B^2}\)</span></li>
 </ul>
-<hr/>
-<h3 id="41-circular-motion-in-xy-plane">4.1 Circular Motion in <span class="arithmatex">\(xy\)</span>-Plane</h3>
-<p>Charged particle moves in a circle under a uniform magnetic field (<span class="arithmatex">\(\mathbf{B}\)</span> along <span class="arithmatex">\(z\)</span>). No electric field; pure cyclotron motion with constant radius and speed.</p>
+<h3 id="41-circular-trajectory-uniform-magnetic-field-only">4.1 Circular Trajectory – Uniform Magnetic Field Only</h3>
+<p>The particle starts with velocity perpendicular to $ \mathbf{B} $, resulting in cyclotron motion.</p>
 <pre><code class="language-python">import numpy as np
 import matplotlib.pyplot as plt
 from matplotlib.animation import FuncAnimation
@@ -557,9 +357,19 @@ html = f'&lt;img src="data:image/gif;base64,{b64_gif}"&gt;'
 HTML(html)
 </code></pre>
 <p><img alt="Circular Motion" src="../../../_pics/Physics/4%20Electromagnetism/Problem_1/circular_motion.gif"/></p>
+<h4 id="analytical-vs-simulated-radius">Analytical vs Simulated Radius</h4>
+<p>The Larmor radius is given by:
+$$
+r_L = \frac{mv_\perp}{|q|B}
+$$
+Using $ m = 1\,\text{g} = 0.001\,\text{kg} $, $ v = 1\,\text{m/s} $, $ B = 1\,\text{T} $, we get:</p>
+<div class="arithmatex">\[
+r_L = \frac{0.001 \cdot 1}{1 \cdot 1} = 0.001\,\text{m} = 1\,\text{mm}
+\]</div>
+<p>This matches the observed radius in the simulation, confirming accuracy.</p>
 <hr/>
-<h3 id="42-3d-helical-motion">4.2 3D Helical Motion</h3>
-<p>Particle follows a helical path due to velocity components both parallel and perpendicular to <span class="arithmatex">\(\mathbf{B}\)</span>. Circular motion + forward motion along field lines.</p>
+<h3 id="42-helical-trajectory-combined-mathbfvparallel-and-mathbfvperp-to-mathbfb">4.2 Helical Trajectory – Combined $ \mathbf{v}<em>\parallel $ and $\mathbf{v}</em>\perp $ to $ \mathbf{B} $</h3>
+<p>The initial velocity has components both parallel and perpendicular to the magnetic field, producing a spiral along the field line.</p>
 <pre><code class="language-python">import numpy as np
 import matplotlib.pyplot as plt
 from mpl_toolkits.mplot3d import Axes3D
@@ -627,8 +437,8 @@ HTML(html)
 </code></pre>
 <p><img alt="Helical Motion" src="../../../_pics/Physics/4%20Electromagnetism/Problem_1/helical_motion.gif"/></p>
 <hr/>
-<h3 id="43-mathbfe-times-mathbfb-drift-motion">4.3 <span class="arithmatex">\(\mathbf{E} \times \mathbf{B}\)</span> Drift Motion</h3>
-<p>In crossed electric and magnetic fields, the particle spirals while drifting uniformly perpendicular to both <span class="arithmatex">\(\mathbf{E}\)</span> and <span class="arithmatex">\(\mathbf{B}\)</span>.</p>
+<h3 id="43-mathbfe-times-mathbfb-drift-crossed-electric-and-magnetic-fields">4.3 $ \mathbf{E} \times \mathbf{B} $ Drift – Crossed Electric and Magnetic Fields</h3>
+<p>In crossed fields, the particle spirals while drifting uniformly in a direction perpendicular to both fields.</p>
 <pre><code class="language-python">import numpy as np
 import matplotlib.pyplot as plt
 from matplotlib.animation import FuncAnimation
@@ -705,97 +515,111 @@ HTML(html)
 </code></pre>
 <p><img alt="Drift Motion" src="../../../_pics/Physics/4%20Electromagnetism/Problem_1/drift_motion.gif"/></p>
 <hr/>
+<h3 id="44-high-frequency-helical-trajectory-extreme-charge-to-mass-ratio">4.4 High-Frequency Helical Trajectory – Extreme Charge-to-Mass Ratio</h3>
+<p>To demonstrate how strong fields and light particles behave, we simulate a particle with high $ q/m $. The result is a very tight, fast spiral — often seen in high-energy plasma or cyclotron systems.</p>
+<pre><code class="language-python">import numpy as np
+import matplotlib.pyplot as plt
+from mpl_toolkits.mplot3d import Axes3D
+from matplotlib.animation import FuncAnimation
+from IPython.display import HTML
+import base64
+from io import BytesIO
+
+# Crazy Parameters
+q, m = 10.0, 0.1                          # Very high charge-to-mass ratio
+B = np.array([0, 0, 5.0])                # Strong magnetic field in z-direction
+v0 = np.array([5.0, 0.0, 0.1])           # High x velocity, small z component for tight helix
+r0 = np.array([0.0, 0.0, 0.0])
+dt, T = 0.001, 5.0                       # Small dt for smooth animation
+N = int(T / dt)
+
+# Initialize arrays
+r = np.zeros((N, 3))
+v = np.zeros((N, 3))
+r[0], v[0] = r0, v0
+
+# Compute trajectory
+for i in range(N - 1):
+    F = q * np.cross(v[i], B)
+    a = F / m
+    v[i + 1] = v[i] + a * dt
+    r[i + 1] = r[i] + v[i] * dt
+
+# Create 3D animation
+fig = plt.figure()
+ax = fig.add_subplot(111, projection='3d')
+ax.set_xlim(-3, 3)
+ax.set_ylim(-3, 3)
+ax.set_zlim(0, 5)
+ax.set_title("Crazy 3D Helical Motion")
+ax.set_xlabel('x')
+ax.set_ylabel('y')
+ax.set_zlabel('z')
+
+# Line with fading color
+colors = plt.cm.plasma(np.linspace(0, 1, N))
+line, = ax.plot([], [], [], lw=2)
+point, = ax.plot([], [], [], 'ro')  # Current position
+
+# Plot fading trail manually with segments
+def update_3d(i):
+    ax.clear()
+    ax.set_xlim(-3, 3)
+    ax.set_ylim(-3, 3)
+    ax.set_zlim(0, 5)
+    ax.set_title("Crazy 3D Helical Motion")
+    ax.set_xlabel('x')
+    ax.set_ylabel('y')
+    ax.set_zlabel('z')
+
+    # Plot color-fading segments
+    step = max(1, i // 200)
+    for j in range(0, i - 1, step):
+        ax.plot(r[j:j+2, 0], r[j:j+2, 1], r[j:j+2, 2], color=colors[j], lw=1)
+
+    # Red dot for current position
+    ax.plot([r[i, 0]], [r[i, 1]], [r[i, 2]], 'ro')
+    return []
+
+# Animate
+ani = FuncAnimation(fig, update_3d, frames=N, interval=20, blit=False)
+
+# Save as GIF
+gif_path = 'crazy_helical_motion_v2.gif'
+ani.save(gif_path, writer='pillow', fps=30)
+
+# Display GIF in notebook
+with open(gif_path, 'rb') as f:
+    gif_data = f.read()
+b64_gif = base64.b64encode(gif_data).decode('utf-8')
+html = f'&lt;img src="data:image/gif;base64,{b64_gif}"&gt;'
+HTML(html)
+</code></pre>
+<p><img alt="Crazy Helical Motion" src="../../../_pics/Physics/4%20Electromagnetism/Problem_1/crazy_helical_motion.gif"/></p>
+<hr/>
 <h3 id="colab-electromagnetism-problem-1">Colab: Electromagnetism Problem 1</h3>
 <p><a href="https://colab.research.google.com/drive/16Epk_vNwaF5WNNwd9b1NzThMiUeVFneC?usp=sharing">Souce Code</a></p>
 <hr/>
-<h3 id="summary-of-visual-insights">Summary of Visual Insights</h3>
+<h2 id="5-numerical-methods-summary">5. Numerical Methods Summary</h2>
 <ul>
-<li><strong>Larmor radius</strong> is determined by the perpendicular velocity component and magnetic field:</li>
+<li>Use <strong>Euler</strong> for simplicity.</li>
+<li>Prefer <strong>Boris</strong> or <strong>RK4</strong> for accuracy and energy stability.</li>
+<li>Keep <span class="arithmatex">\(\Delta t\)</span> small enough to resolve cyclotron motion:
+  $$
+  \Delta t \ll \frac{2\pi m}{|q|B}
+  $$</li>
 </ul>
-<p>$$
-  r_L = \frac{mv_\perp}{|q|B}
-  $$</p>
-<ul>
-<li><strong>Helical pitch</strong> corresponds to the distance moved in the field direction per revolution:</li>
-</ul>
-<p>$$
-  \text{Pitch} = v_\parallel T = \frac{2\pi m v_\parallel}{|q|B}
-  $$</p>
-<ul>
-<li><strong>Drift velocity</strong> from crossed fields appears as a linear translation of the helix:</li>
-</ul>
-<p>$$
-  \mathbf{v}_{\text{drift}} = \frac{\mathbf{E} \times \mathbf{B}}{B^2}
-  $$</p>
-<p>These visualizations provide powerful tools to explore particle behavior and validate analytic predictions.</p>
-<h2 id="5-numerical-implementation">5. Numerical Implementation</h2>
-<p>Simulating the motion of charged particles under electromagnetic forces involves solving <strong>ordinary differential equations (ODEs)</strong> derived from the <strong>Lorentz force law</strong>:</p>
-<div class="arithmatex">\[
-\mathbf{F} = m\frac{d\mathbf{v}}{dt} = q\left( \mathbf{E} + \mathbf{v} \times \mathbf{B} \right)
-\]</div>
-<p>This gives a coupled system of first-order ODEs:</p>
-<div class="arithmatex">\[
-\frac{d\mathbf{v}}{dt} = \frac{q}{m}(\mathbf{E} + \mathbf{v} \times \mathbf{B}), \quad \frac{d\mathbf{r}}{dt} = \mathbf{v}
-\]</div>
-<p>These equations are <strong>nonlinear</strong> and cannot usually be solved analytically. Therefore, we use numerical methods.</p>
-<hr/>
-<h3 id="euler-method-first-order-approximation">Euler Method (First-Order Approximation)</h3>
-<p>The <strong>Euler method</strong> is the simplest approach, using forward differences:</p>
-<div class="arithmatex">\[
-\mathbf{v}_{n+1} = \mathbf{v}_n + \frac{q}{m}(\mathbf{E} + \mathbf{v}_n \times \mathbf{B})\Delta t
-\]</div>
-<div class="arithmatex">\[
-\mathbf{r}_{n+1} = \mathbf{r}_n + \mathbf{v}_n \Delta t
-\]</div>
-<ul>
-<li><strong>Pros</strong>: Easy to implement  </li>
-<li><strong>Cons</strong>: Low accuracy, error grows with time, unstable for stiff or oscillatory systems</li>
-</ul>
-<hr/>
-<h3 id="runge-kutta-method-4th-order-rk4">Runge-Kutta Method (4th Order, RK4)</h3>
-<p>The <strong>RK4 method</strong> offers a much more accurate solution. It approximates the next state using intermediate "slopes":</p>
-<p>Let <span class="arithmatex">\(\mathbf{f}(t, \mathbf{y})\)</span> be the derivative function for velocity and position:</p>
-<ol>
-<li>
-<p>Compute intermediate steps:
-   $$
-   \begin{aligned}
-   \mathbf{k}_1 &amp;= f(t_n, \mathbf{y}_n) \
-   \mathbf{k}_2 &amp;= f(t_n + \frac{\Delta t}{2}, \mathbf{y}_n + \frac{\Delta t}{2} \mathbf{k}_1) \
-   \mathbf{k}_3 &amp;= f(t_n + \frac{\Delta t}{2}, \mathbf{y}_n + \frac{\Delta t}{2} \mathbf{k}_2) \
-   \mathbf{k}_4 &amp;= f(t_n + \Delta t, \mathbf{y}_n + \Delta t \mathbf{k}_3)
-   \end{aligned}
-   $$</p>
-</li>
-<li>
-<p>Update the solution:
-   $$
-   \mathbf{y}_{n+1} = \mathbf{y}_n + \frac{\Delta t}{6}(\mathbf{k}_1 + 2\mathbf{k}_2 + 2\mathbf{k}_3 + \mathbf{k}_4)
-   $$</p>
-</li>
-</ol>
-<p>Where <span class="arithmatex">\(\mathbf{y}\)</span> can represent either <span class="arithmatex">\(\mathbf{r}\)</span> or <span class="arithmatex">\(\mathbf{v}\)</span>.</p>
-<ul>
-<li><strong>Pros</strong>: Much more accurate and stable than Euler, handles oscillatory behavior well</li>
-<li><strong>Cons</strong>: More computationally expensive</li>
-</ul>
-<hr/>
-<h3 id="recommendation">Recommendation</h3>
-<ul>
-<li>Use <strong>Euler method</strong> for quick visualizations or conceptual understanding.</li>
-<li>Use <strong>RK4</strong> or the <strong>Boris method</strong> for precision and stability in realistic physics simulations (e.g., plasma modeling, cyclotron motion, fusion confinement).</li>
-</ul>
-<hr/>
-<h3 id="numerical-stability">Numerical Stability</h3>
-<p>Time step size <span class="arithmatex">\(\Delta t\)</span> must be small enough to resolve <strong>gyro-motion</strong>:</p>
-<div class="arithmatex">\[
-\Delta t \ll \frac{2\pi m}{|q|B} = T_{\text{cyclotron}}
-\]</div>
-<p>Choosing too large a step causes inaccurate or even unstable results.</p>
+<h2 id="6-conclusion">6. Conclusion</h2>
+<p>This simulation project demonstrates how the Lorentz force governs charged particle motion under different electromagnetic field configurations. By adjusting parameters like velocity, mass, and field strengths, we observed key behaviors such as:
+- Circular motion in a uniform magnetic field,
+- Helical motion with velocity along $ \mathbf{B} $,
+- Uniform drift in crossed $ \mathbf{E} \times \mathbf{B} $ fields,
+- and extreme helical spirals in high-field environments.</p>
+<p>The animations and numerical results confirm theoretical predictions like the Larmor radius and drift velocity. This work also highlights the importance of choosing physically meaningful parameters to produce interpretable, scalable simulations.</p>
 </div>
 </div><footer>
 <div aria-label="Footer Navigation" class="rst-footer-buttons" role="navigation">
-<a class="btn btn-neutral float-left" href="../Problem_1.1/" title="Problem 1 (Shorted)"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+<a class="btn btn-neutral float-left" href="../../3%20Waves/Problem_1/" title="Problem 1"><span class="icon icon-circle-arrow-left"></span> Previous</a>
 <a class="btn btn-neutral float-right" href="../../5%20Circuits/Problem_1/" title="Problem 1">Next <span class="icon icon-circle-arrow-right"></span></a>
 </div>
 <hr/>
@@ -811,7 +635,7 @@ HTML(html)
 </div>
 <div aria-label="Versions" class="rst-versions" role="note">
 <span class="rst-current-version" data-toggle="rst-current-version">
-<span><a href="../Problem_1.1/" style="color: #fcfcfc">« Previous</a></span>
+<span><a href="../../3%20Waves/Problem_1/" style="color: #fcfcfc">« Previous</a></span>
 <span><a href="../../5%20Circuits/Problem_1/" style="color: #fcfcfc">Next »</a></span>
 </span>
 </div>
