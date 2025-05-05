@@ -1,319 +1,84 @@
-# Problem 1
+# Problem 1 (Shorted)
 
 **Simulating the Lorentz Force**
 
-## 1. Exploration of Applications
-
-The **Lorentz force** describes the motion of a charged particle under the influence of **electric** and **magnetic fields**, and is one of the cornerstones of classical and modern electromagnetism.
-
-### 1.1 Fundamental Equation
-
-The Lorentz force acting on a particle of charge $q$ moving with velocity $\mathbf{v}$ in an electric field $\mathbf{E}$ and magnetic field $\mathbf{B}$ is given by:
-
-$$
-\mathbf{F} = q\mathbf{E} + q\mathbf{v} \times \mathbf{B}
-$$
-
-This vector equation has two key components:
-
-- The **electric force**: $q\mathbf{E}$, which acts in the direction of the electric field.
-- The **magnetic force**: $q\mathbf{v} \times \mathbf{B}$, which acts perpendicular to both the velocity of the particle and the magnetic field.
-
 ---
 
-### 1.2 Real-World Applications
+## 1. Applications of the Lorentz Force
 
-The Lorentz force plays a pivotal role in several technological and scientific domains:
+The Lorentz force law,  
+$$
+\mathbf{F} = q\mathbf{E} + q\mathbf{v} \times \mathbf{B},
+$$  
+governs the dynamics of charged particles in electric ($\mathbf{E}$) and magnetic ($\mathbf{B}$) fields.
 
-#### • Particle Accelerators
+### Key Applications:
+- **Particle Accelerators**: Magnetic fields guide particles in circular paths; electric fields accelerate them.
+- **Mass Spectrometers**: Different mass-to-charge ratios cause unique curvatures in magnetic fields.
+- **Plasma Confinement**: Magnetic traps (e.g., tokamaks) confine charged plasma using helical motion.
 
-In **cyclotrons**, **synchrotrons**, and **linear accelerators**, particles are steered and accelerated using electromagnetic fields.
-
-- Magnetic fields enforce circular or helical motion:
-  $$
-  r = \frac{mv}{|q|B}
-  $$
-
-- Electric fields provide kinetic energy:
-  $$
-  \Delta K = qEd
-  $$
-
-#### • Mass Spectrometers
-
-Used in chemistry and physics to identify atoms and molecules based on their mass-to-charge ratio.
-
-#### • Plasma Confinement (Fusion Reactors)
-
-In **tokamaks** and **stellarators**, magnetic fields confine high-energy plasma in a donut-shaped chamber.
+| Field Setup             | Force Direction                                | Resulting Motion               |
+|-------------------------|------------------------------------------------|--------------------------------|
+| $\mathbf{E}$ only       | Along $\mathbf{E}$                             | Linear acceleration            |
+| $\mathbf{B}$ only       | Perpendicular to $\mathbf{v}, \mathbf{B}$      | Circular/helical motion        |
+| $\mathbf{E} \perp \mathbf{B}$ | Orthogonal force, causes drift              | Spiral with drift velocity     |
 
 ---
-
-### 1.3 Summary of Field Effects
-
-| Field Type         | Direction of Force                | Effect on Motion                          |
-|--------------------|----------------------------------|-------------------------------------------|
-| $\mathbf{E}$ only  | Parallel to $\mathbf{E}$         | Linear acceleration or deceleration       |
-| $\mathbf{B}$ only  | Perpendicular to $\mathbf{v}$ and $\mathbf{B}$ | Circular or helical motion       |
-| $\mathbf{E} \perp \mathbf{B}$ | Orthogonal force due to $\mathbf{v} \times \mathbf{B}$ | Drift or spiral trajectories     |
 
 ## 2. Simulating Particle Motion
 
-### 2.1 Governing Equation
-
+### Governing Equation:
 $$
-\mathbf{F} = m \frac{d\mathbf{v}}{dt} = q(\mathbf{E} + \mathbf{v} \times \mathbf{B})
-$$
-
-### 2.2 Numerical Implementation
-
-Euler method used initially:
-$$
-\mathbf{v}_{n+1} = \mathbf{v}_n + \frac{q}{m}(\mathbf{E} + \mathbf{v}_n \times \mathbf{B})\Delta t
-$$
-$$
-\mathbf{r}_{n+1} = \mathbf{r}_n + \mathbf{v}_n \Delta t
+m\frac{d\mathbf{v}}{dt} = q(\mathbf{E} + \mathbf{v} \times \mathbf{B})
 $$
 
----
+### Methods:
+- **Euler Method**: Simple but less accurate for oscillatory systems.
+- **Boris Algorithm**: Preserves energy in magnetic fields.
+- **Runge-Kutta (RK4)**: Offers high accuracy at greater computational cost.
 
-### 2.4 Boris Algorithm Implementation (Alternative to Euler)
-
-```python
-# Boris algorithm for stable motion in magnetic fields
-q, m = 1.0, 1.0
-B = np.array([0, 0, 1.0])
-E = np.array([0.0, 0.0, 0.0])
-v0 = np.array([1.0, 0.0, 0.0])
-r0 = np.array([0.0, 0.0, 0.0])
-dt, T = 0.01, 10
-N = int(T / dt)
-
-r = np.zeros((N, 3))
-v = np.zeros((N, 3))
-r[0], v[0] = r0, v0
-
-t = (q * B / m) * (dt / 2)
-t_mag2 = np.dot(t, t)
-s = 2 * t / (1 + t_mag2)
-
-for i in range(N - 1):
-    v_minus = v[i] + (q * E / m) * (dt / 2)
-    v_prime = v_minus + np.cross(v_minus, t)
-    v_plus = v_minus + np.cross(v_prime, s)
-    v[i + 1] = v_plus + (q * E / m) * (dt / 2)
-    r[i + 1] = r[i] + v[i + 1] * dt
-```
-
----
-
-### 2.5 Types of Motion
-
-#### • Circular Motion
-
-Occurs when:
-- $\mathbf{E} = 0$
-- $\mathbf{v} \perp \mathbf{B}$
-
-Result:
-- Constant-speed circular motion in the plane perpendicular to $\mathbf{B}$
-
-#### • Helical Motion
-
-Occurs when:
-- $\mathbf{v}$ has both parallel and perpendicular components with respect to $\mathbf{B}$
-- $\mathbf{E} = 0$ or parallel to $\mathbf{B}$
-
-Result:
-- Particle moves in a **spiral** (helix) along field lines with pitch determined by $v_\parallel$
-
-#### • Drift Motion
-
-Occurs under:
-- $\mathbf{E} \perp \mathbf{B}$
-
-Result:
-- Circular/helical motion superimposed with **uniform drift**:
-
+### Motion Types:
+- **Circular**: $\mathbf{v} \perp \mathbf{B}$, no $\mathbf{E}$.
+- **Helical**: $\mathbf{v}$ has parallel and perpendicular components to $\mathbf{B}$.
+- **Drift**: $\mathbf{E} \perp \mathbf{B}$ causes uniform drift:
   $$
   \mathbf{v}_\text{drift} = \frac{\mathbf{E} \times \mathbf{B}}{B^2}
   $$
 
 ---
 
-These simulations are vital in visualizing how charged particles behave in various field environments, providing insights into devices such as **mass spectrometers**, **magnetic confinement systems**, and **beam control in accelerators**.
-
----
-
 ## 3. Parameter Exploration
 
-The dynamics of charged particles under the Lorentz force are highly sensitive to physical parameters. Exploring variations in these parameters allows us to understand how they shape the trajectory and motion characteristics such as speed, curvature, and drift.
+Simulation results depend on:
 
-The Lorentz force remains our starting point:
+- **Field Strengths**:
+  - $E \rightarrow$ linear acceleration
+  - $B \rightarrow$ tighter curvature, smaller Larmor radius
+- **Initial Velocity**:
+  - Perpendicular component: affects orbit size
+  - Parallel component: affects pitch of helical motion
+- **Charge $q$**:
+  - Affects direction (sign) and magnitude of motion
+- **Mass $m$**:
+  - Heavier particles move slower, larger radius
 
+Real-world example:  
 $$
-\mathbf{F} = q(\mathbf{E} + \mathbf{v} \times \mathbf{B})
+r_L = \frac{mv}{|q|B}, \quad \omega_c = \frac{|q|B}{m}
 $$
-
-This governs the acceleration and thus the trajectory of the particle according to Newton's second law:
-
-$$
-\mathbf{F} = m \frac{d\mathbf{v}}{dt}
-$$
-
----
-
-### 3.1 Key Parameters and Their Effects
-
-#### • Electric Field Strength ($E$)
-
-The electric field contributes directly to **linear acceleration**:
-
-$$
-\mathbf{a}_E = \frac{q\mathbf{E}}{m}
-$$
-
-- **Stronger $E$** leads to higher linear acceleration.
-- Dominant in configurations where $\mathbf{B} = 0$ or $\mathbf{v} \parallel \mathbf{E}$.
-- In combined fields, $E$ affects **drift velocity** and can induce **helical stretching**.
-
----
-
-#### • Magnetic Field Strength ($B$)
-
-The magnetic component of the Lorentz force is velocity-dependent:
-
-$$
-\mathbf{F}_B = q(\mathbf{v} \times \mathbf{B})
-$$
-
-- **Stronger $B$** increases the curvature of motion.
-- In pure $\mathbf{B}$ fields, it reduces the **Larmor radius**:
-
-  $$
-  r_L = \frac{mv_\perp}{|q|B}
-  $$
-
-- It also increases the **gyrofrequency**:
-
-  $$
-  \omega_c = \frac{|q|B}{m}
-  $$
-
-  where $\omega_c$ is the **cyclotron frequency**.
-
----
-
-#### • Initial Velocity ($\mathbf{v}$)
-
-- The direction and magnitude of initial velocity define the **geometry** of motion:
-  - Perpendicular to $\mathbf{B}$ $\rightarrow$ circular motion
-  - Parallel to $\mathbf{B}$ $\rightarrow$ linear motion
-  - Mixed components $\rightarrow$ helical motion
-
-- **Magnitude** affects:
-  - Radius of curvature ($r_L$ increases with $v_\perp$)
-  - Speed of drift in crossed fields:
-
-    $$
-    \mathbf{v}_\text{drift} = \frac{\mathbf{E} \times \mathbf{B}}{B^2}
-    $$
-
----
-
-#### • Particle Charge ($q$)
-
-Charge affects both magnitude and direction of the Lorentz force:
-
-- **Sign of $q$** reverses the direction of the magnetic force:
-
-  $$
-  \text{If } q > 0: \text{ right-hand rule applies} \\
-  \text{If } q < 0: \text{ reverse direction (left-hand motion)}
-  $$
-
-- Affects radius and frequency as:
-
-  $$
-  r_L \propto \frac{1}{|q|}, \quad \omega_c \propto |q|
-  $$
-
----
-
-#### • Particle Mass ($m$)
-
-- **Inversely proportional** to acceleration for a given force:
-
-  $$
-  \mathbf{a} = \frac{\mathbf{F}}{m}
-  $$
-
-- Affects Larmor radius and cyclotron frequency:
-
-  $$
-  r_L \propto m, \quad \omega_c \propto \frac{1}{m}
-  $$
-
-Heavier particles exhibit **larger orbits** and **slower rotation** under the same field conditions.
-
----
-
-### 3.2 Visual Exploration Goals
-
-By varying the above parameters in simulations, one should:
-
-- **Track trajectory changes**: curvature, helical pitch, drift.
-- **Compare motion types**: linear vs circular vs spiral.
-- **Identify scaling laws** for:
-  - Larmor radius: $r_L = \frac{mv_\perp}{|q|B}$
-  - Cyclotron frequency: $\omega_c = \frac{|q|B}{m}$
-
-Parameter exploration is essential for tuning real-world applications, from optimizing cyclotron paths to designing magnetic traps and beamlines.
-
----
-
-### 3.3 Real-World System Example: Cyclotron Motion
-
-Proton in a cyclotron:
-- $B = 1\ \text{T}$
-- $v = 1 \times 10^6\ \text{m/s}$
-
-Larmor radius:
-$$
-    r_L = \frac{mv}{|q|B} = \frac{1.67 \times 10^{-27} \cdot 10^6}{1.6 \times 10^{-19} \cdot 1} \approx 0.0104\ \text{m}
-$$
-
----
-
-### 3.4 Interactive Parameter Exploration (Optional for Jupyter/Colab)
-
-```python
-import ipywidgets as widgets
-from IPython.display import display
-
-def update_simulation(B_field=1.0, velocity=1.0):
-    # Call a simulation function with updated B and v
-    pass
-
-display(widgets.FloatSlider(value=1.0, min=0.1, max=5.0, step=0.1, description='B Field'))
-display(widgets.FloatSlider(value=1.0, min=0.1, max=5.0, step=0.1, description='Velocity'))
-```
 
 ---
 
 ## 4. Visualization
 
-Visualizing charged particle trajectories under the Lorentz force is critical for developing intuition about their motion in various electromagnetic field configurations. In this section, we use Python and standard scientific libraries to produce labeled, informative 2D and 3D plots that illustrate:
+Visualizing charged particle trajectories under the Lorentz force helps build intuition about their motion in different electromagnetic fields. Using Python, we generate labeled 2D and 3D plots to illustrate key features like:
 
-- **Larmor radius** $r_L$
-- **Helical pitch** (distance between spiral turns along the field direction)
+- **Larmor radius** $r_L$  
+- **Helical pitch** (spiral spacing along field lines)  
 - **Drift velocity** $\mathbf{v}_\text{drift} = \frac{\mathbf{E} \times \mathbf{B}}{B^2}$
 
----
-
-### 4.1 Circular Motion in \(xy\)-Plane
-
-Charged particle moves in a circle under a uniform magnetic field ($\mathbf{B}$ along $z$). No electric field; pure cyclotron motion with constant radius and speed.
+### 4.1 Circular Trajectory – Uniform Magnetic Field Only
+The particle starts with velocity perpendicular to $ \mathbf{B} $, resulting in cyclotron motion.
 
 ```python
 import numpy as np
@@ -376,11 +141,26 @@ HTML(html)
 ```
 ![Circular Motion](../../_pics/Physics/4%20Electromagnetism/Problem_1/circular_motion.gif)
 
+#### Analytical vs Simulated Radius
+The Larmor radius is given by:
+$$
+r_L = \frac{mv_\perp}{|q|B}
+$$
+Using $ m = 1\,\text{g} = 0.001\,\text{kg} $, $ v = 1\,\text{m/s} $, $ B = 1\,\text{T} $, we get:
+
+$$
+r_L = \frac{0.001 \cdot 1}{1 \cdot 1} = 0.001\,\text{m} = 1\,\text{mm}
+$$
+
+This matches the observed radius in the simulation, confirming accuracy.
+
+
 ---
 
-### 4.2 3D Helical Motion
+### 4.2 Helical Trajectory – Combined $ \mathbf{v}_\parallel $ and $\mathbf{v}_\perp $ to $ \mathbf{B} $
 
-Particle follows a helical path due to velocity components both parallel and perpendicular to $\mathbf{B}$. Circular motion + forward motion along field lines.
+The initial velocity has components both parallel and perpendicular to the magnetic field, producing a spiral along the field line.
+
 
 ```python
 import numpy as np
@@ -452,9 +232,10 @@ HTML(html)
 
 ---
 
-### 4.3 $\mathbf{E} \times \mathbf{B}$ Drift Motion
+### 4.3 $ \mathbf{E} \times \mathbf{B} $ Drift – Crossed Electric and Magnetic Fields
 
-In crossed electric and magnetic fields, the particle spirals while drifting uniformly perpendicular to both $\mathbf{E}$ and $\mathbf{B}$.
+In crossed fields, the particle spirals while drifting uniformly in a direction perpendicular to both fields.
+
 
 ```python
 import numpy as np
@@ -535,109 +316,113 @@ HTML(html)
 
 ---
 
+### 4.4 High-Frequency Helical Trajectory – Extreme Charge-to-Mass Ratio
+
+To demonstrate how strong fields and light particles behave, we simulate a particle with high $ q/m $. The result is a very tight, fast spiral — often seen in high-energy plasma or cyclotron systems.
+
+```python
+import numpy as np
+import matplotlib.pyplot as plt
+from mpl_toolkits.mplot3d import Axes3D
+from matplotlib.animation import FuncAnimation
+from IPython.display import HTML
+import base64
+from io import BytesIO
+
+# Crazy Parameters
+q, m = 10.0, 0.1                          # Very high charge-to-mass ratio
+B = np.array([0, 0, 5.0])                # Strong magnetic field in z-direction
+v0 = np.array([5.0, 0.0, 0.1])           # High x velocity, small z component for tight helix
+r0 = np.array([0.0, 0.0, 0.0])
+dt, T = 0.001, 5.0                       # Small dt for smooth animation
+N = int(T / dt)
+
+# Initialize arrays
+r = np.zeros((N, 3))
+v = np.zeros((N, 3))
+r[0], v[0] = r0, v0
+
+# Compute trajectory
+for i in range(N - 1):
+    F = q * np.cross(v[i], B)
+    a = F / m
+    v[i + 1] = v[i] + a * dt
+    r[i + 1] = r[i] + v[i] * dt
+
+# Create 3D animation
+fig = plt.figure()
+ax = fig.add_subplot(111, projection='3d')
+ax.set_xlim(-3, 3)
+ax.set_ylim(-3, 3)
+ax.set_zlim(0, 5)
+ax.set_title("Crazy 3D Helical Motion")
+ax.set_xlabel('x')
+ax.set_ylabel('y')
+ax.set_zlabel('z')
+
+# Line with fading color
+colors = plt.cm.plasma(np.linspace(0, 1, N))
+line, = ax.plot([], [], [], lw=2)
+point, = ax.plot([], [], [], 'ro')  # Current position
+
+# Plot fading trail manually with segments
+def update_3d(i):
+    ax.clear()
+    ax.set_xlim(-3, 3)
+    ax.set_ylim(-3, 3)
+    ax.set_zlim(0, 5)
+    ax.set_title("Crazy 3D Helical Motion")
+    ax.set_xlabel('x')
+    ax.set_ylabel('y')
+    ax.set_zlabel('z')
+
+    # Plot color-fading segments
+    step = max(1, i // 200)
+    for j in range(0, i - 1, step):
+        ax.plot(r[j:j+2, 0], r[j:j+2, 1], r[j:j+2, 2], color=colors[j], lw=1)
+
+    # Red dot for current position
+    ax.plot([r[i, 0]], [r[i, 1]], [r[i, 2]], 'ro')
+    return []
+
+# Animate
+ani = FuncAnimation(fig, update_3d, frames=N, interval=20, blit=False)
+
+# Save as GIF
+gif_path = 'crazy_helical_motion_v2.gif'
+ani.save(gif_path, writer='pillow', fps=30)
+
+# Display GIF in notebook
+with open(gif_path, 'rb') as f:
+    gif_data = f.read()
+b64_gif = base64.b64encode(gif_data).decode('utf-8')
+html = f'<img src="data:image/gif;base64,{b64_gif}">'
+HTML(html)
+```
+![Crazy Helical Motion](../../_pics/Physics/4%20Electromagnetism/Problem_1/crazy_helical_motion.gif)
+
+---
+
 ### Colab: Electromagnetism Problem 1
 [Souce Code](https://colab.research.google.com/drive/16Epk_vNwaF5WNNwd9b1NzThMiUeVFneC?usp=sharing)
 
 ---
 
-### Summary of Visual Insights
+## 5. Numerical Methods Summary
 
-- **Larmor radius** is determined by the perpendicular velocity component and magnetic field:
-  
+- Use **Euler** for simplicity.
+- Prefer **Boris** or **RK4** for accuracy and energy stability.
+- Keep $\Delta t$ small enough to resolve cyclotron motion:
   $$
-  r_L = \frac{mv_\perp}{|q|B}
-  $$
-
-- **Helical pitch** corresponds to the distance moved in the field direction per revolution:
-
-  $$
-  \text{Pitch} = v_\parallel T = \frac{2\pi m v_\parallel}{|q|B}
+  \Delta t \ll \frac{2\pi m}{|q|B}
   $$
 
-- **Drift velocity** from crossed fields appears as a linear translation of the helix:
+## 6. Conclusion
 
-  $$
-  \mathbf{v}_{\text{drift}} = \frac{\mathbf{E} \times \mathbf{B}}{B^2}
-  $$
+This simulation project demonstrates how the Lorentz force governs charged particle motion under different electromagnetic field configurations. By adjusting parameters like velocity, mass, and field strengths, we observed key behaviors such as:
+- Circular motion in a uniform magnetic field,
+- Helical motion with velocity along $ \mathbf{B} $,
+- Uniform drift in crossed $ \mathbf{E} \times \mathbf{B} $ fields,
+- and extreme helical spirals in high-field environments.
 
-These visualizations provide powerful tools to explore particle behavior and validate analytic predictions.
-
-## 5. Numerical Implementation
-
-Simulating the motion of charged particles under electromagnetic forces involves solving **ordinary differential equations (ODEs)** derived from the **Lorentz force law**:
-
-$$
-\mathbf{F} = m\frac{d\mathbf{v}}{dt} = q\left( \mathbf{E} + \mathbf{v} \times \mathbf{B} \right)
-$$
-
-This gives a coupled system of first-order ODEs:
-
-$$
-\frac{d\mathbf{v}}{dt} = \frac{q}{m}(\mathbf{E} + \mathbf{v} \times \mathbf{B}), \quad \frac{d\mathbf{r}}{dt} = \mathbf{v}
-$$
-
-These equations are **nonlinear** and cannot usually be solved analytically. Therefore, we use numerical methods.
-
----
-
-### Euler Method (First-Order Approximation)
-
-The **Euler method** is the simplest approach, using forward differences:
-
-$$
-\mathbf{v}_{n+1} = \mathbf{v}_n + \frac{q}{m}(\mathbf{E} + \mathbf{v}_n \times \mathbf{B})\Delta t
-$$
-
-$$
-\mathbf{r}_{n+1} = \mathbf{r}_n + \mathbf{v}_n \Delta t
-$$
-
-- **Pros**: Easy to implement  
-- **Cons**: Low accuracy, error grows with time, unstable for stiff or oscillatory systems
-
----
-
-### Runge-Kutta Method (4th Order, RK4)
-
-The **RK4 method** offers a much more accurate solution. It approximates the next state using intermediate "slopes":
-
-Let $\mathbf{f}(t, \mathbf{y})$ be the derivative function for velocity and position:
-
-1. Compute intermediate steps:
-   $$
-   \begin{aligned}
-   \mathbf{k}_1 &= f(t_n, \mathbf{y}_n) \\
-   \mathbf{k}_2 &= f(t_n + \frac{\Delta t}{2}, \mathbf{y}_n + \frac{\Delta t}{2} \mathbf{k}_1) \\
-   \mathbf{k}_3 &= f(t_n + \frac{\Delta t}{2}, \mathbf{y}_n + \frac{\Delta t}{2} \mathbf{k}_2) \\
-   \mathbf{k}_4 &= f(t_n + \Delta t, \mathbf{y}_n + \Delta t \mathbf{k}_3)
-   \end{aligned}
-   $$
-
-2. Update the solution:
-   $$
-   \mathbf{y}_{n+1} = \mathbf{y}_n + \frac{\Delta t}{6}(\mathbf{k}_1 + 2\mathbf{k}_2 + 2\mathbf{k}_3 + \mathbf{k}_4)
-   $$
-
-Where $\mathbf{y}$ can represent either $\mathbf{r}$ or $\mathbf{v}$.
-
-- **Pros**: Much more accurate and stable than Euler, handles oscillatory behavior well
-- **Cons**: More computationally expensive
-
----
-
-### Recommendation
-
-- Use **Euler method** for quick visualizations or conceptual understanding.
-- Use **RK4** or the **Boris method** for precision and stability in realistic physics simulations (e.g., plasma modeling, cyclotron motion, fusion confinement).
-
----
-
-### Numerical Stability
-
-Time step size $\Delta t$ must be small enough to resolve **gyro-motion**:
-
-$$
-\Delta t \ll \frac{2\pi m}{|q|B} = T_{\text{cyclotron}}
-$$
-
-Choosing too large a step causes inaccurate or even unstable results.
+The animations and numerical results confirm theoretical predictions like the Larmor radius and drift velocity. This work also highlights the importance of choosing physically meaningful parameters to produce interpretable, scalable simulations.
