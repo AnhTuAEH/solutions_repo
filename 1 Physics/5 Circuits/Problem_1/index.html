@@ -78,45 +78,131 @@
 <ul class="current">
 <li class="toctree-l2 current"><a class="reference internal current" href="#">Problem 1</a>
 <ul class="current">
-<li class="toctree-l3"><a class="reference internal" href="#1-graph-based-modeling">1. Graph-Based Modeling</a>
-</li>
-<li class="toctree-l3"><a class="reference internal" href="#2-mathematical-rules-for-simplification">2. Mathematical Rules for Simplification</a>
+<li class="toctree-l3"><a class="reference internal" href="#1-problem-overview">1. Problem Overview</a>
 <ul>
-<li class="toctree-l4"><a class="reference internal" href="#21-series-connection">2.1 Series Connection</a>
+<li class="toctree-l4"><a class="reference internal" href="#11-introduction">1.1 Introduction</a>
 </li>
-<li class="toctree-l4"><a class="reference internal" href="#22-parallel-connection">2.2 Parallel Connection</a>
+<li class="toctree-l4"><a class="reference internal" href="#12-equivalent-resistance-conceptual-basis">1.2 Equivalent Resistance: Conceptual Basis</a>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="#13-formal-problem-statement">1.3 Formal Problem Statement</a>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="#14-applications-and-implications">1.4 Applications and Implications</a>
 </li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="#3-algorithm-description">3. Algorithm Description</a>
+<li class="toctree-l3"><a class="reference internal" href="#2-graph-representation">2. Graph Representation</a>
 <ul>
-<li class="toctree-l4"><a class="reference internal" href="#input">Input</a>
+<li class="toctree-l4"><a class="reference internal" href="#21-motivation">2.1 Motivation</a>
 </li>
-<li class="toctree-l4"><a class="reference internal" href="#output">Output</a>
+<li class="toctree-l4"><a class="reference internal" href="#22-graph-model">2.2 Graph Model</a>
 </li>
-<li class="toctree-l4"><a class="reference internal" href="#steps">Steps</a>
+<li class="toctree-l4"><a class="reference internal" href="#23-edge-representation">2.3 Edge Representation</a>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="#24-adjacency-and-resistance-matrix-representations">2.4 Adjacency and Resistance Matrix Representations</a>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="#25-visualization-example">2.5 Visualization Example</a>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="#26-benefits-of-graph-based-representation">2.6 Benefits of Graph-Based Representation</a>
 </li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="#4-pseudocode">4. Pseudocode</a>
-</li>
-<li class="toctree-l3"><a class="reference internal" href="#5-important-observations">5. Important Observations</a>
-</li>
-<li class="toctree-l3"><a class="reference internal" href="#6-example">6. Example</a>
+<li class="toctree-l3"><a class="reference internal" href="#3-input-structure">3. Input Structure</a>
 <ul>
-<li class="toctree-l4"><a class="reference internal" href="#series-example">Series Example</a>
+<li class="toctree-l4"><a class="reference internal" href="#31-purpose">3.1 Purpose</a>
 </li>
-<li class="toctree-l4"><a class="reference internal" href="#parallel-example">Parallel Example</a>
+<li class="toctree-l4"><a class="reference internal" href="#32-input-components">3.2 Input Components</a>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="#33-edge-format">3.3 Edge Format</a>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="#34-input-as-data-structure">3.4 Input as Data Structure</a>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="#35-graph-construction">3.5 Graph Construction</a>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="#36-special-cases">3.6 Special Cases</a>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="#37-summary">3.7 Summary</a>
 </li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="#7-visualizations">7. Visualizations</a>
+<li class="toctree-l3"><a class="reference internal" href="#4-series-and-parallel-detection">4. Series and Parallel Detection</a>
 <ul>
-<li class="toctree-l4"><a class="reference internal" href="#71-series-simplification">7.1 Series Simplification</a>
+<li class="toctree-l4"><a class="reference internal" href="#41-motivation">4.1 Motivation</a>
 </li>
-<li class="toctree-l4"><a class="reference internal" href="#72-parallel-simplification">7.2 Parallel Simplification</a>
+<li class="toctree-l4"><a class="reference internal" href="#42-series-configuration">4.2 Series Configuration</a>
 </li>
-<li class="toctree-l4"><a class="reference internal" href="#colab-circuits-problem-1">Colab: Circuits Problem 1</a>
+<li class="toctree-l4"><a class="reference internal" href="#43-parallel-configuration">4.3 Parallel Configuration</a>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="#44-general-algorithm-strategy">4.4 General Algorithm Strategy</a>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="#45-handling-nested-structures">4.5 Handling Nested Structures</a>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="#46-example">4.6 Example</a>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="#47-summary">4.7 Summary</a>
+</li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#5-resistance-computation">5. Resistance Computation</a>
+<ul>
+<li class="toctree-l4"><a class="reference internal" href="#51-objective">5.1 Objective</a>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="#52-physical-basis">5.2 Physical Basis</a>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="#53-kirchoffs-laws">5.3 Kirchoff’s Laws</a>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="#54-method-1-node-voltage-method">5.4 Method 1: Node Voltage Method</a>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="#55-method-2-effective-resistance-via-laplacian-matrix">5.5 Method 2: Effective Resistance via Laplacian Matrix</a>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="#56-algorithmic-considerations">5.6 Algorithmic Considerations</a>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="#57-example">5.7 Example</a>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="#58-summary">5.8 Summary</a>
+</li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#6-complex-network-reduction">6. Complex Network Reduction</a>
+<ul>
+<li class="toctree-l4"><a class="reference internal" href="#61-motivation">6.1 Motivation</a>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="#62-recursive-simplification">6.2 Recursive Simplification</a>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="#63-node-elimination">6.3 Node Elimination</a>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="#64-y-star-delta-transforms">6.4 Y-Δ (Star-Delta) Transforms</a>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="#65-matrix-based-reduction">6.5 Matrix-Based Reduction</a>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="#66-summary">6.6 Summary</a>
+</li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#7-resistance-computation">7. Resistance Computation</a>
+<ul>
+<li class="toctree-l4"><a class="reference internal" href="#71-objective">7.1 Objective</a>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="#72-assumption-simplified-graph">7.2 Assumption: Simplified Graph</a>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="#73-fundamental-approach">7.3 Fundamental Approach</a>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="#74-direct-computation-in-simple-cases">7.4 Direct Computation in Simple Cases</a>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="#75-general-case-node-voltage-method">7.5 General Case: Node Voltage Method</a>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="#76-laplacian-matrix-method-optional">7.6 Laplacian Matrix Method (Optional)</a>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="#77-visualization">7.7 Visualization</a>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="#78-summary">7.8 Summary</a>
+</li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#plot-and-visualization">Plot and Visualization</a>
+<ul>
+<li class="toctree-l4"><a class="reference internal" href="#circuit-simplification">Circuit simplification</a>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="#building-blocks">Building blocks</a>
 </li>
 </ul>
 </li>
@@ -214,254 +300,996 @@
 <div class="document" itemscope="itemscope" itemtype="http://schema.org/Article" role="main">
 <div class="section" itemprop="articleBody">
 <h1 id="problem-1">Problem 1</h1>
-<p><strong>Equivalent Resistance Using Graph Theory</strong></p>
-<h2 id="1-graph-based-modeling">1. Graph-Based Modeling</h2>
-<p>An electrical circuit can be modeled as an <strong>undirected weighted graph</strong>:</p>
-<ul>
-<li><strong>Nodes</strong> (<span class="arithmatex">\(V\)</span>): represent junctions.</li>
-<li><strong>Edges</strong> (<span class="arithmatex">\(E\)</span>): represent resistors, with weights corresponding to resistance values in ohms (<span class="arithmatex">\(\Omega\)</span>).</li>
-</ul>
-<p>Thus, a graph is defined as:</p>
-<div class="arithmatex">\[
-G = (V, E)
-\]</div>
-<p>Each edge <span class="arithmatex">\(e \in E\)</span> has an associated weight function:</p>
-<div class="arithmatex">\[
-w: E \rightarrow \mathbb{R}^{+}
-\]</div>
-<p>where <span class="arithmatex">\(w(e)\)</span> is the resistance value.</p>
-<blockquote>
-<p><strong>Note</strong>: Use a <code>Graph</code> if each resistor connects different pairs of nodes. Use a <code>MultiGraph</code> if multiple resistors exist between the same two nodes.</p>
-</blockquote>
 <hr/>
-<h2 id="2-mathematical-rules-for-simplification">2. Mathematical Rules for Simplification</h2>
-<h3 id="21-series-connection">2.1 Series Connection</h3>
-<p>When two resistors are connected end-to-end (node degree <span class="arithmatex">\(=2\)</span>), their resistances add directly:</p>
+<h2 id="1-problem-overview">1. Problem Overview</h2>
+<h3 id="11-introduction">1.1 Introduction</h3>
+<p>The objective is to compute the <strong>equivalent resistance</strong> <span class="arithmatex">\(R_{\text{eq}}\)</span> between two designated points in an electrical network: a <strong>START node</strong> and an <strong>END node</strong>. This is a foundational problem in circuit theory, as it enables the prediction of current flow, voltage drops, and power dissipation.</p>
+<p>We model the resistor network as a <strong>weighted undirected graph</strong> <span class="arithmatex">\(G = (V, E)\)</span>, where:
+- <span class="arithmatex">\(V\)</span> is the set of nodes (electrical junctions),
+- <span class="arithmatex">\(E\)</span> is the set of edges (resistors),
+- Each edge <span class="arithmatex">\(e = (u, v) \in E\)</span> has an associated resistance <span class="arithmatex">\(R_{uv} &gt; 0\)</span>.</p>
+<p>The central task is to determine <span class="arithmatex">\(R_{\text{eq}}(A, B)\)</span>, the effective resistance between a <strong>START node</strong> <span class="arithmatex">\(A \in V\)</span> and an <strong>END node</strong> <span class="arithmatex">\(B \in V\)</span>. If a voltage source <span class="arithmatex">\(V\)</span> were connected across <span class="arithmatex">\(A\)</span> and <span class="arithmatex">\(B\)</span>, the current <span class="arithmatex">\(I\)</span> flowing through the network would satisfy Ohm’s Law:</p>
+<div class="arithmatex">\[
+R_{\text{eq}} = \frac{V}{I}
+\]</div>
+<hr/>
+<h3 id="12-equivalent-resistance-conceptual-basis">1.2 Equivalent Resistance: Conceptual Basis</h3>
+<h4 id="121-ohms-law">1.2.1 Ohm’s Law</h4>
+<p>For any two-terminal resistive element:</p>
+<div class="arithmatex">\[
+V = I \cdot R
+\]</div>
+<p>where:
+- <span class="arithmatex">\(V\)</span> is the potential difference (volts),
+- <span class="arithmatex">\(I\)</span> is the current (amperes),
+- <span class="arithmatex">\(R\)</span> is the resistance (ohms, <span class="arithmatex">\(\Omega\)</span>).</p>
+<hr/>
+<h4 id="122-series-configuration">1.2.2 Series Configuration</h4>
+<p>For resistors in series:</p>
 <div class="arithmatex">\[
 R_{\text{eq}} = R_1 + R_2 + \cdots + R_n
 \]</div>
-<p>Simplification steps:
-- Identify a node with exactly two neighbors.
-- Replace the two connecting resistors with one of equivalent resistance.</p>
+<p>This applies when the same current flows through each resistor without branching paths.</p>
 <hr/>
-<h3 id="22-parallel-connection">2.2 Parallel Connection</h3>
-<p>When multiple resistors connect the same pair of nodes, the equivalent resistance satisfies:</p>
+<h4 id="123-parallel-configuration">1.2.3 Parallel Configuration</h4>
+<p>For resistors in parallel:</p>
 <div class="arithmatex">\[
 \frac{1}{R_{\text{eq}}} = \frac{1}{R_1} + \frac{1}{R_2} + \cdots + \frac{1}{R_n}
 \]</div>
-<p>Or equivalently:</p>
-<div class="arithmatex">\[
-R_{\text{eq}} = \left( \sum_{i=1}^n \frac{1}{R_i} \right)^{-1}
-\]</div>
-<p>Simplification steps:
-- Identify multiple edges between two nodes.
-- Collapse them into a single edge using the above formula.</p>
+<p>This configuration implies the voltage across each resistor is the same, while the current divides among the paths.</p>
 <hr/>
-<h2 id="3-algorithm-description">3. Algorithm Description</h2>
-<p>Given a graph <span class="arithmatex">\(G = (V, E)\)</span> and two distinguished nodes <span class="arithmatex">\(A\)</span> and <span class="arithmatex">\(B\)</span>:</p>
-<h3 id="input">Input</h3>
+<h3 id="13-formal-problem-statement">1.3 Formal Problem Statement</h3>
+<p><strong>Given:</strong>
+- A graph <span class="arithmatex">\(G = (V, E)\)</span> with <span class="arithmatex">\(R_e &gt; 0\)</span> for all <span class="arithmatex">\(e \in E\)</span>,
+- A specified START node <span class="arithmatex">\(A \in V\)</span>,
+- A specified END node <span class="arithmatex">\(B \in V\)</span>,</p>
+<p><strong>Find:</strong> the equivalent resistance <span class="arithmatex">\(R_{\text{eq}}(A, B)\)</span> between nodes <span class="arithmatex">\(A\)</span> and <span class="arithmatex">\(B\)</span>, as if the network were replaced by a single equivalent resistor.</p>
+<hr/>
+<h3 id="14-applications-and-implications">1.4 Applications and Implications</h3>
+<p>Accurate computation of <span class="arithmatex">\(R_{\text{eq}}\)</span> has applications in:
+- Power grid analysis,
+- Signal integrity assessment in microelectronics,
+- Fault tolerance in communication networks,
+- Optimization of low-power and efficient designs.</p>
+<p>Additionally, this problem demonstrates the synergy between <strong>electrical engineering</strong> and <strong>graph theory</strong>, showcasing the power of algorithmic thinking in physical systems.</p>
+<hr/>
+<h2 id="2-graph-representation">2. Graph Representation</h2>
+<h3 id="21-motivation">2.1 Motivation</h3>
+<p>To analyze electrical circuits algorithmically, we need a mathematical abstraction that captures the topology and resistance values of the network. Graph theory provides a natural framework for modeling circuits, where <strong>nodes</strong> correspond to electrical junctions and <strong>edges</strong> represent resistive elements.</p>
+<p>This abstraction enables the application of graph algorithms to simplify and solve complex networks, particularly when identifying series and parallel connections, or computing resistance between arbitrary nodes.</p>
+<hr/>
+<h3 id="22-graph-model">2.2 Graph Model</h3>
+<p>We model a resistor network as an <strong>undirected, weighted graph</strong>:</p>
+<div class="arithmatex">\[
+G = (V, E, R)
+\]</div>
+<p>where:
+- <span class="arithmatex">\(V\)</span> is a set of <strong>nodes</strong> (or <strong>vertices</strong>) representing circuit junctions,
+- <span class="arithmatex">\(E \subseteq \{ \{u, v\} \mid u, v \in V, u \neq v \}\)</span> is a set of <strong>edges</strong> representing resistors,
+- <span class="arithmatex">\(R: E \rightarrow \mathbb{R}^+\)</span> is a function assigning a <strong>resistance</strong> value <span class="arithmatex">\(R_{uv}\)</span> to each edge <span class="arithmatex">\(e = \{u, v\}\)</span>.</p>
+<p>Each resistor is treated as a symmetric component: the resistance between <span class="arithmatex">\(u\)</span> and <span class="arithmatex">\(v\)</span> is the same regardless of current direction.</p>
+<hr/>
+<h3 id="23-edge-representation">2.3 Edge Representation</h3>
+<p>Each edge (resistor) can be described as a tuple:</p>
+<div class="arithmatex">\[
+(u, v, R_{uv})
+\]</div>
+<p>where:
+- <span class="arithmatex">\(u, v \in V\)</span> are the connected nodes,
+- <span class="arithmatex">\(R_{uv} \in \mathbb{R}^+\)</span> is the resistance in ohms <span class="arithmatex">\((\Omega)\)</span>.</p>
+<p>For example, a resistor of <span class="arithmatex">\(5\,\Omega\)</span> between node 1 and node 3 is represented as:</p>
+<div class="arithmatex">\[
+(1, 3, 5)
+\]</div>
+<p>Multiple resistors between the same pair of nodes are treated as <strong>parallel resistors</strong> and must be aggregated accordingly:</p>
+<div class="arithmatex">\[
+\frac{1}{R_{\text{eq}}} = \sum_{i=1}^{n} \frac{1}{R_i}
+\]</div>
+<hr/>
+<h3 id="24-adjacency-and-resistance-matrix-representations">2.4 Adjacency and Resistance Matrix Representations</h3>
+<p>The graph can be represented in matrix form to facilitate algorithmic manipulation:</p>
 <ul>
-<li>Graph <span class="arithmatex">\(G\)</span> where each edge has weight <span class="arithmatex">\(w(e)\)</span>.</li>
-<li>Source node <span class="arithmatex">\(A\)</span>, target node <span class="arithmatex">\(B\)</span>.</li>
+<li><strong>Adjacency Matrix</strong> <span class="arithmatex">\(A\)</span>: A symmetric <span class="arithmatex">\(|V| \times |V|\)</span> matrix with entries:</li>
 </ul>
-<h3 id="output">Output</h3>
+<p>$$
+  A_{uv} =
+  \begin{cases}
+    1 &amp; \text{if } {u, v} \in E \
+    0 &amp; \text{otherwise}
+  \end{cases}
+  $$</p>
 <ul>
-<li>Equivalent resistance <span class="arithmatex">\(R_{\text{eq}}\)</span> between <span class="arithmatex">\(A\)</span> and <span class="arithmatex">\(B\)</span>.</li>
+<li><strong>Resistance Matrix</strong> <span class="arithmatex">\(R\)</span>: A weighted matrix storing resistance values:</li>
 </ul>
-<h3 id="steps">Steps</h3>
+<p>$$
+  R_{uv} =
+  \begin{cases}
+    R_{uv} &amp; \text{if } {u, v} \in E \
+    \infty &amp; \text{otherwise}
+  \end{cases}
+  $$</p>
+<p>These representations are useful for implementing resistance-reduction algorithms and simulations.</p>
+<hr/>
+<h3 id="25-visualization-example">2.5 Visualization Example</h3>
+<p>Consider a simple triangular network with nodes <span class="arithmatex">\(A\)</span>, <span class="arithmatex">\(B\)</span>, and <span class="arithmatex">\(C\)</span>, and resistors between each pair:</p>
+<ul>
+<li><span class="arithmatex">\((A, B, 2\,\Omega)\)</span></li>
+<li><span class="arithmatex">\((B, C, 3\,\Omega)\)</span></li>
+<li><span class="arithmatex">\((A, C, 4\,\Omega)\)</span></li>
+</ul>
+<p>This network can be visualized as a triangle graph, and the total resistance between any two nodes can be computed using the parallel and series reduction rules based on the graph structure.</p>
+<hr/>
+<h3 id="26-benefits-of-graph-based-representation">2.6 Benefits of Graph-Based Representation</h3>
+<ul>
+<li>Enables recursive simplification.</li>
+<li>Facilitates cycle detection and transformation (e.g., Δ-Y transforms).</li>
+<li>Prepares the circuit for numerical or symbolic computation.</li>
+<li>Unifies the treatment of arbitrary and complex topologies.</li>
+</ul>
+<hr/>
+<h2 id="3-input-structure">3. Input Structure</h2>
+<h3 id="31-purpose">3.1 Purpose</h3>
+<p>To perform automated or algorithmic analysis of circuits, we must establish a precise and unambiguous format for inputting the resistor network. This input captures both the <strong>topology</strong> of the network (i.e., how nodes are connected) and the <strong>numerical values</strong> of resistances.</p>
+<hr/>
+<h3 id="32-input-components">3.2 Input Components</h3>
+<p>The input consists of three essential components:</p>
 <ol>
-<li><strong>While changes are possible</strong>:</li>
-<li><strong>Series Reduction</strong>:<ul>
-<li>Find nodes (except <span class="arithmatex">\(A\)</span> and <span class="arithmatex">\(B\)</span>) with degree 2.</li>
-<li>Combine adjacent resistors by summing resistances.</li>
-</ul>
-</li>
-<li>
-<p><strong>Parallel Reduction</strong>:</p>
-<ul>
-<li>Find multiple edges between the same two nodes.</li>
-<li>Combine using parallel formula.</li>
-</ul>
-</li>
-<li>
-<p><strong>After each operation</strong>:</p>
-</li>
-<li>Check if <span class="arithmatex">\(A\)</span> and <span class="arithmatex">\(B\)</span> remain connected.</li>
-<li>
-<p>If disconnected: <span class="arithmatex">\(R_{\text{eq}} = \infty\)</span>.</p>
-</li>
-<li>
-<p><strong>Stopping condition</strong>:</p>
-</li>
-<li>If only one edge exists between <span class="arithmatex">\(A\)</span> and <span class="arithmatex">\(B\)</span>, return its weight.</li>
+<li><strong>Node Set</strong>: A list of all nodes in the circuit.</li>
+<li><strong>Edge List</strong>: Each edge is a resistor defined by a pair of nodes and a resistance value.</li>
+<li><strong>Start and End Nodes</strong>: Two nodes <span class="arithmatex">\(A\)</span> and <span class="arithmatex">\(B\)</span> between which the equivalent resistance is to be computed.</li>
 </ol>
 <hr/>
-<h2 id="4-pseudocode">4. Pseudocode</h2>
-<pre><code class="language-python">def detect_and_simplify_series(G, source, target):
-    for node in list(G.nodes()):
-        if node in (source, target):
-            continue
-        if G.degree(node) == 2:
-            neighbors = list(G.neighbors(node))
-            u, w = neighbors
-            R1 = G[node][u]['weight']
-            R2 = G[node][w]['weight']
-            G.remove_node(node)
-            G.add_edge(u, w, weight=R1 + R2)
-            return True
-    return False
-
-def detect_and_simplify_parallel(G):
-    edge_dict = {}
-    for u, v, data in G.edges(data=True):
-        key = tuple(sorted((u, v)))
-        edge_dict.setdefault(key, []).append(data['weight'])
-
-    for (u, v), resistances in edge_dict.items():
-        if len(resistances) &gt; 1:
-            R_eq = 1 / sum(1/r for r in resistances)
-            G.remove_edges_from([(u, v)] * len(resistances))
-            G.add_edge(u, v, weight=R_eq)
-            return True
-    return False
-
-def simplify_graph(G, source, target):
-    while True:
-        changed = detect_and_simplify_series(G, source, target)
-        changed |= detect_and_simplify_parallel(G)
-        if not changed:
-            break
-        if not nx.has_path(G, source, target):
-            return float('inf')
-    return G[source][target]['weight']
-</code></pre>
-<hr/>
-<h2 id="5-important-observations">5. Important Observations</h2>
-<ul>
-<li><strong>Series and parallel reductions are associative</strong>:</li>
-</ul>
-<p>For series:
-  $$
-  (R_1 + R_2) + R_3 = R_1 + (R_2 + R_3)
-  $$</p>
-<p>For parallel:
-  $$
-  \left( \frac{1}{R_1} + \frac{1}{R_2} \right)^{-1} \parallel R_3 = \left( \frac{1}{\left( \frac{1}{R_1} + \frac{1}{R_2} \right) + \frac{1}{R_3}} \right)
-  $$</p>
-<ul>
-<li>
-<p><strong>Algorithm always terminates</strong> because each operation reduces the number of nodes or edges.</p>
-</li>
-<li>
-<p><strong>Edge Cases</strong>:</p>
-</li>
-<li>Mesh networks (complex loops) require advanced methods (Kirchhoff’s laws, Star-Delta transformations).</li>
-<li>Disconnection means <span class="arithmatex">\(R_{\text{eq}} = \infty\)</span>.</li>
-</ul>
-<hr/>
-<h2 id="6-example">6. Example</h2>
-<h3 id="series-example">Series Example</h3>
-<p>Three resistors in series:</p>
-<pre><code class="language-python">G = nx.Graph()
-G.add_edge('A', 'B', weight=5)
-G.add_edge('B', 'C', weight=10)
-</code></pre>
-<p>After simplifying:</p>
+<h3 id="33-edge-format">3.3 Edge Format</h3>
+<p>Each resistor is represented as a tuple:</p>
 <div class="arithmatex">\[
-R_{\text{AC}} = 5 + 10 = 15\ \Omega
+(u, v, R_{uv}) \in V \times V \times \mathbb{R}^+
 \]</div>
-<h3 id="parallel-example">Parallel Example</h3>
-<p>Two resistors in parallel:</p>
-<pre><code class="language-python">G = nx.MultiGraph()
-G.add_edge('A', 'B', weight=8)
-G.add_edge('A', 'B', weight=12)
+<p>where:
+- <span class="arithmatex">\(u\)</span> and <span class="arithmatex">\(v\)</span> are node identifiers,
+- <span class="arithmatex">\(R_{uv}\)</span> is the resistance in ohms <span class="arithmatex">\((\Omega)\)</span> between <span class="arithmatex">\(u\)</span> and <span class="arithmatex">\(v\)</span>.</p>
+<p>For example, the following list of edges defines a small network:</p>
+<pre><code class="language-text">(1, 2, 10)
+(2, 3, 5)
+(1, 3, 20)
 </code></pre>
-<p>After simplifying:</p>
+<p>This specifies resistors of <span class="arithmatex">\(10\Omega\)</span>, <span class="arithmatex">\(5\Omega\)</span>, and <span class="arithmatex">\(20\Omega\)</span> respectively between the indicated node pairs.</p>
+<hr/>
+<h3 id="34-input-as-data-structure">3.4 Input as Data Structure</h3>
+<p>In programming terms, the input could be stored as a list of dictionaries or tuples. Example in Python-like pseudocode:</p>
+<pre><code class="language-python">edges = [
+    (1, 2, 10),
+    (2, 3, 5),
+    (1, 3, 20)
+]
+start_node = 1
+end_node = 3
+</code></pre>
+<hr/>
+<h3 id="35-graph-construction">3.5 Graph Construction</h3>
+<p>From the edge list, we construct a graph <span class="arithmatex">\(G = (V, E)\)</span>:</p>
+<ul>
+<li>The set of vertices <span class="arithmatex">\(V\)</span> is the union of all nodes that appear in any edge.</li>
+<li>The set of edges <span class="arithmatex">\(E\)</span> is directly derived from the input tuples.</li>
+<li>A mapping function <span class="arithmatex">\(R: E \rightarrow \mathbb{R}^+\)</span> is defined such that:</li>
+</ul>
 <div class="arithmatex">\[
-R_{\text{eq}} = \left( \frac{1}{8} + \frac{1}{12} \right)^{-1} = 4.8\ \Omega
+R(\{u, v\}) = R_{uv}
+\]</div>
+<p>If multiple resistors exist between the same node pair (i.e., parallel resistors), their combined resistance is computed before storing:</p>
+<div class="arithmatex">\[
+\frac{1}{R_{\text{eq}}(u, v)} = \sum_{i=1}^{n} \frac{1}{R_i}
 \]</div>
 <hr/>
-<h2 id="7-visualizations"><strong>7. Visualizations</strong></h2>
-<p>In this section, we provide graphical visualizations of circuits before and after applying series and parallel simplifications.</p>
-<p>Each plot clearly shows how the graph structure evolves during reductions.</p>
+<h3 id="36-special-cases">3.6 Special Cases</h3>
+<ul>
+<li><strong>Duplicate edges</strong>: Combine them using the parallel resistance formula.</li>
+<li><strong>Self-loops</strong>: Resistors connecting a node to itself are typically ignored unless explicitly meaningful.</li>
+<li><strong>Isolated nodes</strong>: Nodes not connected to either the start or end can be pruned.</li>
+</ul>
 <hr/>
-<h3 id="71-series-simplification">7.1 Series Simplification</h3>
-<h4 id="a-original-series-circuit">(a) Original Series Circuit</h4>
+<h3 id="37-summary">3.7 Summary</h3>
+<p>The input format should:</p>
+<ul>
+<li>Be compact and readable.</li>
+<li>Allow for easy graph construction.</li>
+<li>Support preprocessing for simplification (e.g., merging parallels).</li>
+<li>Clearly specify the two terminal nodes of interest: START (<span class="arithmatex">\(A\)</span>) and END (<span class="arithmatex">\(B\)</span>).</li>
+</ul>
+<hr/>
+<h2 id="4-series-and-parallel-detection">4. Series and Parallel Detection</h2>
+<h3 id="41-motivation">4.1 Motivation</h3>
+<p>To simplify a resistor network, we must identify <strong>series</strong> and <strong>parallel</strong> substructures within the graph. These structures allow the replacement of multiple resistors with a single equivalent resistor, thereby reducing circuit complexity and enabling easier computation of <span class="arithmatex">\(R_{\text{eq}}\)</span> between the START and END nodes.</p>
+<p>Automated detection of these configurations is crucial for algorithmic analysis, particularly when dealing with arbitrary and nested resistor arrangements.</p>
+<hr/>
+<h3 id="42-series-configuration">4.2 Series Configuration</h3>
+<p>Two resistors are in <strong>series</strong> if:
+- They are connected <strong>end-to-end</strong>, i.e., one resistor's endpoint is the other's start point.
+- The shared node does <strong>not</strong> connect to any other component (i.e., has degree 2).
+- The <strong>same current</strong> flows through both.</p>
+<h4 id="421-detection-rule">4.2.1 Detection Rule</h4>
+<p>Given three nodes <span class="arithmatex">\(u\)</span>, <span class="arithmatex">\(v\)</span>, and <span class="arithmatex">\(w\)</span>, if the following conditions hold:
+- <span class="arithmatex">\((u, v) \in E\)</span> and <span class="arithmatex">\((v, w) \in E\)</span>,
+- <span class="arithmatex">\(\deg(v) = 2\)</span>,
+- <span class="arithmatex">\(v \neq \text{START}\)</span> and <span class="arithmatex">\(v \neq \text{END}\)</span>,</p>
+<p>then the resistors <span class="arithmatex">\(R_{uv}\)</span> and <span class="arithmatex">\(R_{vw}\)</span> can be combined in series:</p>
+<div class="arithmatex">\[
+R_{\text{eq}}(u, w) = R_{uv} + R_{vw}
+\]</div>
+<p>The graph is updated by:
+- Removing node <span class="arithmatex">\(v\)</span>,
+- Adding edge <span class="arithmatex">\((u, w)\)</span> with weight <span class="arithmatex">\(R_{\text{eq}}(u, w)\)</span>.</p>
+<hr/>
+<h3 id="43-parallel-configuration">4.3 Parallel Configuration</h3>
+<p>Two or more resistors are in <strong>parallel</strong> if:
+- They connect the <strong>same two nodes</strong>,
+- Each provides an independent path for current between those nodes.</p>
+<h4 id="431-detection-rule">4.3.1 Detection Rule</h4>
+<p>If multiple edges exist between the same node pair <span class="arithmatex">\((u, v)\)</span>:
+- <span class="arithmatex">\(\exists \{R_1, R_2, \dots, R_n\}\)</span> connecting <span class="arithmatex">\(u\)</span> and <span class="arithmatex">\(v\)</span>,
+- Replace them with a single equivalent resistor:</p>
+<div class="arithmatex">\[
+\frac{1}{R_{\text{eq}}(u, v)} = \sum_{i=1}^{n} \frac{1}{R_i}
+\]</div>
+<p>The graph is updated by:
+- Removing all parallel edges,
+- Adding one edge <span class="arithmatex">\((u, v)\)</span> with the combined resistance <span class="arithmatex">\(R_{\text{eq}}\)</span>.</p>
+<hr/>
+<h3 id="44-general-algorithm-strategy">4.4 General Algorithm Strategy</h3>
+<p><strong>Repeat the following until no further simplification is possible:</strong>
+1. Scan all nodes for degree-2 series candidates.
+2. Collapse series connections using the rule in Section 4.2.
+3. Detect and merge all parallel resistors using the rule in Section 4.3.
+4. Update the graph structure accordingly.</p>
+<p>This recursive simplification reduces the graph step-by-step while preserving the electrical behavior between the START and END nodes.</p>
+<hr/>
+<h3 id="45-handling-nested-structures">4.5 Handling Nested Structures</h3>
+<p>Series and parallel simplifications can be <strong>nested</strong> or <strong>interleaved</strong>, such as:</p>
+<ul>
+<li>A parallel branch that itself contains series resistors.</li>
+<li>A series connection where one element is a group of parallel resistors.</li>
+</ul>
+<p>The algorithm must support recursive detection:
+- Flatten inner structures before processing outer ones.
+- Traverse the graph hierarchically or use pattern recognition for subgraphs.</p>
+<hr/>
+<h3 id="46-example">4.6 Example</h3>
+<p>Given the network:</p>
+<ul>
+<li><span class="arithmatex">\((1, 2, 3\,\Omega)\)</span></li>
+<li><span class="arithmatex">\((2, 3, 5\,\Omega)\)</span></li>
+<li>
+<p><span class="arithmatex">\((1, 3, 10\,\Omega)\)</span></p>
+</li>
+<li>
+<p>Resistors <span class="arithmatex">\((1, 2)\)</span> and <span class="arithmatex">\((2, 3)\)</span> are in <strong>series</strong>:</p>
+</li>
+</ul>
+<p>$$
+  R_{\text{series}} = 3 + 5 = 8\,\Omega
+  $$</p>
+<ul>
+<li>Then, the 8 Ω resistor and the existing 10 Ω between <span class="arithmatex">\((1, 3)\)</span> are in <strong>parallel</strong>:</li>
+</ul>
+<p>$$
+  \frac{1}{R_{\text{eq}}} = \frac{1}{8} + \frac{1}{10} = \frac{9}{40} \quad \Rightarrow \quad R_{\text{eq}} = \frac{40}{9} \approx 4.44\,\Omega
+  $$</p>
+<hr/>
+<h3 id="47-summary">4.7 Summary</h3>
+<p>Series and parallel detection forms the backbone of circuit simplification:</p>
+<ul>
+<li><strong>Series:</strong> Collapse resistors along unbranched paths.</li>
+<li><strong>Parallel:</strong> Merge resistors connecting identical node pairs.</li>
+<li>Ensure recursive handling of nested structures.</li>
+</ul>
+<p>This is a key pre-processing step before applying more general techniques like graph traversal, matrix methods, or Y-Δ transforms.</p>
+<hr/>
+<h2 id="5-resistance-computation">5. Resistance Computation</h2>
+<h3 id="51-objective">5.1 Objective</h3>
+<p>After reducing a resistor network via series and parallel simplification, or in cases where such reductions are insufficient due to complex interconnections (e.g., multiple loops or bridges), we must compute the equivalent resistance between two specific nodes: the <strong>START node</strong> <span class="arithmatex">\(A\)</span> and the <strong>END node</strong> <span class="arithmatex">\(B\)</span>.</p>
+<p>This section presents rigorous methods for computing the effective resistance <span class="arithmatex">\(R_{\text{eq}}(A, B)\)</span> in arbitrary networks, using physical laws and graph-theoretic principles.</p>
+<hr/>
+<h3 id="52-physical-basis">5.2 Physical Basis</h3>
+<p>Let a voltage <span class="arithmatex">\(V\)</span> be applied between nodes <span class="arithmatex">\(A\)</span> and <span class="arithmatex">\(B\)</span>, resulting in a total current <span class="arithmatex">\(I\)</span>. The equivalent resistance is given by Ohm's law:</p>
+<div class="arithmatex">\[
+R_{\text{eq}}(A, B) = \frac{V}{I}
+\]</div>
+<p>The challenge is to determine <span class="arithmatex">\(I\)</span> for a given <span class="arithmatex">\(V\)</span> using laws of circuit analysis.</p>
+<hr/>
+<h3 id="53-kirchoffs-laws">5.3 Kirchoff’s Laws</h3>
+<p>Two foundational principles are used:</p>
+<ul>
+<li><strong>Kirchhoff's Current Law (KCL):</strong> The total current entering a node equals the total current leaving it.</li>
+</ul>
+<p>$$
+  \sum I_{\text{in}} = \sum I_{\text{out}}
+  $$</p>
+<ul>
+<li><strong>Kirchhoff's Voltage Law (KVL):</strong> The total voltage change around any closed loop is zero.</li>
+</ul>
+<p>$$
+  \sum_{\text{loop}} V = 0
+  $$</p>
+<p>Using these laws, we derive a system of equations representing the flow of current and distribution of voltage in the graph.</p>
+<hr/>
+<h3 id="54-method-1-node-voltage-method">5.4 Method 1: Node Voltage Method</h3>
+<ol>
+<li><strong>Assign a voltage variable</strong> <span class="arithmatex">\(V_i\)</span> to each node <span class="arithmatex">\(i \in V\)</span>, with the reference voltage (e.g., <span class="arithmatex">\(V_B = 0\)</span>).</li>
+<li><strong>Use KCL</strong> to write equations at each node, expressing the net current as zero:</li>
+</ol>
+<p>For node <span class="arithmatex">\(i\)</span>:</p>
+<p>$$
+   \sum_{j \in \mathcal{N}(i)} \frac{V_i - V_j}{R_{ij}} = 0
+   $$</p>
+<p>where <span class="arithmatex">\(\mathcal{N}(i)\)</span> denotes the neighbors of node <span class="arithmatex">\(i\)</span>.</p>
+<ol>
+<li>Solve the resulting <strong>linear system of equations</strong>.</li>
+<li>Compute the current from <span class="arithmatex">\(A\)</span> to <span class="arithmatex">\(B\)</span>:</li>
+</ol>
+<p>$$
+   I = \sum_{j \in \mathcal{N}(A)} \frac{V_A - V_j}{R_{Aj}}
+   $$</p>
+<ol>
+<li>Use <span class="arithmatex">\(R_{\text{eq}} = \frac{V}{I}\)</span> (e.g., set <span class="arithmatex">\(V = 1\)</span> for convenience).</li>
+</ol>
+<hr/>
+<h3 id="55-method-2-effective-resistance-via-laplacian-matrix">5.5 Method 2: Effective Resistance via Laplacian Matrix</h3>
+<p>The <strong>Laplacian matrix</strong> <span class="arithmatex">\(L\)</span> of a graph encodes both connectivity and resistance:</p>
+<ul>
+<li>Let <span class="arithmatex">\(R_{uv}\)</span> be the resistance of edge <span class="arithmatex">\((u, v)\)</span>.</li>
+<li>Define the <strong>conductance</strong> as <span class="arithmatex">\(C_{uv} = \frac{1}{R_{uv}}\)</span>.</li>
+</ul>
+<p>Construct the <strong>Laplacian</strong>:</p>
+<ul>
+<li><span class="arithmatex">\(L_{ii} = \sum_{j \in \mathcal{N}(i)} C_{ij}\)</span></li>
+<li><span class="arithmatex">\(L_{ij} = -C_{ij}\)</span> for <span class="arithmatex">\(i \ne j\)</span></li>
+</ul>
+<p>Let <span class="arithmatex">\(L^{\dagger}\)</span> be the <strong>Moore-Penrose pseudoinverse</strong> of <span class="arithmatex">\(L\)</span>. Then the effective resistance between nodes <span class="arithmatex">\(A\)</span> and <span class="arithmatex">\(B\)</span> is:</p>
+<div class="arithmatex">\[
+R_{\text{eq}}(A, B) = (e_A - e_B)^T L^{\dagger} (e_A - e_B)
+\]</div>
+<p>where <span class="arithmatex">\(e_A\)</span> and <span class="arithmatex">\(e_B\)</span> are indicator vectors with 1 at index <span class="arithmatex">\(A\)</span> or <span class="arithmatex">\(B\)</span> and 0 elsewhere.</p>
+<p>This method is powerful for theoretical analysis and for computing resistances in <strong>highly connected</strong> or <strong>cyclic</strong> graphs.</p>
+<hr/>
+<h3 id="56-algorithmic-considerations">5.6 Algorithmic Considerations</h3>
+<ul>
+<li>Use <strong>sparse matrix solvers</strong> for large networks.</li>
+<li>Exploit <strong>symmetry</strong> and <strong>planarity</strong> if present.</li>
+<li>For small or moderately-sized graphs, the <strong>node voltage method</strong> is often sufficient and interpretable.</li>
+</ul>
+<hr/>
+<h3 id="57-example">5.7 Example</h3>
+<p>Consider the triangle network with nodes <span class="arithmatex">\(1\)</span>, <span class="arithmatex">\(2\)</span>, and <span class="arithmatex">\(3\)</span>, and edges:</p>
+<ul>
+<li><span class="arithmatex">\((1, 2, 3\,\Omega)\)</span></li>
+<li><span class="arithmatex">\((2, 3, 5\,\Omega)\)</span></li>
+<li><span class="arithmatex">\((1, 3, 10\,\Omega)\)</span></li>
+</ul>
+<p>To find <span class="arithmatex">\(R_{\text{eq}}(1, 3)\)</span>:
+1. Combine <span class="arithmatex">\((1, 2)\)</span> and <span class="arithmatex">\((2, 3)\)</span> in series: <span class="arithmatex">\(R = 3 + 5 = 8\,\Omega\)</span>
+2. Then, combine with <span class="arithmatex">\((1, 3)\)</span> in parallel:</p>
+<p>$$
+   \frac{1}{R_{\text{eq}}} = \frac{1}{8} + \frac{1}{10} = \frac{9}{40}
+   \quad \Rightarrow \quad
+   R_{\text{eq}} = \frac{40}{9} \approx 4.44\,\Omega
+   $$</p>
+<hr/>
+<h3 id="58-summary">5.8 Summary</h3>
+<p>To compute equivalent resistance:
+- Use <strong>simplification</strong> when possible (series/parallel).
+- Apply <strong>Kirchhoff’s laws</strong> to derive current-voltage relations.
+- For general graphs, use <strong>Laplacian matrix methods</strong> and pseudoinverses.
+- Always calculate <span class="arithmatex">\(R_{\text{eq}} = \frac{V}{I}\)</span> after solving for current or voltage.</p>
+<p>These techniques ensure correctness across all circuit topologies—from simple chains to complex meshes.</p>
+<hr/>
+<h2 id="6-complex-network-reduction">6. Complex Network Reduction</h2>
+<h3 id="61-motivation">6.1 Motivation</h3>
+<p>While many resistor networks can be simplified using basic <strong>series</strong> and <strong>parallel</strong> rules, complex topologies often contain <strong>loops</strong>, <strong>bridges</strong>, or <strong>interlaced structures</strong> that resist straightforward reduction. For such networks, we require more sophisticated methods grounded in graph theory and linear algebra.</p>
+<p>Two general strategies are applied:
+- <strong>Recursive simplification</strong>: Extend series/parallel logic using traversal and pattern detection.
+- <strong>Graph-based algorithms</strong>: Use tools like <strong>node elimination</strong>, <strong>matrix methods</strong>, and <strong>Y-Δ (star-delta) transforms</strong> to reduce the network.</p>
+<hr/>
+<h3 id="62-recursive-simplification">6.2 Recursive Simplification</h3>
+<p>Recursive simplification automates the identification of reducible structures through iterative scanning of subgraphs.</p>
+<h4 id="621-recursive-algorithm-steps">6.2.1 Recursive Algorithm Steps</h4>
+<ol>
+<li><strong>Search for series or parallel structures</strong>.</li>
+<li><strong>Reduce</strong> the identified substructure.</li>
+<li><strong>Update</strong> the graph.</li>
+<li><strong>Repeat</strong> until no more reductions can be made.</li>
+</ol>
+<p>This process may be implemented via depth-first or breadth-first search to locate collapsible subgraphs. It also forms the basis for symbolic circuit solvers.</p>
+<hr/>
+<h3 id="63-node-elimination">6.3 Node Elimination</h3>
+<p>A powerful technique derived from linear algebra is <strong>node elimination</strong>, where non-terminal nodes are removed and their connections replaced by equivalent resistive links.</p>
+<h4 id="631-example">6.3.1 Example</h4>
+<p>Suppose node <span class="arithmatex">\(v\)</span> connects nodes <span class="arithmatex">\(u\)</span> and <span class="arithmatex">\(w\)</span> via <span class="arithmatex">\(R_{uv}\)</span> and <span class="arithmatex">\(R_{vw}\)</span>. Eliminating <span class="arithmatex">\(v\)</span> results in:</p>
+<div class="arithmatex">\[
+R_{uw}^{\text{new}} = R_{uv} + R_{vw}
+\]</div>
+<p>if no other edges are present. This can be extended to more general structures by manipulating the <strong>Laplacian matrix</strong> or applying graph contraction.</p>
+<hr/>
+<h3 id="64-y-star-delta-transforms">6.4 Y-Δ (Star-Delta) Transforms</h3>
+<p>Some resistor networks contain <strong>triangular</strong> or <strong>Y-shaped</strong> subgraphs that cannot be reduced by series/parallel rules. The <strong>Y-Δ transform</strong> converts between these two equivalent forms to enable further simplification.</p>
+<h4 id="641-to-y-conversion">6.4.1 Δ to Y Conversion</h4>
+<p>Given a triangle with resistors <span class="arithmatex">\(R_{ab}\)</span>, <span class="arithmatex">\(R_{bc}\)</span>, and <span class="arithmatex">\(R_{ca}\)</span>, the equivalent star resistors are:</p>
+<div class="arithmatex">\[
+R_a = \frac{R_{ab} R_{ca}}{R_{ab} + R_{bc} + R_{ca}}, \quad
+R_b = \frac{R_{ab} R_{bc}}{R_{ab} + R_{bc} + R_{ca}}, \quad
+R_c = \frac{R_{bc} R_{ca}}{R_{ab} + R_{bc} + R_{ca}}
+\]</div>
+<h4 id="642-y-to-conversion">6.4.2 Y to Δ Conversion</h4>
+<p>Given a Y-network with resistors <span class="arithmatex">\(R_a\)</span>, <span class="arithmatex">\(R_b\)</span>, <span class="arithmatex">\(R_c\)</span> connected to a central node:</p>
+<div class="arithmatex">\[
+R_{ab} = \frac{R_a + R_b + R_a R_b / R_c}, \quad \text{and cyclic permutations}
+\]</div>
+<p>Applying such transforms can unlock simplifications otherwise blocked by network geometry.</p>
+<hr/>
+<h3 id="65-matrix-based-reduction">6.5 Matrix-Based Reduction</h3>
+<p>Another general method is to solve the <strong>system of linear equations</strong> describing the network:</p>
+<ul>
+<li>Define the <strong>Laplacian matrix</strong> <span class="arithmatex">\(L\)</span> of the graph using conductances <span class="arithmatex">\(C_{uv} = 1 / R_{uv}\)</span>.</li>
+<li>Solve the equation <span class="arithmatex">\(L \mathbf{v} = \mathbf{i}\)</span> with boundary conditions (fixed voltages at START and END nodes).</li>
+<li>Derive total current <span class="arithmatex">\(I\)</span> and compute:</li>
+</ul>
+<div class="arithmatex">\[
+R_{\text{eq}} = \frac{V}{I}
+\]</div>
+<p>This method generalizes to <strong>arbitrary networks</strong> and supports <strong>symbolic</strong> and <strong>numeric</strong> computation.</p>
+<hr/>
+<h3 id="66-summary">6.6 Summary</h3>
+<p>To reduce complex resistor networks:
+- <strong>Use recursive simplification</strong> for detectably nested structures.
+- <strong>Apply node elimination</strong> to remove intermediate nodes.
+- <strong>Perform Y-Δ transformations</strong> for triangular or star subgraphs.
+- <strong>Use Laplacian methods</strong> for fully arbitrary topologies.</p>
+<p>These tools allow rigorous analysis of circuits far beyond what manual reduction permits and are essential for building scalable solvers.</p>
+<hr/>
+<h2 id="7-resistance-computation">7. Resistance Computation</h2>
+<h3 id="71-objective">7.1 Objective</h3>
+<p>Once the resistor network has been simplified—either through recursive reduction or more advanced graph-based transformations—the final step is to <strong>compute the total equivalent resistance</strong> between two specified nodes: the <strong>START node</strong> <span class="arithmatex">\(A\)</span> and the <strong>END node</strong> <span class="arithmatex">\(B\)</span>.</p>
+<p>This scalar value, denoted as <span class="arithmatex">\(R_{\text{eq}}(A, B)\)</span>, characterizes the electrical behavior of the entire network as seen from terminals <span class="arithmatex">\(A\)</span> and <span class="arithmatex">\(B\)</span>.</p>
+<hr/>
+<h3 id="72-assumption-simplified-graph">7.2 Assumption: Simplified Graph</h3>
+<p>We assume the circuit graph <span class="arithmatex">\(G = (V, E)\)</span> has already been reduced as much as possible using:</p>
+<ul>
+<li>Series/parallel simplification,</li>
+<li>Y-Δ transformations (if applicable),</li>
+<li>Node elimination (optional),</li>
+<li>Or left in its original form if handled algorithmically.</li>
+</ul>
+<p>All remaining resistors are considered <strong>essential</strong>—i.e., no further simplification is evident from the graph's structure alone.</p>
+<hr/>
+<h3 id="73-fundamental-approach">7.3 Fundamental Approach</h3>
+<p>The total equivalent resistance is computed using:</p>
+<div class="arithmatex">\[
+R_{\text{eq}} = \frac{V}{I}
+\]</div>
+<p>where:
+- <span class="arithmatex">\(V\)</span> is the potential difference applied between nodes <span class="arithmatex">\(A\)</span> and <span class="arithmatex">\(B\)</span>,
+- <span class="arithmatex">\(I\)</span> is the total current flowing between these nodes.</p>
+<p>The methods to compute <span class="arithmatex">\(I\)</span> depend on whether the graph is simple (e.g., a chain or tree) or arbitrary (containing cycles, bridges, etc.).</p>
+<hr/>
+<h3 id="74-direct-computation-in-simple-cases">7.4 Direct Computation in Simple Cases</h3>
+<p>In very simple cases—e.g., when only a single path or two resistors in parallel remain—the equivalent resistance can be directly computed using the known rules:</p>
+<h4 id="741-series">7.4.1 Series:</h4>
+<div class="arithmatex">\[
+R_{\text{eq}} = R_1 + R_2 + \cdots + R_n
+\]</div>
+<h4 id="742-parallel">7.4.2 Parallel:</h4>
+<div class="arithmatex">\[
+\frac{1}{R_{\text{eq}}} = \frac{1}{R_1} + \frac{1}{R_2} + \cdots + \frac{1}{R_n}
+\]</div>
+<p>These cases require no further analysis and can be returned immediately.</p>
+<hr/>
+<h3 id="75-general-case-node-voltage-method">7.5 General Case: Node Voltage Method</h3>
+<p>When the graph contains cycles or complex interconnections, we apply <strong>Kirchhoff’s Laws</strong> and linear algebra.</p>
+<h4 id="751-steps">7.5.1 Steps:</h4>
+<ol>
+<li>Fix node <span class="arithmatex">\(B\)</span> as reference: <span class="arithmatex">\(V_B = 0\)</span></li>
+<li>Apply KCL at all non-terminal nodes:</li>
+</ol>
+<p>$$
+   \sum_{j \in \mathcal{N}(i)} \frac{V_i - V_j}{R_{ij}} = 0
+   $$</p>
+<ol>
+<li>Solve the resulting linear system for all unknown node voltages <span class="arithmatex">\(V_i\)</span>.</li>
+<li>Compute current leaving <span class="arithmatex">\(A\)</span>:</li>
+</ol>
+<p>$$
+   I = \sum_{j \in \mathcal{N}(A)} \frac{V_A - V_j}{R_{Aj}}
+   $$</p>
+<ol>
+<li>Finally, compute:</li>
+</ol>
+<p>$$
+   R_{\text{eq}}(A, B) = \frac{V_A - V_B}{I}
+   $$</p>
+<p>In practice, it is convenient to choose <span class="arithmatex">\(V_A = 1\)</span> and <span class="arithmatex">\(V_B = 0\)</span>.</p>
+<hr/>
+<h3 id="76-laplacian-matrix-method-optional">7.6 Laplacian Matrix Method (Optional)</h3>
+<p>In symbolic or large-scale computation, we use the <strong>graph Laplacian</strong> <span class="arithmatex">\(L\)</span> and its pseudoinverse <span class="arithmatex">\(L^\dagger\)</span>:</p>
+<div class="arithmatex">\[
+R_{\text{eq}}(A, B) = (e_A - e_B)^T L^\dagger (e_A - e_B)
+\]</div>
+<p>where <span class="arithmatex">\(e_A\)</span> and <span class="arithmatex">\(e_B\)</span> are unit vectors corresponding to nodes <span class="arithmatex">\(A\)</span> and <span class="arithmatex">\(B\)</span>.</p>
+<p>This method guarantees correctness and generality, even on arbitrary networks with thousands of components.</p>
+<hr/>
+<h3 id="77-visualization">7.7 Visualization</h3>
+<p>It is helpful to visualize the <strong>final simplified graph</strong> before computing <span class="arithmatex">\(R_{\text{eq}}\)</span>, to ensure no redundant paths remain and to trace current paths conceptually.</p>
+<p>Plotting tools like NetworkX + Matplotlib in Python allow us to inspect the reduced graph before final computation.</p>
+<hr/>
+<h3 id="78-summary">7.8 Summary</h3>
+<ul>
+<li>If the simplified graph contains only a few components, apply direct formulas.</li>
+<li>For general networks, use the <strong>node voltage method</strong>.</li>
+<li>For symbolic or matrix-based workflows, use the <strong>Laplacian pseudoinverse method</strong>.</li>
+<li>Always finalize by computing:</li>
+</ul>
+<p>$$
+  R_{\text{eq}} = \frac{V}{I}
+  $$</p>
+<p>This value encapsulates the total resistance between START and END nodes and is the ultimate goal of the entire reduction process.</p>
+<hr/>
+<h2 id="plot-and-visualization">Plot and Visualization</h2>
+<h3 id="circuit-simplification">Circuit simplification</h3>
+<h4 id="case-1">Case 1</h4>
 <pre><code class="language-python">import networkx as nx
 import matplotlib.pyplot as plt
+import os
+from PIL import Image
+from IPython.display import HTML
+import base64
 
-G = nx.Graph()
-G.add_edge('A', 'B', weight=5)
-G.add_edge('B', 'C', weight=10)
+# Step directory
+folder_name = "case_1"
+os.makedirs(folder_name, exist_ok=True)
 
-pos = nx.spring_layout(G, seed=42)
-edge_labels = nx.get_edge_attributes(G, 'weight')
+# Base position layout (same throughout)
+base_pos = {
+    "B+": (0, 1),
+    "R2": (1, 1.5),
+    "R3": (2, 1.5),
+    "R4": (3, 1),
+    "R5": (4, 1),
+    "B-": (5, 1),
+    "R1": (1.5, 0.3)
+}
 
-plt.figure(figsize=(6, 4))
-nx.draw(G, pos, with_labels=True, node_color='lightblue', node_size=700)
-nx.draw_networkx_edge_labels(G, pos, edge_labels={k: f"{v}Ω" for k, v in edge_labels.items()})
-plt.title("Original Series Circuit: A → B → C")
-plt.show()
+# Function to draw and save a step
+def draw_step(G, pos, title, highlight=[], merged_labels={}, filename="step.png"):
+    plt.figure(figsize=(7, 3))
+
+    # Colors for nodes
+    colors = []
+    for node in G.nodes():
+        if node in highlight:
+            colors.append("red" if "1" in node or "2" in node or "3" in node or "23" in node else
+                          "green" if "4" in node or "5" in node or "45" in node else
+                          "cyan" if "123" in node else
+                          "magenta")
+        else:
+            colors.append("lightgray")
+
+    # Labels
+    labels = {n: merged_labels.get(n, n) for n in G.nodes()}
+
+    nx.draw_networkx_nodes(G, pos, node_color=colors, node_size=1200, node_shape='s', edgecolors='black')
+    nx.draw_networkx_labels(G, pos, labels=labels, font_size=10, font_weight="bold")
+    nx.draw_networkx_edges(G, pos, edge_color="gray", arrows=True, arrowsize=15, width=2)
+
+    plt.title(title, fontsize=14, loc='left')
+    plt.axis("off")
+    plt.tight_layout()
+    plt.savefig(f"{folder_name}/{filename}", dpi=100)
+    plt.close()
+
+# Step 0
+# Step 1: Initial circuit
+G1 = nx.DiGraph()
+G1.add_edges_from([
+    ("B+", "R2"), ("R2", "R3"), ("R3", "R4"),
+    ("R4", "R5"), ("R5", "B-"),
+    ("B+", "R1"), ("R1", "R4")
+])
+draw_step(G1, base_pos, "Initial circuit", highlight=[], filename="step_0.png")
+
+
+# Step 1: Initial circuit
+G1 = nx.DiGraph()
+G1.add_edges_from([
+    ("B+", "R2"), ("R2", "R3"), ("R3", "R4"),
+    ("R4", "R5"), ("R5", "B-"),
+    ("B+", "R1"), ("R1", "R4")
+])
+draw_step(G1, base_pos, "First step", highlight=["R2", "R3"], filename="step_1.1.png")
+
+# Step 1: After combining R2 and R3 → R23
+G2 = nx.DiGraph()
+G2.add_edges_from([
+    ("B+", "R23"), ("R23", "R4"),
+    ("R4", "R5"), ("R5", "B-"),
+    ("B+", "R1"), ("R1", "R4")
+])
+pos2 = base_pos.copy()
+pos2["R23"] = ((base_pos["R2"][0] + base_pos["R3"][0]) / 2, base_pos["R2"][1])
+draw_step(G2, pos2, "First step", highlight=["R23"], merged_labels={"R23": "R23"}, filename="step_1.2.png")
+
+# Step 2: Highlight R4 and R5
+draw_step(G2, pos2, "Second step", highlight=["R4", "R5"], filename="step_2.1.png")
+
+# Step 2: Combine R4 + R5 → R45
+G3 = nx.DiGraph()
+G3.add_edges_from([
+    ("B+", "R23"), ("R23", "R45"),
+    ("R45", "B-"),
+    ("B+", "R1"), ("R1", "R45")
+])
+pos3 = pos2.copy()
+pos3["R45"] = ((base_pos["R4"][0] + base_pos["R5"][0]) / 2, base_pos["R4"][1])
+draw_step(G3, pos3, "Second step", highlight=["R45"], merged_labels={"R45": "R45"}, filename="step_2.2.png")
+
+# Step 3: Highlight R1 and R23
+draw_step(G3, pos3, "Third step", highlight=["R1", "R23"], filename="step_3.1.png")
+
+# Step 3: Combine R1 ‖ R23 → R123
+G4 = nx.DiGraph()
+G4.add_edges_from([
+    ("B+", "R123"), ("R123", "R45"), ("R45", "B-")
+])
+pos4 = pos3.copy()
+pos4["R123"] = ((base_pos["R1"][0] + pos2["R23"][0]) / 2, 1.1)
+draw_step(G4, pos4, "Third step", highlight=["R123"], merged_labels={"R123": "R123"}, filename="step_3.2.png")
+
+# Step 4: Highlight R123 and R45
+draw_step(G4, pos4, "Fourth step", highlight=["R123", "R45"], filename="step_4.1.png")
+
+# Step 4: Combine R123 + R45 → R12345
+G5 = nx.DiGraph()
+G5.add_edges_from([
+    ("B+", "R12345"), ("R12345", "B-")
+])
+pos5 = {"B+": (0, 1), "R12345": (2.5, 1), "B-": (5, 1)}
+draw_step(G5, pos5, "Fourth step", highlight=["R12345"], merged_labels={"R12345": "R12345"}, filename="step_4.2.png")
+
+# === Generate GIF from step images ===
+
+image_files = sorted([f for f in os.listdir("case_1") if f.endswith(".png")])
+print(image_files)
+frames = [Image.open(os.path.join(folder_name, fname)) for fname in image_files]
+gif_path = "case1_visual_simplification.gif"
+frames[0].save(gif_path, save_all=True, append_images=frames[1:], duration=1200, loop=0)
+
+# Display GIF in Colab using HTML
+with open(gif_path, 'rb') as f:
+    gif_data = f.read()
+b64_gif = base64.b64encode(gif_data).decode('utf-8')
+html = f'&lt;img src="data:image/gif;base64,{b64_gif}"&gt;'
+HTML(html)
 </code></pre>
-<p><img alt="Original Series" src="../../../_pics/Physics/5%20Circuits/Problem_1/original_series.png"/></p>
-<hr/>
-<h4 id="b-after-series-simplification">(b) After Series Simplification</h4>
+<p><img alt="Circuit Simplification" src="../../../_pics/Physics/5%20Circuits/Problem_1/circuit_simplification/circuit_simplification.gif"/></p>
+<h4 id="case-2">Case 2</h4>
 <pre><code class="language-python">import networkx as nx
 import matplotlib.pyplot as plt
-G_simplified = nx.Graph()
-G_simplified.add_edge('A', 'C', weight=15)  # 5Ω + 10Ω
 
-pos = nx.spring_layout(G_simplified, seed=42)
-edge_labels = nx.get_edge_attributes(G_simplified, 'weight')
+# -----------------------------
+# Function to draw nodes with different shapes
+# -----------------------------
+def custom_draw(G, pos, title):
+    plt.figure(figsize=(12, 4))
 
-plt.figure(figsize=(6, 4))
-nx.draw(G_simplified, pos, with_labels=True, node_color='lightgreen', node_size=700)
-nx.draw_networkx_edge_labels(G_simplified, pos, edge_labels={k: f"{v}Ω" for k, v in edge_labels.items()})
-plt.title("After Series Simplification: A → C (15Ω)")
-plt.show()
-</code></pre>
-<p><img alt="Simplification Series" src="../../../_pics/Physics/5%20Circuits/Problem_1/simplification_series.png"/></p>
-<hr/>
-<h3 id="72-parallel-simplification">7.2 Parallel Simplification</h3>
-<h4 id="a-original-parallel-circuit">(a) Original Parallel Circuit</h4>
-<pre><code class="language-python">import networkx as nx
-import matplotlib.pyplot as plt
-G_parallel = nx.MultiGraph()
-G_parallel.add_edge('A', 'B', weight=8)
-G_parallel.add_edge('A', 'B', weight=12)
+    circle_nodes = [n for n in G.nodes if n.startswith("O")]
+    rounded_square_nodes = ["B+", "B-"]
+    square_nodes = [n for n in G.nodes if n.startswith("R")]
 
-pos = nx.spring_layout(G_parallel, seed=42)
-edge_labels = {(u, v, k): d['weight'] for u, v, k, d in G_parallel.edges(keys=True, data=True)}
+    # Vẽ các cạnh với mũi tên
+    nx.draw_networkx_edges(
+        G, pos,
+        arrows=True,
+        arrowstyle='-&gt;',
+        arrowsize=20,
+        connectionstyle='arc3,rad=0.0',
+        min_target_margin=15,
+        width=2
+    )
 
-plt.figure(figsize=(6, 4))
-nx.draw(G_parallel, pos, with_labels=True, node_color='lightcoral', node_size=700)
-nx.draw_networkx_edge_labels(
-    G_parallel, pos,
-    edge_labels={(u, v): f"{w}Ω" for (u, v, k), w in edge_labels.items()}
+    # Vẽ các node hình tròn (O)
+    nx.draw_networkx_nodes(G, pos,
+                           nodelist=circle_nodes,
+                           node_shape='o',
+                           node_color='lightgrey',
+                           node_size=1000)
+
+    # Node B+ B- giả lập bo góc bằng màu trắng + viền đậm
+    nx.draw_networkx_nodes(G, pos,
+                           nodelist=rounded_square_nodes,
+                           node_shape='s',
+                           node_color='white',
+                           edgecolors='black',
+                           linewidths=2,
+                           node_size=1000)
+
+    # Node điện trở vuông
+    nx.draw_networkx_nodes(G, pos,
+                           nodelist=square_nodes,
+                           node_shape='s',
+                           node_color='lightgrey',
+                           edgecolors='black',
+                           linewidths=1,
+                           node_size=1000)
+
+    # Vẽ nhãn
+    nx.draw_networkx_labels(G, pos)
+
+    plt.title(title)
+    plt.axis('off')
+    plt.show()
+
+# -----------------------------
+# Picture 1: Resistors as Nodes (Initial)
+# -----------------------------
+G1 = nx.DiGraph()
+G1.add_edges_from([
+    ("B+", "R1"),
+    ("R1", "R2"),
+    ("R1", "R3"),
+    ("R2", "O1"),
+    ("R3", "O1"),
+    ("O1", "R4"),
+    ("O1", "R5"),
+    ("R4", "B-"),
+    ("R5", "B-"),
+])
+
+pos1 = {
+    "B+": (-2, 0),
+    "R1": (-1, 0),
+    "R2": (0, 1),
+    "R3": (0, -1),
+    "O1": (1, 0),
+    "R4": (2, 1),
+    "R5": (2, -1),
+    "B-": (3, 0),
+}
+custom_draw(G1, pos1, "Resistors as Nodes (Initial)")
+
+# -----------------------------
+# Picture 2: Consistent Node Representation
+# -----------------------------
+G2 = nx.DiGraph()
+G2.add_edges_from([
+    ("B+", "O0"),
+    ("O0", "R1"),
+    ("R1", "O1"),
+    ("O1", "R2"),
+    ("O1", "R3"),
+    ("R2", "O2"),
+    ("R3", "O2"),
+    ("O2", "R4"),
+    ("O2", "R5"),
+    ("R4", "O3"),
+    ("R5", "O3"),
+    ("O3", "B-"),
+])
+
+pos2 = {
+    "B+": (-3, 0),
+    "O0": (-2, 0),
+    "R1": (-1, 0),
+    "O1": (0, 0),
+    "R2": (1, 1),
+    "R3": (1, -1),
+    "O2": (2, 0),
+    "R4": (3, 1),
+    "R5": (3, -1),
+    "O3": (4, 0),
+    "B-": (5, 0),
+}
+custom_draw(G2, pos2, "With Junction Nodes")
+
+# -----------------------------
+# Picture 3: Edge-Based Resistor Graph
+# -----------------------------
+G3 = nx.DiGraph()
+G3.add_edges_from([
+    ("B+", "O0", {"label": ""}),
+    ("O0", "O1", {"label": "R1"}),
+    ("O0", "O1", {"label": "R2"}),
+    ("O1", "O2", {"label": "R3"}),
+    ("O1", "O2", {"label": "R4"}),
+    ("O2", "O3", {"label": "R5"}),
+    ("O3", "B-", {"label": ""}),
+])
+
+# Vị trí node
+pos3 = {
+    "B+": (-3, 0),
+    "O0": (-2, 0),
+    "O1": (-1, 0),
+    "O2": (0, 0),
+    "O3": (1, 0),
+    "B-": (2, 0),
+}
+
+plt.figure(figsize=(12, 4))
+
+# Vẽ B+ → O0
+nx.draw_networkx_edges(G3, pos3,
+    edgelist=[("B+", "O0")],
+    connectionstyle='arc3,rad=0.0',
+    arrowstyle='-&gt;', arrowsize=20, width=2
 )
-plt.title("Original Parallel Circuit: Two Resistors A ↔ B")
+
+# Vẽ R1
+nx.draw_networkx_edges(G3, pos3,
+    edgelist=[("O0", "O1")],
+    connectionstyle='arc3,rad=0.0',
+    arrowstyle='-&gt;', arrowsize=20, width=2
+)
+
+# Vẽ R2: cong lên
+nx.draw_networkx_edges(G3, pos3,
+    edgelist=[("O1", "O2")],
+    connectionstyle='arc3,rad=0.3',
+    arrowstyle='-&gt;', arrowsize=20, width=2
+)
+
+# Vẽ R3: cong xuống
+nx.draw_networkx_edges(G3, pos3,
+    edgelist=[("O1", "O2")],
+    connectionstyle='arc3,rad=-0.3',
+    arrowstyle='-&gt;', arrowsize=20, width=2
+)
+
+# Vẽ R4 và R5: hơi cong lên &amp; xuống
+nx.draw_networkx_edges(G3, pos3,
+    edgelist=[("O2", "O3")],
+    connectionstyle='arc3,rad=0.3',
+    arrowstyle='-&gt;', arrowsize=20, width=2
+)
+nx.draw_networkx_edges(G3, pos3,
+    edgelist=[("O2", "O3")],
+    connectionstyle='arc3,rad=-0.3',
+    arrowstyle='-&gt;', arrowsize=20, width=2
+)
+
+# Vẽ O3 → B-
+nx.draw_networkx_edges(G3, pos3,
+    edgelist=[("O3", "B-")],
+    connectionstyle='arc3,rad=0.0',
+    arrowstyle='-&gt;', arrowsize=20, width=2
+)
+
+# Vẽ node
+circle_nodes = [n for n in G3.nodes if n.startswith("O")]
+rounded_square_nodes = ["B+", "B-"]
+
+nx.draw_networkx_nodes(G3, pos3, nodelist=circle_nodes,
+    node_shape='o', node_color='lightgrey', node_size=1000)
+
+nx.draw_networkx_nodes(G3, pos3, nodelist=rounded_square_nodes,
+    node_shape='s', node_color='white', edgecolors='black',
+    linewidths=2, node_size=1000)
+
+# Nhãn node
+nx.draw_networkx_labels(G3, pos3)
+
+# Nhãn cạnh
+edge_labels = {
+    ("O0", "O1"): "R1",
+    ("O1", "O2"): "R2 / R3",
+    ("O2", "O3"): "R4 / R5",
+}
+nx.draw_networkx_edge_labels(G3, pos3, edge_labels=edge_labels)
+
+plt.title("Resistors as Edges")
+plt.axis('off')
 plt.show()
 </code></pre>
-<p><img alt="Original Parallel" src="../../../_pics/Physics/5%20Circuits/Problem_1/original_parallel.png"/></p>
-<hr/>
-<h4 id="b-after-parallel-simplification">(b) After Parallel Simplification</h4>
+<p><strong>Initial</strong>
+<img alt="Initial" src="../../../_pics/Physics/5%20Circuits/Problem_1/circuit_simplification/initial.png"/></p>
+<p><strong>Consistent Node Representation</strong>
+<img alt="Consistent Node Representation" src="../../../_pics/Physics/5%20Circuits/Problem_1/circuit_simplification/consistent-node-representation.png"/></p>
+<p><strong>Edge-Based Resistor Graph</strong>
+<img alt="Edge-Based Resistor Graph" src="../../../_pics/Physics/5%20Circuits/Problem_1/circuit_simplification/edge-based-resistor-graph.png"/></p>
+<h3 id="building-blocks">Building blocks</h3>
+<h4 id="series-configuration">Series configuration</h4>
 <pre><code class="language-python">import networkx as nx
 import matplotlib.pyplot as plt
-G_parallel_simple = nx.Graph()
-G_parallel_simple.add_edge('A', 'B', weight=4.8)  # Simplified 8Ω || 12Ω
 
-pos = nx.spring_layout(G_parallel_simple, seed=42)
-edge_labels = nx.get_edge_attributes(G_parallel_simple, 'weight')
+def draw_circuit(G, pos, title):
+    plt.figure(figsize=(10, 5))
 
-plt.figure(figsize=(6, 4))
-nx.draw(G_parallel_simple, pos, with_labels=True, node_color='lightyellow', node_size=700)
-nx.draw_networkx_edge_labels(G_parallel_simple, pos, edge_labels={k: f"{v:.1f}Ω" for k, v in edge_labels.items()})
-plt.title("After Parallel Simplification: A ↔ B (4.8Ω)")
-plt.show()
+    # Classify nodes
+    circle_nodes = [n for n in G.nodes if n.startswith('o')]
+    square_nodes = [n for n in G.nodes if n.startswith('I') or n.startswith('D') or n.startswith('R')]
+
+    # Draw edges
+    nx.draw_networkx_edges(G, pos, arrows=True)
+
+    # Draw nodes with different shapes
+    nx.draw_networkx_nodes(
+        G, pos, nodelist=circle_nodes,
+        node_color=[G.nodes[n].get('color', 'lightgrey') for n in circle_nodes],
+        node_size=2000, node_shape='o'
+    )
+    nx.draw_networkx_nodes(
+        G, pos, nodelist=square_nodes,
+        node_color=[G.nodes[n].get('color', 'lightgrey') for n in square_nodes],
+        node_size=2000, node_shape='s'
+    )
+
+    # Draw labels
+    nx.draw_networkx_labels(G, pos, font_size=10)
+
+    plt.title(title)
+    plt.axis('off')
+    plt.show()
+
+
+# First graph: Original circuit
+G1 = nx.DiGraph()
+inputs = [f"I{i}" for i in range(1, 4)]
+outputs = [f"D{i}" for i in range(1, 5)]
+
+# Add nodes and edges
+G1.add_node("o1", color='lightgreen')
+G1.add_node("o2", color='red')
+G1.add_node("o3", color='lightgreen')
+G1.add_node("R1")
+G1.add_node("R2")
+
+for i in inputs:
+    G1.add_edge(i, "o1")
+
+G1.add_edge("o1", "R1")
+G1.add_edge("R1", "o2")
+G1.add_edge("o2", "R2")
+G1.add_edge("R2", "o3")
+
+for d in outputs:
+    G1.add_edge("o3", d)
+
+# Positioning manually
+pos1 = {
+    "I1": (-2, 1), "I2": (-2, 0), "I3": (-2, -1),
+    "o1": (-1, 0), "R1": (0, 0), "o2": (1, 0), "R2": (2, 0), "o3": (3, 0),
+    "D1": (4, 1), "D2": (4, 0.5), "D3": (4, -0.5), "D4": (4, -1)
+}
+
+draw_circuit(G1, pos1, "Original Circuit")
+
+# Second graph: Simplified circuit
+G2 = nx.DiGraph()
+G2.add_node("o1", color='lightgreen')
+G2.add_node("o3", color='lightgreen')
+G2.add_node("R12")
+
+for i in inputs:
+    G2.add_edge(i, "o1")
+
+G2.add_edge("o1", "R12")
+G2.add_edge("R12", "o3")
+
+for i in range(1, 6):  # Assume m=5 for illustration
+    G2.add_edge("o3", f"D{i}")
+
+# Positioning manually
+pos2 = {
+    "I1": (-2, 1), "I2": (-2, 0), "I3": (-2, -1),
+    "o1": (-1, 0), "R12": (0, 0), "o3": (1, 0),
+    "D1": (2, 1), "D2": (2, 0.5), "D3": (2, 0), "D4": (2, -0.5), "D5": (2, -1)
+}
+
+draw_circuit(G2, pos2, "Simplified Circuit")
 </code></pre>
-<p><img alt="Simplification Parallel" src="../../../_pics/Physics/5%20Circuits/Problem_1/simplification_parallel.png"/></p>
-<h3 id="colab-circuits-problem-1">Colab: Circuits Problem 1</h3>
-<p><a href="https://colab.research.google.com/drive/1BwGVhREaPlcOuarPoGW_Ov7ZTVtykMyb?usp=sharing">Souce Code</a></p>
+<p><img alt="Series Original" src="../../../_pics/Physics/5%20Circuits/Problem_1/building_blocks/series_original.png"/></p>
+<p>Can be replaced by
+<img alt="Series Simplified" src="../../../_pics/Physics/5%20Circuits/Problem_1/building_blocks/series_simplified.png"/></p>
+<hr/>
+<h4 id="parallel-configuration">Parallel configuration</h4>
+<p><img alt="Parallel Original" src="../../../_pics/Physics/5%20Circuits/Problem_1/building_blocks/parallel_original.png"/></p>
+<p>Can be replaced by
+<img alt="Parallel Simplified" src="../../../_pics/Physics/5%20Circuits/Problem_1/building_blocks/parallel_simplified.png"/></p>
 </div>
 </div><footer>
 <div aria-label="Footer Navigation" class="rst-footer-buttons" role="navigation">
