@@ -750,7 +750,7 @@ This value encapsulates the total resistance between START and END nodes and is 
 
 ---
 
-## Plot and Visualization
+## 8. Plot and Visualization
 
 ### Circuit simplification
 
@@ -1230,3 +1230,6 @@ Can be replaced by
 
 Can be replaced by
 ![Parallel Simplified](../../_pics/Physics/5%20Circuits/Problem_1/building_blocks/parallel_simplified.png)
+
+### Colab: Circuit Problem 1
+[Souce Code](https://colab.research.google.com/drive/1ZesDtPsi-T2gTUKiNK-pqcJ_RN1R3pau?usp=sharing)
