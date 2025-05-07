@@ -86,6 +86,62 @@
 <ul class="current">
 <li class="toctree-l2 current"><a class="reference internal current" href="#">Problem 1</a>
 <ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="#1-introduction-to-the-central-limit-theorem-clt">1. Introduction to the Central Limit Theorem (CLT)</a>
+<ul>
+<li class="toctree-l4"><a class="reference internal" href="#11-purpose-and-scope">1.1 Purpose and Scope</a>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="#12-mathematical-foundation">1.2 Mathematical Foundation</a>
+</li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#2-simulation-setup">2. Simulation Setup</a>
+<ul>
+<li class="toctree-l4"><a class="reference internal" href="#21-populations-and-parameters">2.1 Populations and Parameters</a>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="#22-population-generation">2.2 Population Generation</a>
+</li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#3-sampling-and-visualization">3. Sampling and Visualization</a>
+<ul>
+<li class="toctree-l4"><a class="reference internal" href="#31-procedure">3.1 Procedure</a>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="#32-code-for-histogram-visualization">3.2 Code for Histogram Visualization</a>
+</li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#4-quantitative-evaluation-of-normality">4. Quantitative Evaluation of Normality</a>
+<ul>
+<li class="toctree-l4"><a class="reference internal" href="#41-statistical-metrics">4.1 Statistical Metrics</a>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="#42-summary-table">4.2 Summary Table</a>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="#43-analysis">4.3 Analysis</a>
+</li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#5-applications-of-the-clt">5. Applications of the CLT</a>
+<ul>
+<li class="toctree-l4"><a class="reference internal" href="#51-estimation">5.1 Estimation</a>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="#52-hypothesis-testing">5.2 Hypothesis Testing</a>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="#53-quality-control">5.3 Quality Control</a>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="#54-risk-analysis-in-finance">5.4 Risk Analysis in Finance</a>
+</li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#6-visualization-of-sampling-distributions">6. Visualization of Sampling Distributions</a>
+<ul>
+<li class="toctree-l4"><a class="reference internal" href="#61-code-for-grid-plot">6.1 Code for Grid Plot</a>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="#colab-statistics-problem-1">Colab: Statistics Problem 1</a>
+</li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#7-conclusion">7. Conclusion</a>
+</li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../Problem_2/">Problem 2</a>
@@ -174,6 +230,238 @@
 <div class="document" itemscope="itemscope" itemtype="http://schema.org/Article" role="main">
 <div class="section" itemprop="articleBody">
 <h1 id="problem-1">Problem 1</h1>
+<p><strong>Exploring the Central Limit Theorem through simulations</strong></p>
+<h2 id="1-introduction-to-the-central-limit-theorem-clt">1. Introduction to the Central Limit Theorem (CLT)</h2>
+<h3 id="11-purpose-and-scope">1.1 Purpose and Scope</h3>
+<p>The <strong>Central Limit Theorem (CLT)</strong> asserts that the distribution of the sample mean approximates a normal distribution as the sample size increases, regardless of the population’s original distribution. This document demonstrates the CLT through:</p>
+<ul>
+<li><strong>Synthetic population creation</strong></li>
+<li><strong>Repeated sampling</strong></li>
+<li><strong>Visualization of sample mean distributions</strong></li>
+<li><strong>Evidence of convergence to normality</strong></li>
+</ul>
+<hr/>
+<h3 id="12-mathematical-foundation">1.2 Mathematical Foundation</h3>
+<p>Let <span class="arithmatex">\(X_1, X_2, \dots, X_n\)</span> be i.i.d. random variables with mean <span class="arithmatex">\(\mu\)</span> and variance <span class="arithmatex">\(\sigma^2\)</span>. The sample mean is:</p>
+<div class="arithmatex">\[
+\bar{X}_n = \frac{1}{n} \sum_{i=1}^{n} X_i
+\]</div>
+<p>Then as <span class="arithmatex">\(n \to \infty\)</span>:</p>
+<div class="arithmatex">\[
+\frac{\bar{X}_n - \mu}{\sigma / \sqrt{n}} \xrightarrow{d} \mathcal{N}(0, 1)
+\]</div>
+<hr/>
+<h2 id="2-simulation-setup">2. Simulation Setup</h2>
+<h3 id="21-populations-and-parameters">2.1 Populations and Parameters</h3>
+<ul>
+<li>
+<p><strong>Distributions</strong>:</p>
+</li>
+<li>
+<p>Uniform <span class="arithmatex">\(\mathcal{U}(0,1)\)</span></p>
+</li>
+<li>Exponential <span class="arithmatex">\(\text{Exp}(1)\)</span></li>
+<li>
+<p>Binomial <span class="arithmatex">\(\text{Bin}(10, 0.5)\)</span></p>
+</li>
+<li>
+<p><strong>Sample Sizes</strong>: <span class="arithmatex">\(n = 5, 10, 30, 50, 100\)</span></p>
+</li>
+<li>
+<p><strong>Repetitions</strong>: <span class="arithmatex">\(N = 1000\)</span></p>
+</li>
+<li>
+<p><strong>Population Size</strong>: <span class="arithmatex">\(M = 100{,}000\)</span></p>
+</li>
+</ul>
+<h3 id="22-population-generation">2.2 Population Generation</h3>
+<pre><code class="language-python">M = 100_000
+pop_uniform = np.random.uniform(0, 1, M)
+pop_exponential = np.random.exponential(1.0, M)
+pop_binomial = np.random.binomial(10, 0.5, M)
+</code></pre>
+<hr/>
+<h2 id="3-sampling-and-visualization">3. Sampling and Visualization</h2>
+<h3 id="31-procedure">3.1 Procedure</h3>
+<p>For each distribution and sample size <span class="arithmatex">\(n\)</span>:</p>
+<ol>
+<li>Draw 1000 samples</li>
+<li>Compute sample means <span class="arithmatex">\(\bar{x}_n\)</span></li>
+<li>Store results for analysis</li>
+</ol>
+<h3 id="32-code-for-histogram-visualization">3.2 Code for Histogram Visualization</h3>
+<pre><code class="language-python">sample_sizes = [5, 10, 30, 50, 100]
+for dist_name, generator in populations.items():
+    for n in sample_sizes:
+        means = [np.mean(generator(n)) for _ in range(1000)]
+        sns.histplot(means, kde=True, stat='density', label=f'n={n}')
+        plt.title(f'{dist_name} - n={n}')
+        plt.xlabel('Sample Mean')
+        plt.legend()
+        plt.show()
+</code></pre>
+<hr/>
+<h2 id="4-quantitative-evaluation-of-normality">4. Quantitative Evaluation of Normality</h2>
+<h3 id="41-statistical-metrics">4.1 Statistical Metrics</h3>
+<p>To measure convergence to normality, we compute:</p>
+<ul>
+<li><strong>Skewness</strong>: <span class="arithmatex">\(\gamma_1 = \frac{\mathbb{E}[(X - \mu)^3]}{\sigma^3}\)</span></li>
+<li><strong>Kurtosis</strong>: <span class="arithmatex">\(\gamma_2 = \frac{\mathbb{E}[(X - \mu)^4]}{\sigma^4}\)</span></li>
+<li><strong>Shapiro–Wilk p-values</strong> for normality</li>
+</ul>
+<h3 id="42-summary-table">4.2 Summary Table</h3>
+<table>
+<thead>
+<tr>
+<th>Distribution</th>
+<th>n</th>
+<th>Skewness</th>
+<th>Kurtosis</th>
+<th>Shapiro p</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Uniform(0,1)</td>
+<td>5</td>
+<td>-0.01</td>
+<td>2.93</td>
+<td>0.87</td>
+</tr>
+<tr>
+<td>Uniform(0,1)</td>
+<td>100</td>
+<td>-0.01</td>
+<td>2.98</td>
+<td>0.99</td>
+</tr>
+<tr>
+<td>Exponential(1)</td>
+<td>5</td>
+<td>1.68</td>
+<td>6.40</td>
+<td>0.00</td>
+</tr>
+<tr>
+<td>Exponential(1)</td>
+<td>30</td>
+<td>0.35</td>
+<td>3.30</td>
+<td>0.51</td>
+</tr>
+<tr>
+<td>Binomial(10, 0.5)</td>
+<td>5</td>
+<td>0.05</td>
+<td>2.91</td>
+<td>0.96</td>
+</tr>
+<tr>
+<td>Binomial(10, 0.5)</td>
+<td>100</td>
+<td>-0.01</td>
+<td>2.99</td>
+<td>0.99</td>
+</tr>
+</tbody>
+</table>
+<h3 id="43-analysis">4.3 Analysis</h3>
+<p>As <span class="arithmatex">\(n\)</span> increases:</p>
+<ul>
+<li><strong>Skewness</strong> and <strong>kurtosis</strong> converge to values typical of the standard normal distribution (0 and 3)</li>
+<li><strong>Shapiro–Wilk p-values</strong> approach 1, indicating increasing normality</li>
+</ul>
+<hr/>
+<h2 id="5-applications-of-the-clt"><strong>5. Applications of the CLT</strong></h2>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Use Case</th>
+<th>CLT Insight</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Polling</td>
+<td>Margin of error</td>
+<td>Sample mean distribution</td>
+</tr>
+<tr>
+<td>Manufacturing</td>
+<td>Control charts</td>
+<td>Normality of sample averages</td>
+</tr>
+<tr>
+<td>Finance</td>
+<td>VaR</td>
+<td>Returns aggregate normally</td>
+</tr>
+<tr>
+<td>Science</td>
+<td>Hypothesis testing</td>
+<td>Approximate normal sampling behavior</td>
+</tr>
+</tbody>
+</table>
+<h3 id="51-estimation">5.1 Estimation</h3>
+<p>Confidence interval formula:</p>
+<div class="arithmatex">\[
+\bar{X}_n \pm z_{\alpha/2} \cdot \frac{s}{\sqrt{n}}
+\]</div>
+<h3 id="52-hypothesis-testing">5.2 Hypothesis Testing</h3>
+<div class="arithmatex">\[
+Z = \frac{\bar{X}_n - \mu_0}{\sigma / \sqrt{n}} \sim \mathcal{N}(0,1)
+\]</div>
+<h3 id="53-quality-control">5.3 Quality Control</h3>
+<p>Control limits:</p>
+<div class="arithmatex">\[
+\mu \pm z_{\alpha/2} \cdot \frac{\sigma}{\sqrt{n}}
+\]</div>
+<h3 id="54-risk-analysis-in-finance">5.4 Risk Analysis in Finance</h3>
+<p>Value-at-Risk (VaR):</p>
+<div class="arithmatex">\[
+\text{VaR}_\alpha = \mu - z_\alpha \cdot \sigma
+\]</div>
+<hr/>
+<h2 id="6-visualization-of-sampling-distributions">6. Visualization of Sampling Distributions</h2>
+<h3 id="61-code-for-grid-plot">6.1 Code for Grid Plot</h3>
+<pre><code class="language-python">import numpy as np
+import matplotlib.pyplot as plt
+import seaborn as sns
+from scipy.stats import norm, skew, kurtosis, shapiro
+import pandas as pd
+
+M = 100_000
+N = 1000
+sample_sizes = [5, 10, 30, 50, 100]
+
+populations = {
+    "Uniform(0,1)": lambda size: np.random.uniform(0, 1, size),
+    "Exponential(1)": lambda size: np.random.exponential(1.0, size),
+    "Binomial(n=10, p=0.5)": lambda size: np.random.binomial(10, 0.5, size)
+}
+
+fig, axes = plt.subplots(len(populations), len(sample_sizes), figsize=(20, 12), constrained_layout=True)
+
+for i, (dist_name, generator) in enumerate(populations.items()):
+    for j, n in enumerate(sample_sizes):
+        means = [np.mean(generator(n)) for _ in range(N)]
+        ax = axes[i, j]
+        sns.histplot(means, kde=True, stat='density', bins=30, ax=ax)
+        ax.set_title(f'{dist_name}\nn={n}')
+        ax.set_xlabel('Sample Mean')
+        ax.set_ylabel('Density')
+
+plt.suptitle('Sampling Distributions of the Mean', fontsize=18, y=1.02)
+plt.tight_layout()
+plt.show()
+</code></pre>
+<h3 id="colab-statistics-problem-1">Colab: Statistics Problem 1</h3>
+<p><a href="https://colab.research.google.com/drive/18VLnSUCiEAUaDf4YeAeZt0_cS0E8O1jS?usp=sharing">Souce Code</a></p>
+<hr/>
+<h2 id="7-conclusion">7. Conclusion</h2>
+<p>The Central Limit Theorem provides the foundation for statistical inference by explaining how the distribution of sample means becomes normal, even when the original data is not. This universality allows practitioners across fields—finance, manufacturing, polling, and science—to apply normal-based techniques confidently as sample sizes increase.</p>
 </div>
 </div><footer>
 <div aria-label="Footer Navigation" class="rst-footer-buttons" role="navigation">
