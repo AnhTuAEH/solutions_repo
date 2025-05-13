@@ -39,22 +39,48 @@ pi_estimate = 4 * np.sum(inside) / N
 Plot the points with a unit circle boundary:
 
 ```python
+import numpy as np
 import matplotlib.pyplot as plt
 
+# Number of points
+N = 10000
+
+# Generate random points in [-1, 1] x [-1, 1]
+x = np.random.uniform(-1, 1, N)
+y = np.random.uniform(-1, 1, N)
+
+# Check which points fall inside the unit circle
+inside = x**2 + y**2 <= 1
+
+# Estimate π
+pi_estimate = 4 * np.sum(inside) / N
+
+# Print the estimated value of π
+print(f"Monte Carlo Estimation of π")
+print(f"Estimated value of π using {N} points: {pi_estimate:.6f}")
+
+# (Optional) Calculate absolute error
+pi_error = abs(np.pi - pi_estimate)
+print(f"Absolute error: {pi_error:.6f}")
+
+# Plot the result
 plt.figure(figsize=(6, 6))
 plt.scatter(x[inside], y[inside], color='blue', s=1, label='Inside Circle')
 plt.scatter(x[~inside], y[~inside], color='red', s=1, label='Outside Circle')
+
+# Plot the actual unit circle for reference
 theta = np.linspace(0, 2 * np.pi, 300)
 plt.plot(np.cos(theta), np.sin(theta), color='black', linewidth=1.5, label='Unit Circle')
+
 plt.gca().set_aspect('equal')
-plt.title('Monte Carlo Estimation of $\pi$')
+plt.title('Monte Carlo Estimation of π')
 plt.xlabel('x')
 plt.ylabel('y')
 plt.legend()
 plt.grid(True)
 plt.show()
 ```
-![Monte Carlo Estimation of PI](../../_pics/Physics/6%20Statistics/Problem_2/monte-carlo-estimation-of-pi.png)
+![Monte Carlo Estimation of PI](../../_pics/Physics/6%20Statistics/Problem_2/monte-carlo-estimation-of-pi_v2.png)
 
 ### 4. Analysis
 
@@ -105,30 +131,60 @@ pi_estimate = (2 * L * N) / (t * C)
 Simulate and plot needle drops with crossing indicators:
 
 ```python
+import numpy as np
 import matplotlib.pyplot as plt
 
-N = 200
-x_center = np.random.uniform(0, 10, N)
-y_center = np.random.uniform(0, 10, N)
+# -------------------------------
+# Buffon’s Needle Simulation
+# -------------------------------
+
+# Simulation parameters
+N = 100000  # Number of needles
+L = 1.0     # Length of the needle
+t = 1.5     # Distance between parallel lines
+
+# Generate random needle angles and distances
 theta = np.random.uniform(0, np.pi, N)
+d = np.random.uniform(0, t / 2, N)
 
-L = 1.0
-t = 1.5
+# Check which needles cross a line
+crosses = (L / 2) * np.sin(theta) >= d
+C = np.sum(crosses)
 
-dx = (L / 2) * np.cos(theta)
-dy = (L / 2) * np.sin(theta)
+# Estimate π
+pi_estimate = (2 * L * N) / (t * C)
+error = abs(np.pi - pi_estimate)
+
+# Print the results
+print(f"Estimated π using {N} needles: {pi_estimate:.6f}")
+print(f"Absolute error: {error:.6f}")
+
+# -------------------------------
+# Visualization (for a smaller subset)
+# -------------------------------
+N_vis = 200  # number of needles to visualize
+x_center = np.random.uniform(0, 10, N_vis)
+y_center = np.random.uniform(0, 10, N_vis)
+theta_vis = np.random.uniform(0, np.pi, N_vis)
+
+dx = (L / 2) * np.cos(theta_vis)
+dy = (L / 2) * np.sin(theta_vis)
+
 x_start = x_center - dx
 x_end = x_center + dx
 y_start = y_center - dy
 y_end = y_center + dy
 
-crosses = ((y_start // t) != (y_end // t))
+# Check which visualized needles cross a line
+crosses_vis = ((y_start // t) != (y_end // t))
 
+# Plotting
 plt.figure(figsize=(8, 8))
-for i in range(N):
-    color = 'red' if crosses[i] else 'blue'
+for i in range(N_vis):
+    color = 'red' if crosses_vis[i] else 'blue'
     plt.plot([x_start[i], x_end[i]], [y_start[i], y_end[i]], color=color, linewidth=1)
 
+# Draw horizontal lines
 for y_line in np.arange(0, 10 + t, t):
     plt.axhline(y=y_line, color='black', linestyle='--', linewidth=0.5)
 
@@ -139,7 +195,7 @@ plt.axis('equal')
 plt.grid(True)
 plt.show()
 ```
-![Buffon's Needle Simulation](../../_pics/Physics/6%20Statistics/Problem_2/buffon-needle-simulation.png)
+![Buffon's Needle Simulation](../../_pics/Physics/6%20Statistics/Problem_2/buffon-needle-simulation_v2.png)
 
 ### 4. Analysis
 

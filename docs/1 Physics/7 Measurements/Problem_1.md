@@ -32,16 +32,17 @@ Gently release pendulum. Measure time for 10 oscillations ($T_{10}$), repeated 1
 
 | Trial | $T_{10}$ (s) |
 |-------|--------------|
-| 1     | 20.35        |
-| 2     | 20.42        |
-| 3     | 20.38        |
-| 4     | 20.40        |
-| 5     | 20.36        |
-| 6     | 20.39        |
-| 7     | 20.41        |
-| 8     | 20.37        |
-| 9     | 20.34        |
-| 10    | 20.38        |
+| 1     | 19.58        |
+| 2     | 20.01        |
+| 3     | 20.12        |
+| 4     | 19.96        |
+| 5     | 19.75        |
+| 6     | 19.85        |
+| 7     | 20.03        |
+| 8     | 19.89        |
+| 9     | 20.25        |
+| 10    | 20.32        |
+
 
 Compute:
 
@@ -72,17 +73,17 @@ $$
 
 ## 4. Results Summary
 
-| Quantity            | Value      |
-| ------------------- | ---------- |
-| $\overline{T}_{10}$ | 20.3800 s  |
-| $\sigma_T$          | 0.0258 s   |
-| $\Delta T_{10}$     | 0.0082 s   |
-| $T$                 | 2.0380 s   |
-| $\Delta T$          | 0.00082 s  |
-| $L$                 | 1.050 m    |
-| $\Delta L$          | 0.0005 m   |
-| $g$                 | 9.980 m/s² |
-| $\Delta g$          | 0.009 m/s² |
+| Quantity               | Value       |
+| ---------------------- | ----------- |
+| $\overline{T}\_{10}$ | 19.9760 s   |
+| $\sigma\_T$          | 0.2235 s    |
+| $\Delta T\_{10}$     | 0.0707 s    |
+| $T$                  | 1.9976 s    |
+| $\Delta T$           | 0.00707 s   |
+| $L$                  | 1.050 m     |
+| $\Delta L$           | 0.0005 m    |
+| $g$                  | 10.388 m/s² |
+| $\Delta g$           | 0.074 m/s²  |
 
 ---
 
@@ -97,7 +98,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 
 # Replace with your actual measurements
-t10_values = np.array([20.35, 20.42, 20.38, 20.40, 20.36, 20.39, 20.41, 20.37, 20.34, 20.38])
+t10_values = np.array([19.58, 20.01, 20.12, 19.96, 19.75, 19.85, 20.03, 19.89, 20.25, 20.32])
 n = len(t10_values)
 
 # Pendulum length and resolution
