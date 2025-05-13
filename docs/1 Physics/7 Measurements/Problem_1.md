@@ -163,29 +163,6 @@ plt.show()
 ```
 ![T10 vs Trial](../../_pics/Physics/7%20Measurements/Problem_1/image_2.png)
 
-### T² vs Length (for multiple lengths)
-```python
-import numpy as np
-import matplotlib.pyplot as plt
-
-# Example Data (Replace with actual values if available)
-L_values = np.array([0.8, 0.9, 1.0, 1.1, 1.2])  # Lengths in meters
-T_values = np.array([1.79, 1.90, 2.01, 2.11, 2.20])  # Periods in seconds
-T_squared = T_values**2
-
-# Plot
-plt.figure(figsize=(8, 5))
-plt.plot(L_values, T_squared, 'o-', label='T² vs L', markersize=6)
-plt.xlabel('Length (m)')
-plt.ylabel('Period² (s²)')
-plt.title('T² vs Length')
-plt.grid(True, linestyle='--', alpha=0.6)
-plt.legend()
-plt.tight_layout()
-plt.show()
-```
-![T10 vs Trial](../../_pics/Physics/7%20Measurements/Problem_1/image_3.png)
-
 ### Colab Measurements Problem 1
 [Souce Code](https://colab.research.google.com/drive/1HUtq7RRQ6GR3qvYTUgwvtYOdLsazqWwU#scrollTo=fBGiMl0CDPkF)
 
