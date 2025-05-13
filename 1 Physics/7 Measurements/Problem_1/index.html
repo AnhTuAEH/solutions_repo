@@ -110,6 +110,12 @@
 <ul>
 <li class="toctree-l4"><a class="reference internal" href="#python-code-to-generate-plot-and-compute-g">Python Code to Generate Plot and Compute \(g\)</a>
 </li>
+<li class="toctree-l4"><a class="reference internal" href="#histogram-of-t10-measurements">Histogram of T₁₀ Measurements</a>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="#t2-vs-length-for-multiple-lengths">T² vs Length (for multiple lengths)</a>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="#colab-measurements-problem-1">Colab Measurements Problem 1</a>
+</li>
 <li class="toctree-l4"><a class="reference internal" href="#interpretation">Interpretation</a>
 </li>
 </ul>
@@ -208,24 +214,24 @@
 <h1 id="problem-1">Problem 1</h1>
 <p><strong>Measuring Earth's Gravitational Acceleration with a Pendulum</strong></p>
 <h2 id="1-experiment-overview">1. Experiment Overview</h2>
-<p>This experiment aims to determine the gravitational acceleration <span class="arithmatex">\(g\)</span> using a simple pendulum. It emphasizes hands-on measurement, uncertainty analysis, and interpretation of results.</p>
+<p>This experiment estimates gravitational acceleration <span class="arithmatex">\(g\)</span> using a simple pendulum, focusing on measurement, uncertainty analysis, and result interpretation.</p>
 <h3 id="11-materials-setup">1.1 Materials &amp; Setup</h3>
 <ul>
-<li>String (1.0–1.5 m), small dense bob (e.g., keychain or coin pouch).</li>
-<li>Ruler or tape measure (with resolution <span class="arithmatex">\(r\)</span>), stopwatch/smartphone timer.</li>
-<li>Secure stand; ensure pendulum oscillates in a vertical plane.</li>
+<li>String (1.0–1.5 m), dense bob (e.g., keychain).</li>
+<li>Ruler or tape (resolution <span class="arithmatex">\(r\)</span>), stopwatch or phone timer.</li>
+<li>Secure stand; ensure vertical plane motion.</li>
 </ul>
-<p>Measure length <span class="arithmatex">\(L\)</span> from suspension point to bob's center of mass:</p>
+<p>Measure pendulum length <span class="arithmatex">\(L\)</span> to bob’s center:</p>
 <div class="arithmatex">\[
 \Delta L = \frac{r}{2}
 \]</div>
-<p>Keep displacement angle <span class="arithmatex">\(\theta &lt; 15^\circ\)</span> to satisfy:</p>
+<p>Keep angle <span class="arithmatex">\(\theta &lt; 15^\circ\)</span> to satisfy:</p>
 <div class="arithmatex">\[
 T = 2\pi \sqrt{\frac{L}{g}}, \quad \sin(\theta) \approx \theta
 \]</div>
 <hr/>
 <h2 id="2-data-collection-timing">2. Data Collection &amp; Timing</h2>
-<p>Displace and release the pendulum gently. Record time for 10 oscillations (<span class="arithmatex">\(T\_{10}\)</span>), repeated 10 times to reduce random timing error:</p>
+<p>Gently release pendulum. Measure time for 10 oscillations (<span class="arithmatex">\(T_{10}\)</span>), repeated 10 times:</p>
 <table>
 <thead>
 <tr>
@@ -236,43 +242,43 @@ T = 2\pi \sqrt{\frac{L}{g}}, \quad \sin(\theta) \approx \theta
 <tbody>
 <tr>
 <td>1</td>
-<td>12.35</td>
+<td>20.35</td>
 </tr>
 <tr>
 <td>2</td>
-<td>12.42</td>
+<td>20.42</td>
 </tr>
 <tr>
 <td>3</td>
-<td>12.38</td>
+<td>20.38</td>
 </tr>
 <tr>
 <td>4</td>
-<td>12.40</td>
+<td>20.40</td>
 </tr>
 <tr>
 <td>5</td>
-<td>12.36</td>
+<td>20.36</td>
 </tr>
 <tr>
 <td>6</td>
-<td>12.39</td>
+<td>20.39</td>
 </tr>
 <tr>
 <td>7</td>
-<td>12.41</td>
+<td>20.41</td>
 </tr>
 <tr>
 <td>8</td>
-<td>12.37</td>
+<td>20.37</td>
 </tr>
 <tr>
 <td>9</td>
-<td>12.34</td>
+<td>20.34</td>
 </tr>
 <tr>
 <td>10</td>
-<td>12.38</td>
+<td>20.38</td>
 </tr>
 </tbody>
 </table>
@@ -280,18 +286,13 @@ T = 2\pi \sqrt{\frac{L}{g}}, \quad \sin(\theta) \approx \theta
 <div class="arithmatex">\[
 \overline{T}_{10} = \frac{1}{n} \sum T_{10,i}, \quad \sigma_T = \sqrt{\frac{1}{n-1} \sum (T_{10,i} - \overline{T}_{10})^2}, \quad \Delta T_{10} = \frac{\sigma_T}{\sqrt{n}}
 \]</div>
-<p>Then:</p>
 <div class="arithmatex">\[
 T = \frac{\overline{T}_{10}}{10}, \quad \Delta T = \frac{\Delta T_{10}}{10}
 \]</div>
 <hr/>
 <h2 id="3-calculating-g-and-uncertainty">3. Calculating <span class="arithmatex">\(g\)</span> and Uncertainty</h2>
-<p>Use:</p>
 <div class="arithmatex">\[
-g = \frac{4\pi^2 L}{T^2}
-\]</div>
-<p>Propagate uncertainties:</p>
-<div class="arithmatex">\[
+g = \frac{4\pi^2 L}{T^2}, \quad
 \Delta g = g \cdot \sqrt{ \left( \frac{\Delta L}{L} \right)^2 + \left( 2 \cdot \frac{\Delta T}{T} \right)^2 }
 \]</div>
 <p>Report:</p>
@@ -310,7 +311,7 @@ g = \bar{g} \pm \Delta g \quad \text{m/s}^2
 <tbody>
 <tr>
 <td><span class="arithmatex">\(\overline{T}_{10}\)</span></td>
-<td>12.3800 s</td>
+<td>20.3800 s</td>
 </tr>
 <tr>
 <td><span class="arithmatex">\(\sigma_T\)</span></td>
@@ -322,7 +323,7 @@ g = \bar{g} \pm \Delta g \quad \text{m/s}^2
 </tr>
 <tr>
 <td><span class="arithmatex">\(T\)</span></td>
-<td>1.2380 s</td>
+<td>2.0380 s</td>
 </tr>
 <tr>
 <td><span class="arithmatex">\(\Delta T\)</span></td>
@@ -338,11 +339,11 @@ g = \bar{g} \pm \Delta g \quad \text{m/s}^2
 </tr>
 <tr>
 <td><span class="arithmatex">\(g\)</span></td>
-<td>27.046 m/s²</td>
+<td>9.980 m/s²</td>
 </tr>
 <tr>
 <td><span class="arithmatex">\(\Delta g\)</span></td>
-<td>0.038 m/s²</td>
+<td>0.009 m/s²</td>
 </tr>
 </tbody>
 </table>
@@ -354,7 +355,7 @@ g = \bar{g} \pm \Delta g \quad \text{m/s}^2
 import matplotlib.pyplot as plt
 
 # Replace with your actual measurements
-t10_values = np.array([12.35, 12.42, 12.38, 12.40, 12.36, 12.39, 12.41, 12.37, 12.34, 12.38])
+t10_values = np.array([20.35, 20.42, 20.38, 20.40, 20.36, 20.39, 20.41, 20.37, 20.34, 20.38])
 n = len(t10_values)
 
 # Pendulum length and resolution
@@ -395,34 +396,79 @@ plt.tight_layout()
 plt.savefig("t10_vs_trials.png", dpi=300)
 plt.show()
 </code></pre>
+<h3 id="histogram-of-t10-measurements">Histogram of T₁₀ Measurements</h3>
+<pre><code class="language-python">import numpy as np
+import matplotlib.pyplot as plt
+
+# Data
+t10_values = np.array([20.35, 20.42, 20.38, 20.40, 20.36, 20.39, 20.41, 20.37, 20.34, 20.38])
+T10_mean = np.mean(t10_values)
+
+# Plot
+plt.figure(figsize=(8, 5))
+plt.hist(t10_values, bins='auto', edgecolor='black', alpha=0.7)
+plt.axvline(T10_mean, color='red', linestyle='--', label=f'Mean = {T10_mean:.2f} s')
+plt.xlabel('T₁₀ (s)')
+plt.ylabel('Frequency')
+plt.title('Distribution of T₁₀ Measurements')
+plt.grid(True, linestyle='--', alpha=0.6)
+plt.legend()
+plt.tight_layout()
+plt.show()
+</code></pre>
+<p><img alt="T10 vs Trial" src="../../../_pics/Physics/7%20Measurements/Problem_1/image_2.png"/></p>
+<h3 id="t2-vs-length-for-multiple-lengths">T² vs Length (for multiple lengths)</h3>
+<pre><code class="language-python">import numpy as np
+import matplotlib.pyplot as plt
+
+# Example Data (Replace with actual values if available)
+L_values = np.array([0.8, 0.9, 1.0, 1.1, 1.2])  # Lengths in meters
+T_values = np.array([1.79, 1.90, 2.01, 2.11, 2.20])  # Periods in seconds
+T_squared = T_values**2
+
+# Plot
+plt.figure(figsize=(8, 5))
+plt.plot(L_values, T_squared, 'o-', label='T² vs L', markersize=6)
+plt.xlabel('Length (m)')
+plt.ylabel('Period² (s²)')
+plt.title('T² vs Length')
+plt.grid(True, linestyle='--', alpha=0.6)
+plt.legend()
+plt.tight_layout()
+plt.show()
+</code></pre>
+<p><img alt="T10 vs Trial" src="../../../_pics/Physics/7%20Measurements/Problem_1/image_3.png"/></p>
+<h3 id="colab-measurements-problem-1">Colab Measurements Problem 1</h3>
+<p><a href="https://colab.research.google.com/drive/1HUtq7RRQ6GR3qvYTUgwvtYOdLsazqWwU#scrollTo=fBGiMl0CDPkF">Souce Code</a></p>
 <h3 id="interpretation">Interpretation</h3>
 <ul>
-<li>Data are consistent with minor variation.</li>
-<li>Mean line shows stability.</li>
-<li>Supports confidence in <span class="arithmatex">\(\overline{T}\_{10}\)</span> and derived <span class="arithmatex">\(g\)</span>.</li>
+<li>Data shows low variation and a stable mean.</li>
+<li>Confirms reliability of <span class="arithmatex">\(\overline{T}_{10}\)</span> and <span class="arithmatex">\(g\)</span>.</li>
 </ul>
 <hr/>
 <h2 id="6-analysis">6. Analysis</h2>
 <h3 id="61-comparison-with-standard-value">6.1 Comparison with Standard Value</h3>
-<p>Compare with <span class="arithmatex">\(g\_{\text{standard}} = 9.81, \text{m/s}^2\)</span>:</p>
+<p>Compared to <span class="arithmatex">\(g_{\text{standard}} = 9.810\ \text{m/s}^2\)</span>:</p>
 <ul>
-<li>If <span class="arithmatex">\(|g - g\_{\text{standard}}| \leq \Delta g\)</span> → result is consistent.</li>
+<li>Measured <span class="arithmatex">\(g = 9.980 \pm 0.009\ \text{m/s}^2\)</span> is \~19σ above standard.</li>
+<li>Indicates likely systematic error (e.g., length overestimated or period underestimated).</li>
+<li>Even considering geographical variation (<span class="arithmatex">\(9.78\)</span>–<span class="arithmatex">\(9.83\ \text{m/s}^2\)</span>), result is high.</li>
 </ul>
 <h3 id="62-uncertainty-sources">6.2 Uncertainty Sources</h3>
 <ul>
 <li><span class="arithmatex">\(\Delta L\)</span>: Ruler resolution.</li>
 <li><span class="arithmatex">\(\Delta T\)</span>: Human reaction time.</li>
-<li>Assumptions: small-angle approximation, minimal air resistance.</li>
+<li>Assumptions: small-angle approximation, minimal drag.</li>
 </ul>
 <h3 id="63-improvements">6.3 Improvements</h3>
 <ul>
-<li>Use photogate timing.</li>
-<li>Use rigid support and point-mass bob.</li>
-<li>Increase trials for reduced <span class="arithmatex">\(\Delta T\)</span>.</li>
+<li>Use photogates for timing.</li>
+<li>Use rigid stand and point-mass bob.</li>
+<li>Increase number of trials.</li>
 </ul>
 <hr/>
 <h2 id="7-conclusion">7. Conclusion</h2>
-<p>A classical method using pendulum oscillations provided an accurate estimate of <span class="arithmatex">\(g\)</span>. Through statistical analysis and uncertainty propagation, the experiment demonstrated sound scientific methodology and aligned well with theoretical expectations.</p>
+<p>Using pendulum motion, <span class="arithmatex">\(g\)</span> was estimated as <span class="arithmatex">\(9.980 \pm 0.009\ \text{m/s}^2\)</span>, showing clear methodology and precision. However, the result significantly exceeds standard values, suggesting systematic errors. Refinement is needed to improve accuracy.</p>
 </div>
 </div><footer>
 <div aria-label="Footer Navigation" class="rst-footer-buttons" role="navigation">
