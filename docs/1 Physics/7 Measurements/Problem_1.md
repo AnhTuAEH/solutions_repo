@@ -8,17 +8,17 @@ This experiment estimates gravitational acceleration $g$ using a simple pendulum
 
 ### 1.1 Materials & Setup
 
-* String (1.0–1.5 m), dense bob (e.g., keychain).
-* Ruler or tape (resolution $r$), stopwatch or phone timer.
-* Secure stand; ensure vertical plane motion.
+* **Charging cable** (~1.0 m), **smartphone** used as the pendulum bob.
+* **Ruler or tape measure** (resolution \( r \)), **stopwatch or phone timer**.
+* **Door handle** used as the support to hang the pendulum; ensure motion is in a vertical plane.
 
-Measure pendulum length $L$ to bob’s center:
+Measure pendulum length \( L \) from the point where the cable hangs on the door handle to the center of mass of the phone:
 
 $$
 \Delta L = \frac{r}{2}
 $$
 
-Keep angle $\theta < 15^\circ$ to satisfy:
+Keep angle \( \theta < 15^\circ \) to satisfy:
 
 $$
 T = 2\pi \sqrt{\frac{L}{g}}, \quad \sin(\theta) \approx \theta
@@ -85,6 +85,18 @@ $$
 | $g$                  | 10.388 m/s² |
 | $\Delta g$           | 0.074 m/s²  |
 
+| Quantity               | Value        |
+|------------------------|--------------|
+| $\overline{T}_{10}$    | 19.9760 s    |
+| $\sigma_T$             | 0.2235 s     |
+| $\Delta T_{10}$        | 0.0707 s     |
+| $T$                    | 1.9976 s     |
+| $\Delta T$             | 0.00707 s    |
+| $L$                    | 1.050 m      |
+| $\Delta L$             | 0.0005 m     |
+| $g$                    | 10.388 m/s²  |
+| $\Delta g$             | 0.074 m/s²   |
+
 ---
 
 ## 5. Visualization
@@ -130,7 +142,7 @@ trials = np.arange(1, len(t10_values) + 1)
 plt.figure(figsize=(8, 5))
 plt.plot(trials, t10_values, 'o-', label=r'$T_{10}$ Measurements', markersize=6)
 plt.axhline(T10_mean, color='red', linestyle='--', label=fr'Mean $T_{{10}}$ = {T10_mean:.2f} s')
-plt.title('Time for 10 Oscillations vs. Trial Number')
+plt.title('Measured Time for 10 Pendulum Oscillations ($T_{10}$) vs. Trial Number')
 plt.xlabel('Trial Number')
 plt.ylabel(r'$T_{10}$ (s)')
 plt.grid(True, linestyle='--', alpha=0.6)
@@ -146,7 +158,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 
 # Data
-t10_values = np.array([20.35, 20.42, 20.38, 20.40, 20.36, 20.39, 20.41, 20.37, 20.34, 20.38])
+t10_values = np.array([19.58, 20.01, 20.12, 19.96, 19.75, 19.85, 20.03, 19.89, 20.25, 20.32])
 T10_mean = np.mean(t10_values)
 
 # Plot
@@ -161,7 +173,7 @@ plt.legend()
 plt.tight_layout()
 plt.show()
 ```
-![T10 vs Trial](../../_pics/Physics/7%20Measurements/Problem_1/image_2.png)
+![T10 vs Trial](../../_pics/Physics/7%20Measurements/Problem_1/histogram_t10.png)
 
 ### Colab Measurements Problem 1
 [Souce Code](https://colab.research.google.com/drive/1HUtq7RRQ6GR3qvYTUgwvtYOdLsazqWwU#scrollTo=fBGiMl0CDPkF)
@@ -177,11 +189,27 @@ plt.show()
 
 ### 6.1 Comparison with Standard Value
 
-Compared to $g_{\text{standard}} = 9.810\ \text{m/s}^2$:
+Compared to the standard gravitational acceleration value $g_{\text{standard}} = 9.810\ \text{m/s}^2$:
 
-* Measured $g = 9.980 \pm 0.009\ \text{m/s}^2$ is \~19σ above standard.
-* Indicates likely systematic error (e.g., length overestimated or period underestimated).
-* Even considering geographical variation ($9.78$–$9.83\ \text{m/s}^2$), result is high.
+* The measured value is:
+
+$$
+g = 10.388 \pm 0.074\ \text{m/s}^2
+$$
+
+* This result is significantly higher than expected, even when accounting for geographical variation in $g$ (typically between $9.78$ and $9.83\ \text{m/s}^2$).
+
+This discrepancy suggests the presence of systematic error in the experiment.
+
+Possible sources of error include:
+
+- **Underestimated pendulum length**: If the length $L$ was measured too short (e.g., not fully to the phone's center of mass), this would lead to an overestimation of $g$.
+- **Reaction time error**: Manual stopwatch timing may have caused the measured period to appear shorter than it actually was, again leading to an inflated $g$ value.
+- **Non-ideal pendulum motion**: If the pendulum was not swinging in a single vertical plane or the initial angle exceeded $15^\circ$, this could violate the small-angle approximation and distort results.
+
+> The discrepancy may come from an underestimated pendulum length (if the full vertical distance was not properly measured to the phone's center of mass) or from reaction-time errors when using a manual stopwatch. Either would cause the period to appear shorter and artificially increase the calculated value of $g$.
+
+
 
 ### 6.2 Uncertainty Sources
 
@@ -199,4 +227,28 @@ Compared to $g_{\text{standard}} = 9.810\ \text{m/s}^2$:
 
 ## 7. Conclusion
 
-Using pendulum motion, $g$ was estimated as $9.980 \pm 0.009\ \text{m/s}^2$, showing clear methodology and precision. However, the result significantly exceeds standard values, suggesting systematic errors. Refinement is needed to improve accuracy.
+In this experiment, we estimated the gravitational acceleration $g$ by analyzing the motion of a simple pendulum.
+
+A smartphone was suspended on a cable of measured length, and the time for 10 oscillations ($T_{10}$) was recorded across 10 trials. Using the average period and the pendulum length, the gravitational acceleration was calculated with propagated uncertainties.
+
+The final result is:
+
+$$
+g = 10.388 \pm 0.074\ \text{m/s}^2
+$$
+
+This value is higher than the standard gravitational acceleration $g_{\text{standard}} = 9.810\ \text{m/s}^2$, indicating the presence of systematic error in the measurements.
+
+Potential causes include:
+
+- Underestimation of pendulum length $L$
+- Human reaction time errors when using a manual stopwatch
+- Small deviations from the ideal conditions assumed in the pendulum model (e.g., angle > $15^\circ$, non-planar motion)
+
+Despite the discrepancy, the experiment successfully demonstrated a reliable method for estimating $g$ using simple tools and reinforced principles of uncertainty analysis and error propagation.
+
+For improved accuracy, future repetitions of the experiment should use:
+
+- Electronic timing systems (e.g., video analysis or photogates)
+- More precise length measurements
+- Smaller release angles and a rigid pendulum setup
